@@ -23,7 +23,7 @@ const jokes = [
     'Without requirements or design, programming is the art of adding bugs to an empty text file.',
     'Before software can be reusable it first has to be usable.',
     'The best method for accelerating a computer is the one that boosts it by 9.8 m/s2.',
-    'I think Microsoft named .Net so it wouldn’t show up in a Unix directory listing.'
+    'I think Microsoft named .Net so it wouldn’t show up in a Unix directory listing'
 ];
 
 client.on('message', (msg) => {
