@@ -40,7 +40,7 @@ client.on('ready', async () => {
     //check server info
     command(client, 'server', (message) => {
         client.guilds.cache.forEach((guild) => {
-            console.log(guild)
+            // console.log(guild)
         })
     })
 
