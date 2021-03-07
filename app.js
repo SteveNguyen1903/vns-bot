@@ -7,6 +7,8 @@ const command = require('./command');
 const core = require('./bot-utility/core')
 const firstMessage = require('./bot-utility/first-message')
 const roleClaim = require('./bot-utility/role-claim')
+const welcome = require('./bot-utility/welcome')
+const anime = require('./bot-utility/animeSearch')
 
 client.login(process.env.BOT_TOKEN);
 
@@ -20,7 +22,7 @@ client.on('ready', async () => {
     // client.user.setAvatar('');
 
     //check if bot is ready
-    console.log('bot ready')
+    console.log('bot ready localhost')
     command(client, 'ping', (message) => {
         message.channel.send('Pong!')
     })
@@ -67,6 +69,10 @@ client.on('ready', async () => {
 
     //role reaction
     // roleClaim(client)
+
+    //setwelcome
+    // welcome(client)
+    anime(client)
 });
 
 // Adding jokes function
@@ -130,7 +136,7 @@ client.on('message', (message) => { //this event is fired, whenever the bot sees
                     message.channel.send(`<:Love:553783096852611078> <@${message.author.id}>`)
                 })
             } else {
-                message.channel.send(`Chào mọi người`)
+                message.channel.send(`Chào mọi người https://i.imgur.com/zrvO1Oa.jpg`)
             }
         } else {
             message.channel.send(lres[Math.floor(Math.random() * lres.length)]);
