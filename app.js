@@ -2,12 +2,12 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config();
 
-const mongo = require('./mongo');
+// const mongo = require('./mongo');
 const command = require('./command');
 const core = require('./bot-utility/core')
 const firstMessage = require('./bot-utility/first-message')
 const roleClaim = require('./bot-utility/role-claim')
-const welcome = require('./bot-utility/welcome')
+// const welcome = require('./bot-utility/welcome')
 const anime = require('./bot-utility/animeSearch')
 
 client.login(process.env.BOT_TOKEN);
@@ -28,16 +28,16 @@ client.on('ready', async () => {
     })
 
     //mongo connection
-    await mongo().then(mongoose => {
-        try {
-            console.log('connected to mongo')
-        } catch (e) {
+    // await mongo().then(mongoose => {
+    //     try {
+    //         console.log('connected to mongo')
+    //     } catch (e) {
 
-        } finally {
-            //will always run
-            mongoose.connection.close()
-        }
-    })
+    //     } finally {
+    //         //will always run
+    //         mongoose.connection.close()
+    //     }
+    // })
 
     //check server info
     command(client, 'server', (message) => {
@@ -71,7 +71,7 @@ client.on('ready', async () => {
     // roleClaim(client)
 
     //setwelcome
-    welcome(client)
+    // welcome(client)
     anime(client)
 });
 
