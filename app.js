@@ -71,7 +71,7 @@ client.on('ready', async () => {
     // roleClaim(client)
 
     //setwelcome
-    // welcome(client)
+    welcome(client)
     anime(client)
 });
 
