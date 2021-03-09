@@ -9,6 +9,7 @@ const firstMessage = require('./bot-utility/first-message')
 const roleClaim = require('./bot-utility/role-claim')
 // const welcome = require('./bot-utility/welcome')
 const anime = require('./bot-utility/animeSearch')
+const manga = require('./bot-utility/mangaSearch')
 
 client.login(process.env.BOT_TOKEN);
 
@@ -51,6 +52,15 @@ client.on('ready', async () => {
         core.changeBotStatus(client, message)
     })
 
+    //clear channel for testing
+    command(client, 'clear', (message) => {
+        if (message.member.hasPermission('ADMINISTRATION')) {
+            message.channel.messages.fetch().then((results) => {
+                message.channel.bulkDelete(results)
+            })
+        }
+    })
+
     //check string
     // command(client, 'test admin', (message) => {
     //     if (message.member.hasPermission('ADMINISTRATION')) {
@@ -73,6 +83,7 @@ client.on('ready', async () => {
     //setwelcome
     // welcome(client)
     anime(client)
+    manga(client)
 });
 
 // Adding jokes function
@@ -136,7 +147,8 @@ client.on('message', (message) => { //this event is fired, whenever the bot sees
                     message.channel.send(`<:Love:553783096852611078> <@${message.author.id}>`)
                 })
             } else {
-                message.channel.send(`Chào mọi người https://i.imgur.com/zrvO1Oa.jpg`)
+                // message.channel.send(`Chào mọi người https://i.imgur.com/zrvO1Oa.jpg`)
+                // message.channel.send(`Chào mọi người`)
             }
         } else {
             message.channel.send(lres[Math.floor(Math.random() * lres.length)]);
@@ -147,9 +159,16 @@ client.on('message', (message) => { //this event is fired, whenever the bot sees
 
 
 client.on('message', (msg) => {
-    if (msg.content === '?joke') {
-        msg.channel.send(jokes[Math.floor(Math.random() * jokes.length)]);
-    }
+    // if (msg.content === '?joke') {
+    //     msg.channel.send(jokes[Math.floor(Math.random() * jokes.length)]);
+    // }
+    // if (msg.content === 'embed') {
+    //     msg.channel.send(`https://i.imgur.com/IjgqOaE.jpg`);
+    // }
+
+    // if (msg.content === 'attach') {
+    //     msg.channel.send("attach ", { files: ["https://i.imgur.com/IjgqOaE.jpg"] });
+    // }
 });
 
 

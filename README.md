@@ -14,3 +14,7 @@ run compassconst sagiri = require("sagiri");
  
 const client = sagiri("token");
 const results = await client("http://i.imgur.com/5yFTeRV.png");
+
+# heroku
+
+resources -> worker node app.js
