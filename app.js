@@ -1,15 +1,14 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config();
-
+const path = require('path')
+const fs = require('fs')
 // const mongo = require('./mongo');
-const command = require('./command');
-const core = require('./bot-utility/core')
-const firstMessage = require('./bot-utility/first-message')
-const roleClaim = require('./bot-utility/role-claim')
+// const command = require('./command');
+// const firstMessage = require('./bot-utility/first-message')
+// const roleClaim = require('./bot-utility/role-claim')
 // const welcome = require('./bot-utility/welcome')
-const anime = require('./bot-utility/animeSearch')
-const manga = require('./bot-utility/mangaSearch')
+// const messageCount = require('./bot-utility/message-counter');
 
 client.login(process.env.BOT_TOKEN);
 
@@ -23,10 +22,8 @@ client.on('ready', async () => {
     // client.user.setAvatar('');
 
     //check if bot is ready
-    console.log('bot ready localhost')
-    command(client, 'ping', (message) => {
-        message.channel.send('Pong!')
-    })
+    console.log('bot ready')
+    // console.log('bot ready local')
 
     //mongo connection
     // await mongo().then(mongoose => {
@@ -40,56 +37,44 @@ client.on('ready', async () => {
     //     }
     // })
 
-    //check server info
-    command(client, 'server', (message) => {
-        client.guilds.cache.forEach((guild) => {
-            // console.log(guild)
-        })
-    })
+    const baseFile = 'command-base.js'
+    const commandBase = require(`./commands/${baseFile}`)
 
-    //set status
-    command(client, 'status', (message) => {
-        core.changeBotStatus(client, message)
-    })
-
-    //clear channel for testing
-    command(client, 'clear', (message) => {
-        if (message.member.hasPermission('ADMINISTRATION')) {
-            message.channel.messages.fetch().then((results) => {
-                message.channel.bulkDelete(results)
-            })
+    const readCommands = dir => {
+        const files = fs.readdirSync(path.join(__dirname, dir))
+        for (const file of files) {
+            const stat = fs.lstatSync(path.join(__dirname, dir, file))
+            if (stat.isDirectory()) {
+                readCommands(path.join(dir, file))
+            } else if (file !== baseFile) {
+                const option = require(path.join(__dirname, dir, file))
+                commandBase(client, option)
+            }
         }
-    })
+    }
 
-    //check string
-    // command(client, 'test admin', (message) => {
-    //     if (message.member.hasPermission('ADMINISTRATION')) {
-    //         message.channel.messages.fetch().then((result) => {
-    //             message.channel.send(`this user has ADMIN permission`)
-    //         })
-    //     }
+    readCommands('commands')
+
+    //check server info
+    // command(client, 'server', (message) => {
+    //     client.guilds.cache.forEach((guild) => {
+    //         // console.log(guild)
+    //     })
     // })
-
-
 
     // const guild = client.guilds.cache.get('694183141170217080')
     // const channel = guild.channels.cache.get('816865305807814676')
-
     // core.sendMessage(channel, 'hello world', 3)
 
     //role reaction
     // roleClaim(client)
 
-    //setwelcome
+    //utility
+    // messageCount(client)
     // welcome(client)
-    anime(client)
-    manga(client)
 });
 
 // Adding jokes function
-
-// Jokes from dcslsoftware.com/20-one-liners-only-software-developers-understand/
-// www.journaldev.com/240/my-25-favorite-programming-quotes-that-are-funny-too
 const jokes = [
     'I went to a street where the houses were numbered 8k, 16k, 32k, 64k, 128k, 256k and 512k. It was a trip down Memory Lane.',
     '“Debugging” is like being the detective in a crime drama where you are also the murderer.',
@@ -110,9 +95,9 @@ const jokes = [
 client.on('message', (message) => { //this event is fired, whenever the bot sees a new message
 
     //console.log test
-    // if (message.channel.id == '816865305807814676') {
-    //     console.log('message ', message)
-    // }
+    if (message.channel.id == '816865305807814676') {
+        console.log('message ', message)
+    }
 
 
     if (message.mentions.has(client.user)) { //we check, whether the bot is mentioned, client.user returns the user that the client is logged in as
@@ -147,7 +132,7 @@ client.on('message', (message) => { //this event is fired, whenever the bot sees
                     message.channel.send(`<:Love:553783096852611078> <@${message.author.id}>`)
                 })
             } else {
-                // message.channel.send(`Chào mọi người https://i.imgur.com/zrvO1Oa.jpg`)
+                message.channel.send(`Chào mọi người https://i.imgur.com/zrvO1Oa.jpg`)
                 // message.channel.send(`Chào mọi người`)
             }
         } else {
@@ -158,66 +143,61 @@ client.on('message', (message) => { //this event is fired, whenever the bot sees
 });
 
 
-client.on('message', (msg) => {
-    // if (msg.content === '?joke') {
-    //     msg.channel.send(jokes[Math.floor(Math.random() * jokes.length)]);
-    // }
-    // if (msg.content === 'embed') {
-    //     msg.channel.send(`https://i.imgur.com/IjgqOaE.jpg`);
-    // }
+//for testing purpose
+// client.on('message', (msg) => {
+// if (msg.content === '?joke') {
+//     msg.channel.send(jokes[Math.floor(Math.random() * jokes.length)]);
+// }
+// if (msg.content === 'embed') {
+//     msg.channel.send(`https://i.imgur.com/IjgqOaE.jpg`);
+// }
 
-    // if (msg.content === 'attach') {
-    //     msg.channel.send("attach ", { files: ["https://i.imgur.com/IjgqOaE.jpg"] });
-    // }
-});
+// if (msg.content === 'attach') {
+//     msg.channel.send("attach ", { files: ["https://i.imgur.com/IjgqOaE.jpg"] });
+// }
+// });
 
 
+
+
+//UNUSED FUNCTIONS
 // Adding reaction-role function
-client.on('messageReactionAdd', async (reaction, user) => {
-    if (reaction.message.partial) await reaction.message.fetch();
-    if (reaction.partial) await reaction.fetch();
-    if (user.bot) return;
-    if (!reaction.message.guild) return;
-});
-
-
-// Adding reaction-role function
-client.on('messageReactionAdd', async (reaction, user) => {
-    if (reaction.message.partial) await reaction.message.fetch();
-    if (reaction.partial) await reaction.fetch();
-    if (user.bot) return;
-    if (!reaction.message.guild) return;
-    if (reaction.message.channel.id == '816869798436274218') {
-        if (reaction.emoji.name === '🦊') {
-            await reaction.message.guild.members.cache
-                .get(user.id)
-                .roles.add('816866994133401652');
-        }
-        if (reaction.emoji.name === '🐍') {
-            await reaction.message.guild.members.cache
-                .get(user.id)
-                .roles.add('816867114350673961');
-        }
-    } else return;
-});
+// client.on('messageReactionAdd', async (reaction, user) => {
+//     if (reaction.message.partial) await reaction.message.fetch();
+//     if (reaction.partial) await reaction.fetch();
+//     if (user.bot) return;
+//     if (!reaction.message.guild) return;
+//     if (reaction.message.channel.id == '816869798436274218') {
+//         if (reaction.emoji.name === '🦊') {
+//             await reaction.message.guild.members.cache
+//                 .get(user.id)
+//                 .roles.add('816866994133401652');
+//         }
+//         if (reaction.emoji.name === '🐍') {
+//             await reaction.message.guild.members.cache
+//                 .get(user.id)
+//                 .roles.add('816867114350673961');
+//         }
+//     } else return;
+// });
 
 // Removing reaction roles
-client.on('messageReactionRemove', async (reaction, user) => {
-    if (reaction.message.partial) await reaction.message.fetch();
-    if (reaction.partial) await reaction.fetch();
-    if (user.bot) return;
-    if (!reaction.message.guild) return;
-    if (reaction.message.channel.id == '816869798436274218') {
-        if (reaction.emoji.name === '🦊') {
-            await reaction.message.guild.members.cache
-                .get(user.id)
-                .roles.remove('816866994133401652');
-        }
-        if (reaction.emoji.name === '🐍') {
-            await reaction.message.guild.members.cache
-                .get(user.id)
-                .roles.remove('816867114350673961');
-        }
-    } else return;
-});
+// client.on('messageReactionRemove', async (reaction, user) => {
+//     if (reaction.message.partial) await reaction.message.fetch();
+//     if (reaction.partial) await reaction.fetch();
+//     if (user.bot) return;
+//     if (!reaction.message.guild) return;
+//     if (reaction.message.channel.id == '816869798436274218') {
+//         if (reaction.emoji.name === '🦊') {
+//             await reaction.message.guild.members.cache
+//                 .get(user.id)
+//                 .roles.remove('816866994133401652');
+//         }
+//         if (reaction.emoji.name === '🐍') {
+//             await reaction.message.guild.members.cache
+//                 .get(user.id)
+//                 .roles.remove('816867114350673961');
+//         }
+//     } else return;
+// });
 

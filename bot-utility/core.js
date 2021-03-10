@@ -1,5 +1,5 @@
 const changeBotStatus = (client, message) => {
-    const content = message.content.replace('!p ', '')
+    const content = message.content.replace('!pstatus ', '')
     client.user.setPresence({
         activity: {
             name: content,
