@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "name": "token",
+            "price": 150,
+            "img": ""
+        },
+        {
+            "name": "letter",
+            "price": 200,
+            "img": ""
+        },
+        {
+            "name": "potion",
+            "price": 150,
+            "img": ""
+        }
+    ]
+}

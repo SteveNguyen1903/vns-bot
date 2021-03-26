@@ -1,11 +1,12 @@
-const command = require('../command')
-const sagiri = require("sagiri");
 const Discord = require('discord.js');
 const fetch = require("node-fetch");
 
-
-module.exports = (client) => {
-    command(client, 'manga', async (message) => {
+module.exports = {
+    commands: 'manga',
+    minArgs: 0,
+    maxArgs: null,
+    description: 'Manga search',
+    callback: async (message, arguments, text) => {
 
         const fetchData = (image) => {
             fetch(`https://saucenao.com/search.php?api_key=${process.env.SAUCE_API}&numres=10&db=37&output_type=2&url=${image}`)
@@ -64,5 +65,5 @@ module.exports = (client) => {
             }
         }
 
-    })//command
-}//module
+    }
+}

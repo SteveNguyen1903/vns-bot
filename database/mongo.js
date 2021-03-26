@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-const { mongoPath } = require('./config.json')
+require('dotenv').config();
+
+const mongoPath = `mongodb+srv://violetBot:${process.env.MONGO_PW}@violet-bot.prlnm.mongodb.net/violetDB?retryWrites=true&w=majority`
 
 
 module.exports = async () => {
@@ -8,5 +10,6 @@ module.exports = async () => {
         useUnifiedTopology: true,
         useFindAndModify: false
     })
+
     return mongoose
 }

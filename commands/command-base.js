@@ -1,4 +1,4 @@
-const { prefix } = require('../config.json')
+const { prefix } = require('@root/config.json')
 
 const validatePermissions = (permissions) => {
     const validPermissions = [
@@ -42,6 +42,8 @@ const validatePermissions = (permissions) => {
     }
 }
 
+let recentlyRan = []
+
 
 module.exports = (client, commandOptions) => {
     let {
@@ -50,6 +52,8 @@ module.exports = (client, commandOptions) => {
         permissionError = 'You do not have permission to run this command',
         minArgs = 0,
         maxArgs = null,
+        cooldown = -1,
+        requiredChannel = '',
         permissions = [],
         requiredRoles = [],
         callback
@@ -75,11 +79,23 @@ module.exports = (client, commandOptions) => {
 
     //Listen for messages
     client.on('message', (message) => {
-        const { member, content, guild } = message
+        const { member, content, guild, channel } = message
 
         for (const alias of commands) {
             if (content.toLowerCase().startsWith(`${prefix}${alias.toLowerCase()}`)) {
                 // Comman runs
+
+                // ensure we are in the right channel
+                if (requiredChannel && requiredChannel !== channel.name) {
+                    //<#ID>
+                    const foundChannel = guild.channels.cache.find((channel) => {
+                        return channel.name === requiredChannel
+                    })
+                    message.reply(
+                        `You can only run this command inside of <#${foundChannel.id}>.`
+                    )
+                    return
+                }
 
                 //ensure the user has the permission
                 for (const permission of permissions) {
@@ -98,6 +114,15 @@ module.exports = (client, commandOptions) => {
                         return
                     }
                 }
+                // A command has been ran
+
+
+                // Ensure the user has not ran this command too many times
+                let cooldownString = `${guild.id}-${member.id}-${commands[0]}`
+                if (cooldown > 0 && recentlyRan.includes(cooldownString)) {
+                    message.reply('You cannot use that command so soon, please wait')
+                    return
+                }
 
                 //split on any number of spaces
                 const arguments = content.split(/[ ]+/)
@@ -110,8 +135,18 @@ module.exports = (client, commandOptions) => {
                     return
                 }
 
+                if (cooldown > 0) {
+                    recentlyRan.push(cooldownString)
+                    setTimeout(() => {
+                        recentlyRan = recentlyRan.filter((string) => {
+                            return string !== cooldownString
+                        })
+                    }, 1000 * cooldown);
+                }
+
+
                 //handle the custom command
-                callback(client, message, arguments, arguments.join(' '))
+                callback(message, arguments, arguments.join(' '))
 
                 return
             }

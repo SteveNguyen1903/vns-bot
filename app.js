@@ -1,19 +1,30 @@
+require('module-alias/register')
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const loadCommands = require('@root/commands/load-commands')
+const loadFeatures = require('@root/features/load-features')
+const config = require('@root/config.json')
+// const level = require('./level')
 require('dotenv').config();
-const path = require('path')
-const fs = require('fs')
-// const mongo = require('./mongo');
-// const command = require('./command');
-// const firstMessage = require('./bot-utility/first-message')
-// const roleClaim = require('./bot-utility/role-claim')
-// const welcome = require('./bot-utility/welcome')
-// const messageCount = require('./bot-utility/message-counter');
 
-client.login(process.env.BOT_TOKEN);
+
+
+//increase event emitter
+const EventEmitter = require('events')
+EventEmitter.defaultMaxListeners = 50;
+
+//Commando framework
+// const path = require('path')
+// const Commando = require('discord.js-commando')
+// const client = new Commando.CommandoClient({
+//     owner: '361133453217103875',
+//     commandPrefix: config.prefix
+// })
+
+
 
 client.on('ready', async () => {
-
     //set new bot name
     // client.user.setUsername("Violet Evergarden");
     // client.user.setAvatar('https://i.imgur.com/BvRYDkz.jpg');
@@ -23,55 +34,23 @@ client.on('ready', async () => {
 
     //check if bot is ready
     console.log('bot ready')
-    // console.log('bot ready local')
 
-    //mongo connection
-    // await mongo().then(mongoose => {
-    //     try {
-    //         console.log('connected to mongo')
-    //     } catch (e) {
+    //Commando framework
+    // client.registry
+    //     .registerGroups([
+    //         ['misc', 'Misc commands'],
+    //         ['moderation', 'Moderation commands'],
+    //         ['economy', 'Commands for economy sys']
+    //     ])
+    //     .registerDefaults()
+    //     .registerCommandsIn(path.join(__dirname, 'cmds'))
 
-    //     } finally {
-    //         //will always run
-    //         mongoose.connection.close()
-    //     }
-    // })
+    //old cmds
+    loadCommands(client)
+    loadFeatures(client)
+    // level(client)
 
-    const baseFile = 'command-base.js'
-    const commandBase = require(`./commands/${baseFile}`)
 
-    const readCommands = dir => {
-        const files = fs.readdirSync(path.join(__dirname, dir))
-        for (const file of files) {
-            const stat = fs.lstatSync(path.join(__dirname, dir, file))
-            if (stat.isDirectory()) {
-                readCommands(path.join(dir, file))
-            } else if (file !== baseFile) {
-                const option = require(path.join(__dirname, dir, file))
-                commandBase(client, option)
-            }
-        }
-    }
-
-    readCommands('commands')
-
-    //check server info
-    // command(client, 'server', (message) => {
-    //     client.guilds.cache.forEach((guild) => {
-    //         // console.log(guild)
-    //     })
-    // })
-
-    // const guild = client.guilds.cache.get('694183141170217080')
-    // const channel = guild.channels.cache.get('816865305807814676')
-    // core.sendMessage(channel, 'hello world', 3)
-
-    //role reaction
-    // roleClaim(client)
-
-    //utility
-    // messageCount(client)
-    // welcome(client)
 });
 
 // Adding jokes function
@@ -95,10 +74,9 @@ const jokes = [
 client.on('message', (message) => { //this event is fired, whenever the bot sees a new message
 
     //console.log test
-    if (message.channel.id == '816865305807814676') {
-        console.log('message ', message)
-    }
-
+    // if (message.channel.id == '816865305807814676') {
+    //     console.log('message ', message)
+    // }
 
     if (message.mentions.has(client.user)) { //we check, whether the bot is mentioned, client.user returns the user that the client is logged in as
         //this is where you put what you want to do now
@@ -109,22 +87,8 @@ client.on('message', (message) => { //this event is fired, whenever the bot sees
             '<:worrysleep:752870932208680993>'
         ]
 
-
         const greets = ['iu'];
         const input = message.content;
-
-        //has permission admin
-        // if (message.member.hasPermission('ADMINISTRATION')) {
-        //     if (greets.some(greet => input.includes(greet))) {
-        //         message.channel.messages.fetch().then((result) => {
-        //             message.channel.send(`admin permission`)
-        //         })
-        //     } else {
-        //         message.channel.send(`not admin`)
-        //     }
-        // } else {
-        //     message.channel.send(lres[Math.floor(Math.random() * lres.length)]);
-        // }
 
         if (message.member.roles.cache.some(role => role.name === 'v4v')) {
             if (greets.some(greet => input.includes(greet))) {
@@ -132,7 +96,7 @@ client.on('message', (message) => { //this event is fired, whenever the bot sees
                     message.channel.send(`<:Love:553783096852611078> <@${message.author.id}>`)
                 })
             } else {
-                message.channel.send(`Chào mọi người https://i.imgur.com/zrvO1Oa.jpg`)
+                // message.channel.send(`Chào mọi người https://i.imgur.com/zrvO1Oa.jpg`)
                 // message.channel.send(`Chào mọi người`)
             }
         } else {
@@ -142,62 +106,4 @@ client.on('message', (message) => { //this event is fired, whenever the bot sees
     }
 });
 
-
-//for testing purpose
-// client.on('message', (msg) => {
-// if (msg.content === '?joke') {
-//     msg.channel.send(jokes[Math.floor(Math.random() * jokes.length)]);
-// }
-// if (msg.content === 'embed') {
-//     msg.channel.send(`https://i.imgur.com/IjgqOaE.jpg`);
-// }
-
-// if (msg.content === 'attach') {
-//     msg.channel.send("attach ", { files: ["https://i.imgur.com/IjgqOaE.jpg"] });
-// }
-// });
-
-
-
-
-//UNUSED FUNCTIONS
-// Adding reaction-role function
-// client.on('messageReactionAdd', async (reaction, user) => {
-//     if (reaction.message.partial) await reaction.message.fetch();
-//     if (reaction.partial) await reaction.fetch();
-//     if (user.bot) return;
-//     if (!reaction.message.guild) return;
-//     if (reaction.message.channel.id == '816869798436274218') {
-//         if (reaction.emoji.name === '🦊') {
-//             await reaction.message.guild.members.cache
-//                 .get(user.id)
-//                 .roles.add('816866994133401652');
-//         }
-//         if (reaction.emoji.name === '🐍') {
-//             await reaction.message.guild.members.cache
-//                 .get(user.id)
-//                 .roles.add('816867114350673961');
-//         }
-//     } else return;
-// });
-
-// Removing reaction roles
-// client.on('messageReactionRemove', async (reaction, user) => {
-//     if (reaction.message.partial) await reaction.message.fetch();
-//     if (reaction.partial) await reaction.fetch();
-//     if (user.bot) return;
-//     if (!reaction.message.guild) return;
-//     if (reaction.message.channel.id == '816869798436274218') {
-//         if (reaction.emoji.name === '🦊') {
-//             await reaction.message.guild.members.cache
-//                 .get(user.id)
-//                 .roles.remove('816866994133401652');
-//         }
-//         if (reaction.emoji.name === '🐍') {
-//             await reaction.message.guild.members.cache
-//                 .get(user.id)
-//                 .roles.remove('816867114350673961');
-//         }
-//     } else return;
-// });
-
+client.login(process.env.BOT_TOKEN);

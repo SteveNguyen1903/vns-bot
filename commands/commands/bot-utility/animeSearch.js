@@ -8,7 +8,8 @@ module.exports = {
     commands: 'anime',
     minArgs: 0,
     maxArgs: null,
-    callback: async (client, message, arguments, text) => {
+    description: 'Anime search',
+    callback: async (message, arguments, text) => {
         if (message.attachments.size > 0) {
             let image = message.attachments.first().url;
 
