@@ -38,7 +38,6 @@ module.exports = {
     permissionError: 'Bạn phải là adventure để có thể sử dụng lệnh này',
     description: "Reaction",
     requiredRoles: ['adventure'],
-    permissions: 'ADMINISTRATOR',
     callback: async (message, arguments) => {
 
         const { guild, member } = message
