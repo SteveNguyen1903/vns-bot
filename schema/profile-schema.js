@@ -33,7 +33,12 @@ const profileSchema = mongoose.Schema({
             type: Number,
             default: 0
         }
+    },
+    identity: {
+        jobs: { type: Array }
     }
+}, {
+    timestamps: true
 })
 
 module.exports = mongoose.model('profiles', profileSchema)

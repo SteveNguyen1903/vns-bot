@@ -1,29 +1,22 @@
-const firstMessage = require('@ulti/first-message')
+const firstMessage = require('@util/first-message')
 
 module.exports = (client) => {
-    const channelId = '816869798436274218'
-
-    const getEmoji = (emojiName) => client.emojis.cache.find((emoji) => { emoji.name === emojiName })
+    const channelId = '824984704385810492'
 
 
-    // const getEmoji = client.emojis.find(emoji => emoji.name === "ayy")
+    const getEmoji = (emojiName) => client.emojis.cache.get((emoji) => { emoji.name === emojiName })
 
     const emojis = {
-        'gudako_drunk': "VnsFGO",
-        'kyarupoint': "veteran",
-        'ak_lappdumb': 'Dokutah',
-        'dumbpipi': 'Genshin Impact'
+        '⚔️': "adventure",
     }
 
     const reactions = []
     let emojiText = 'React để chọn role \n\n'
     for (const key in emojis) {
-        const emoji = getEmoji(key)
-
-        reactions.push(emoji)
-
+        // const emoji = getEmoji(key)
+        reactions.push(key)
         const role = emojis[key]
-        emojiText += `${emoji} = ${role}\n`
+        emojiText += `${key} = ${role}\n`
     }
 
     firstMessage(client, channelId, emojiText, reactions)

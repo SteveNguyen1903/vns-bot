@@ -6,6 +6,8 @@ const loadCommands = require('@root/commands/load-commands')
 const loadFeatures = require('@root/features/load-features')
 const config = require('@root/config.json')
 // const level = require('./level')
+const role = require('@util/role-claim')
+const announcement = require('@util/announcement/announcement')
 require('dotenv').config();
 
 
@@ -48,7 +50,13 @@ client.on('ready', async () => {
     //old cmds
     loadCommands(client)
     loadFeatures(client)
+
+    //add roles
+    role(client)
+    announcement(client, '825041229439041568')
     // level(client)
+
+    // client.channels.get('CHANNEL ID').send('Hello here!');
 
 
 });
