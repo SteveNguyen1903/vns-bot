@@ -53,7 +53,7 @@ client.on('ready', async () => {
 
     //add roles
     role(client)
-    announcement(client, '825041229439041568')
+    // announcement(client, '824984675972939826')
     // level(client)
 
     // client.channels.get('CHANNEL ID').send('Hello here!');

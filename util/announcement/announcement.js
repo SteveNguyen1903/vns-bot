@@ -9,7 +9,7 @@ module.exports = async (client, id) => {
 
     const embed = new Discord.MessageEmbed()
         .setTitle('Leidenschaftlich')
-        .setDescription('Chào mừng các bạn đến với thành phố Leidenschaftlich. Đây là một thế giới nơi công nghệ và phép màu dung hòa. Để tham gia thì bạn phải là regular của server và lấy role ở channel phía dưới.\n\nPrefix của Violet bot sẽ là "!p"')
+        .setDescription('Chào mừng các bạn đến với thành phố Leidenschaftlich. Đây là một thế giới nơi công nghệ và phép màu dung hòa. Để tham gia thì bạn phải là regular của server và lấy role ở channel phía dưới.\nHiện game đang trong quá trình phát triển và sẽ hoàn thiện hơn trong những ngày tiếp theo.\n\nPrefix của Violet bot sẽ là "!p"')
         .setThumbnail('https://i.imgur.com/sEcD1lZ.jpg')
         .setImage('https://i.imgur.com/bs3ESNo.jpg')
         .addFields(
