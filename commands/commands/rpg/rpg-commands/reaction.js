@@ -12,7 +12,7 @@ const checkTime = (m) => {
     const diffTime = Math.abs(now - createdTime)
     const diffMins = Math.round(diffTime / (1000 * 60))
 
-    if (diffMins <= 10000) {
+    if (diffMins <= 15) {
         return m
     }
 }
@@ -176,7 +176,7 @@ module.exports = {
 
             await economy.addItem(guildId, userId, itemDB)
 
-            message.channel.awaitMessages(filter, { max: 1, time: 1000 * 30, errors: ['time'] })
+            message.channel.awaitMessages(filter, { max: 1, time: 1000 * 5, errors: ['time'] })
                 .then(async collected => {
 
                     await mongo().then(async (mongoose) => {
@@ -190,6 +190,8 @@ module.exports = {
 
                     const action = collected.first().content
 
+                    console.log('collected ', collected)
+
                     if (action == '1') {
 
                         let chance = Math.random()
@@ -197,11 +199,11 @@ module.exports = {
                         //failed
                         if (chance < 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> nổi máu anh hùng, xông lên ứng cứu. Nhưng tiếc rằng kẻ địch quá mạnh, một cân hai không đổ lấy một giọt mồ hôi. <@${targetId}> lẫn <@${userId}> bị cướp mất :yen: ${coins}, cả hai dưỡng thương một giờ.`)
+                                .setDescription(`<@${targetId}> nổi máu anh hùng, xông lên ứng cứu. Nhưng tiếc rằng kẻ địch quá mạnh, một cân hai không đổ lấy một giọt mồ hôi. <@${targetId}> lẫn <@${userId}> bị cướp mất :yen: ${coins}, cả hai dưỡng thương 20 phút.`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 60)
-                            await economy.addWound(guild, guildId, targetId, 60)
+                            await economy.addWound(guild, guildId, userId, 20)
+                            await economy.addWound(guild, guildId, targetId, 20)
                             await economy.addCoins(guildId, userId, coins * -1)
                             await economy.addCoins(guildId, targetId, coins * -1)
                             return
@@ -210,11 +212,11 @@ module.exports = {
                         //success
                         if (chance > 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> xông pha giúp đỡ. Cả hai phối hợp ăn ý đánh bật tên địch truy sát, giành lấy :yen: ${coins} từ hắn. Cả hai hồi sức trong 30 phút.`)
+                                .setDescription(`<@${targetId}> xông pha giúp đỡ. Cả hai phối hợp ăn ý đánh bật tên địch truy sát, giành lấy :yen: ${coins} từ hắn. Cả hai hồi sức trong 20 phút.`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 30)
-                            await economy.addWound(guild, guildId, targetId, 30)
+                            await economy.addWound(guild, guildId, userId, 20)
+                            await economy.addWound(guild, guildId, targetId, 20)
                             await economy.addCoins(guildId, userId, coins * 1)
                             await economy.addCoins(guildId, targetId, coins * 1)
                             return
@@ -229,11 +231,11 @@ module.exports = {
                         //failed
                         if (chance < 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>, cả hai đều mất :yen: ${coins} và dưỡng thương một giờ.`)
+                                .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>, cả hai đều mất :yen: ${coins} và dưỡng thương 20 phút.`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 60)
-                            await economy.addWound(guild, guildId, targetId, 60)
+                            await economy.addWound(guild, guildId, userId, 20)
+                            await economy.addWound(guild, guildId, targetId, 20)
                             await economy.addCoins(guildId, userId, coins * -1)
                             await economy.addCoins(guildId, targetId, coins * -1)
                             return
@@ -242,11 +244,11 @@ module.exports = {
                         //success
                         if (chance > 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>. Nhưng mà kẻ địch đã chọn nhầm người rồi. <@${targetId}> kiên cường chống lại, giành lấy :yen: ${coins} từ tay địch. <@${userId}> mất tiền và dưỡng thương một giờ. <@${targetId}> hồi sức trong 30 phút`)
+                                .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>. Nhưng mà kẻ địch đã chọn nhầm người rồi. <@${targetId}> kiên cường chống lại, giành lấy :yen: ${coins} từ tay địch. Cả 2 hồi sức trong 20 phút`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 60)
-                            await economy.addWound(guild, guildId, targetId, 30)
+                            await economy.addWound(guild, guildId, userId, 20)
+                            await economy.addWound(guild, guildId, targetId, 20)
                             await economy.addCoins(guildId, userId, coins * -1)
                             await economy.addCoins(guildId, targetId, coins * 1)
                             return
@@ -261,11 +263,11 @@ module.exports = {
                         //failed
                         if (chance < 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> nổi ý định xấu, cấu kết với kẻ truy sát hội đồng <@${userId}>. Xui thay, trong lúc bị dồn vào đường cùng, bản tính sinh tồn nổi lên, <@${userId}> chống trả quyết liệt cân luôn cả 2 tên. <@${userId}> giành lấy :yen: ${coins} từ <@${targetId}> và hồi sức 30 phút. Này thì bẩn này! <@${targetId}> vừa mất tiền vừa tức tưởi vào nhà thương dưỡng sức 1 tiếng.`)
+                                .setDescription(`<@${targetId}> nổi ý định xấu, cấu kết với kẻ truy sát hội đồng <@${userId}>. Xui thay, trong lúc bị dồn vào đường cùng, bản tính sinh tồn nổi lên, <@${userId}> chống trả quyết liệt cân luôn cả 2 tên. <@${userId}> giành lấy :yen: ${coins} từ <@${targetId}> và hồi sức 20 phút. Này thì bẩn này! <@${targetId}> vừa mất tiền vừa tức tưởi vào nhà thương dưỡng sức 20 phút.`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 30)
-                            await economy.addWound(guild, guildId, targetId, 60)
+                            await economy.addWound(guild, guildId, userId, 20)
+                            await economy.addWound(guild, guildId, targetId, 20)
                             await economy.addCoins(guildId, userId, coins * 1)
                             await economy.addCoins(guildId, targetId, coins * -1)
                             return
@@ -274,11 +276,11 @@ module.exports = {
                         //success
                         if (chance > 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> nổi ý định xấu, cấu kết với kẻ truy sát hội đồng <@${userId}>. <@${userId}> sức yếu không thể chống trả, bị cướp :yen: ${coins}. <@${userId}> dưỡng thương trong 1 tiếng, <@${targetId}> hồi sức trong 30 phút`)
+                                .setDescription(`<@${targetId}> nổi ý định xấu, cấu kết với kẻ truy sát hội đồng <@${userId}>. <@${userId}> sức yếu không thể chống trả, bị cướp :yen: ${coins}. Cả 2 hồi sức trong 20 phút`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 60)
-                            await economy.addWound(guild, guildId, targetId, 30)
+                            await economy.addWound(guild, guildId, userId, 20)
+                            await economy.addWound(guild, guildId, targetId, 20)
                             await economy.addCoins(guildId, userId, coins * -1)
                             await economy.addCoins(guildId, targetId, coins * 1)
                             return
@@ -288,6 +290,8 @@ module.exports = {
 
                 })
                 .catch(async collected => {
+
+                    console.log('catch error ', collected)
 
                     await mongo().then(async (mongoose) => {
                         try {
@@ -303,11 +307,11 @@ module.exports = {
                     //failed
                     if (chance < 0.5) {
                         const embedPlot = new Discord.MessageEmbed()
-                            .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>, cả hai đều mất :yen: ${coins} và dưỡng thương một giờ.`)
+                            .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>, cả hai đều mất :yen: ${coins} và dưỡng thương 20 phút.`)
                             .setColor(`#b5b5b5`)
                         message.channel.send(embedPlot)
-                        await economy.addWound(guild, guildId, userId, 60)
-                        await economy.addWound(guild, guildId, targetId, 60)
+                        await economy.addWound(guild, guildId, userId, 20)
+                        await economy.addWound(guild, guildId, targetId, 20)
                         await economy.addCoins(guildId, userId, coins * -1)
                         await economy.addCoins(guildId, targetId, coins * -1)
                         return
@@ -316,11 +320,11 @@ module.exports = {
                     //success
                     if (chance > 0.5) {
                         const embedPlot = new Discord.MessageEmbed()
-                            .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>. Nhưng mà kẻ địch đã chọn nhầm người rồi. <@${targetId}> kiên cường chống lại, giành lấy :yen: ${coins} từ tay địch. <@${userId}> mất tiền và dưỡng thương một giờ. <@${targetId}> hồi sức trong 30 phút`)
+                            .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>. Nhưng mà kẻ địch đã chọn nhầm người rồi. <@${targetId}> kiên cường chống lại, giành lấy :yen: ${coins} từ tay địch. Cả 2 hồi sức trong 20 phút`)
                             .setColor(`#b5b5b5`)
                         message.channel.send(embedPlot)
-                        await economy.addWound(guild, guildId, userId, 60)
-                        await economy.addWound(guild, guildId, targetId, 30)
+                        await economy.addWound(guild, guildId, userId, 20)
+                        await economy.addWound(guild, guildId, targetId, 20)
                         await economy.addCoins(guildId, userId, coins * -1)
                         await economy.addCoins(guildId, targetId, coins * 1)
                         return
