@@ -138,7 +138,7 @@ module.exports = {
         let plots = [
             {
                 question: `<@${userId}> đang làm nhiệm vụ thì bị một người lạ mặt truy sát. Bị dồn vào đường cùng, <@${userId}> sử dụng token để kêu cứu.
-                <@${targetId}> gần đấy nghe thấy, quyết định: (30s)\n
+                <@${targetId}> gần đấy nghe thấy, quyết định: (60s)\n
                 1. Giúp đỡ
                 2. Làm lơ
                 3. Bắt tay cùng kẻ lạ mặt`,
@@ -176,7 +176,7 @@ module.exports = {
 
             await economy.addItem(guildId, userId, itemDB)
 
-            message.channel.awaitMessages(filter, { max: 1, time: 1000 * 5, errors: ['time'] })
+            message.channel.awaitMessages(filter, { max: 1, time: 1000 * 60, errors: ['time'] })
                 .then(async collected => {
 
                     await mongo().then(async (mongoose) => {
@@ -291,7 +291,7 @@ module.exports = {
                 })
                 .catch(async collected => {
 
-                    console.log('catch error ', collected)
+                    console.log('error CATCH', collected)
 
                     await mongo().then(async (mongoose) => {
                         try {
