@@ -1,5 +1,6 @@
 const woundSchema = require('@schema/wound-schema')
 const mongo = require('@db/mongo')
+const { Message } = require('discord.js')
 
 module.exports = (client) => {
     const checkRoles = async () => {
@@ -32,6 +33,8 @@ module.exports = (client) => {
                             return role.name === 'wound'
                         })
 
+                        const channel = await client.channels.cache.get('824985062956204032')
+                        channel.send(`<@${userId}> đã hồi phục xong`)
                         member.roles.remove(woundRole)
                     }
 
