@@ -49,7 +49,7 @@ module.exports = (client, commandOptions) => {
     let {
         commands,
         expectedArgs = '',
-        permissionError = 'You do not have permission to run this command',
+        permissionError = 'Bạn không đủ quyền để sử dụng lệnh này',
         minArgs = 0,
         maxArgs = null,
         cooldown = -1,
@@ -120,7 +120,7 @@ module.exports = (client, commandOptions) => {
                 // Ensure the user has not ran this command too many times
                 let cooldownString = `${guild.id}-${member.id}-${commands[0]}`
                 if (cooldown > 0 && recentlyRan.includes(cooldownString)) {
-                    message.reply('You cannot use that command so soon, please wait')
+                    message.reply('Bạn sử dụng lệnh quá nhanh, xin vui lòng chờ một chút')
                     return
                 }
 

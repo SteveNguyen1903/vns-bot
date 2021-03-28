@@ -9,7 +9,7 @@ const config = require('@root/config.json')
 const role = require('@util/role-claim')
 const announcement = require('@util/announcement/announcement')
 require('dotenv').config();
-
+const mongo = require('@db/mongo')
 
 
 //increase event emitter
@@ -36,7 +36,7 @@ client.on('ready', async () => {
 
     //check if bot is ready
     console.log('bot ready')
-
+    await mongo()
     //Commando framework
     // client.registry
     //     .registerGroups([

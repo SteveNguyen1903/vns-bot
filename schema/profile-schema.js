@@ -36,6 +36,11 @@ const profileSchema = mongoose.Schema({
     },
     identity: {
         jobs: { type: Array }
+    },
+    availability: {
+        type: Boolean,
+        default: true,
+        require: true
     }
 }, {
     timestamps: true
