@@ -110,7 +110,7 @@ module.exports = (client, commandOptions) => {
                     const role = guild.roles.cache.find(role => role.name === requiredRole)
 
                     if (!role || !member.roles.cache.has(role.id)) {
-                        message.reply(`You musts have the "${requiredRole}" role to use this command`)
+                        message.reply(`Bạn phải có role "${requiredRole}" để thực hiện lệnh`)
                         return
                     }
                 }

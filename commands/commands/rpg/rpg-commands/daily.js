@@ -82,7 +82,7 @@ module.exports = {
                 claimedCache.push(id)
 
                 //Give the rewards
-                const randomCoins = randomRewards(200, 400)
+                const randomCoins = randomRewards(1500, 2000)
                 const newCoins = await economy.addCoins(obj.guildId, obj.userId, randomCoins)
                 const newLevel = await level.addXP(obj.guildId, obj.userId, 50)
 
