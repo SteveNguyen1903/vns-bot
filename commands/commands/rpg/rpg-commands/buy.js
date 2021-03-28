@@ -48,7 +48,6 @@ module.exports = {
         const coinsOwned = await economy.getCoins(guildId, userId)
         if (coinsOwned < item.price || coinsOwned < item.price * itemQuantity) {
             return message.reply(`Không đủ coins để mua, hãy đánh lệnh daily để nhận coins`)
-
         }
 
         const remainingCoins = await economy.addCoins(guildId, userId, item.price * itemQuantity * -1)
