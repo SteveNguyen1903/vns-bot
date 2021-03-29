@@ -20,6 +20,10 @@ const profileSchema = mongoose.Schema({
         type: Number,
         default: 1
     },
+    hp: {
+        type: Number,
+        default: 100
+    },
     items: {
         token: {
             type: Number,

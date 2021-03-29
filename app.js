@@ -7,7 +7,6 @@ const mongo = require('@db/mongo')
 //bot core
 const loadCommands = require('@root/commands/load-commands')
 const loadFeatures = require('@root/features/load-features')
-const role = require('@util/role-claim')
 
 //extra
 const announcement = require('@util/announcement/announcement')
@@ -54,8 +53,6 @@ client.on('ready', async () => {
     loadCommands(client)
     loadFeatures(client)
 
-    //add roles
-    role(client)
     // announcement(client, '824984675972939826')
 
 });

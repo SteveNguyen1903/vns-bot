@@ -12,7 +12,7 @@
         },
         {
             "name": "potion",
-            "price": 150,
+            "price": 100,
             "img": ":test_tube:"
         }
     ]

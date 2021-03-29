@@ -1,6 +1,4 @@
-const mongo = require('@db/mongo')
-const profileSchema = require('@schema/profile-schema')
-const woundSchema = require('@schema/wound-schema')
+
 const economy = require('@features/economy')
 const maxMin = (max, min) => Math.floor(Math.random() * (max - min + 1)) + min;
 

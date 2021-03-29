@@ -1,11 +1,12 @@
-const mongo = require('@db/mongo')
 const profileSchema = require('@schema/profile-schema')
 
-const getNeededXP = level => level * level * 100
+const maxHP = level => level * 20 + 100
 
-module.exports = (client) => { }
+module.exports = (client) => {
 
-module.exports.addXP = async (guildId, userId, xpToAdd, message) => {
+}
+
+module.exports.addHP = async (guildId, userId, hpToAdd, message) => {
 
     let result = await profileSchema.findOneAndUpdate({
         guildId,
@@ -14,32 +15,31 @@ module.exports.addXP = async (guildId, userId, xpToAdd, message) => {
         guildId,
         userId,
         $inc: {
-            xp: xpToAdd
+            hp: hpToAdd
         }
     }, {
         upsert: true,
         new: true
     })
 
-    let { xp, level } = result
-    const needed = getNeededXP(level)
+    let { hp, level } = result
+    const maxHP = maxHP(level)
 
-    if (xp >= needed) {
-        ++level
-        xp -= needed
-
+    //check for max hp level
+    if (hp >= maxHP) {
+        hp = maxHP
         const newResult = await profileSchema.findOneAndUpdate({
             guildId,
             userId
         }, {
-            xp,
-            level,
+            hp,
         }, {
             upsert: true,
             new: true
         })
         return newResult
     }
+
     return result
 
 }

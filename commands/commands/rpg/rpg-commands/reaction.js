@@ -116,11 +116,7 @@ module.exports = {
 
         let plots = [
             {
-                question: `<@${userId}> đang làm nhiệm vụ thì bị một người lạ mặt truy sát. Bị dồn vào đường cùng, <@${userId}> sử dụng token để kêu cứu.
-                <@${targetId}> gần đấy nghe thấy, quyết định: (60s)\n
-                1. Giúp đỡ
-                2. Làm lơ
-                3. Bắt tay cùng kẻ lạ mặt`,
+                question: `<@${userId}> đang làm nhiệm vụ thì bị một người lạ mặt truy sát. Bị dồn vào đường cùng, <@${userId}> sử dụng token để kêu cứu.\n<@${targetId}> gần đấy nghe thấy, quyết định: (60s)\n1. Giúp đỡ\n2. Làm lơ\n3. Bắt tay cùng kẻ lạ mặt`,
                 answers: [1, 2, 3]
             }
         ];
