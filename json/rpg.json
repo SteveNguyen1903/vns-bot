@@ -3,17 +3,17 @@
         {
             "name": "token",
             "price": 150,
-            "img": ""
+            "img": ":coin:"
         },
         {
             "name": "letter",
             "price": 200,
-            "img": ""
+            "img": ":envelope:"
         },
         {
             "name": "potion",
             "price": 150,
-            "img": ""
+            "img": ":test_tube:"
         }
     ]
 }

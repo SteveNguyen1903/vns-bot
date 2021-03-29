@@ -92,7 +92,7 @@ module.exports = (client, commandOptions) => {
                         return channel.name === requiredChannel
                     })
                     message.reply(
-                        `You can only run this command inside of <#${foundChannel.id}>.`
+                        `Bạn chỉ có thể chạy lệnh này ở channel <#${foundChannel.id}>.`
                     )
                     return
                 }
@@ -131,7 +131,7 @@ module.exports = (client, commandOptions) => {
 
                 //ensure we have the correct number of args
                 if (arguments.length < minArgs || (maxArgs !== null && arguments.length > maxArgs)) {
-                    message.reply(`Incorrect syntax! Use ${prefix}${alias} ${expectedArgs}`)
+                    message.reply(`Sai cú pháp! Dùng ${prefix}${alias} ${expectedArgs}`)
                     return
                 }
 
