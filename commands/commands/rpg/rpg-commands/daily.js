@@ -1,4 +1,3 @@
-const mongo = require('@db/mongo')
 const economy = require('@features/economy')
 const level = require('@features/level')
 const dailyRewardsSchema = require('@schema/daily-rewards-schema')
@@ -56,46 +55,39 @@ module.exports = {
             userId: id,
         }
 
-        await mongo().then(async (mongoose) => {
-            try {
-                const results = await dailyRewardsSchema.findOne(obj)
-                // console.log('RESULTS:', results)
-                if (results) {
-                    const then = new Date(results.updatedAt).getTime()
-                    const now = new Date().getTime()
+        const results = await dailyRewardsSchema.findOne(obj)
+        // console.log('RESULTS:', results)
+        if (results) {
+            const then = new Date(results.updatedAt).getTime()
+            const now = new Date().getTime()
 
-                    const diffTime = Math.abs(now - then)
-                    const diffDays = diffTime / (1000 * 60 * 60 * 24)
+            const diffTime = Math.abs(now - then)
+            const diffDays = diffTime / (1000 * 60 * 60 * 24)
 
-                    if (diffDays <= 0.5) {
-                        claimedCache.push(id)
-                        message.reply(`${alreadyClaimed}, nhiệm vụ sẽ hồi lại trong :stopwatch: ${secondsToHms((86400000 - diffTime) / (1000 * 2))}`)
-                        // .then(msg => msg.delete({ timeout: 10000 }));
-                        return
-                    }
-                }
-
-                await dailyRewardsSchema.findOneAndUpdate(obj, obj, {
-                    upsert: true,
-                })
-
+            if (diffDays <= 0.5) {
                 claimedCache.push(id)
-
-                //Give the rewards
-                const randomCoins = randomRewards(1500, 2000)
-                const newCoins = await economy.addCoins(obj.guildId, obj.userId, randomCoins)
-                const newLevel = await level.addXP(obj.guildId, obj.userId, 50)
-
-                const embed = new Discord.MessageEmbed()
-                    .setColor(`#b5b5b5`)
-                    .setDescription(`Bạn nhận được :yen: ${randomCoins}. Bạn đang sở hữu :yen: ${newCoins}\nBạn nhận được 50 exp. **Level ${newLevel.level}**, để lên level tiếp theo cần :cross: ${getNeededXP(newLevel.level) - newLevel.xp} XP`)
-
-                message.channel.send(embed)
-
-            } finally {
-                mongoose.connection.close()
+                message.reply(`${alreadyClaimed}, nhiệm vụ sẽ hồi lại trong :stopwatch: ${secondsToHms((86400000 - diffTime) / (1000 * 2))}`)
+                // .then(msg => msg.delete({ timeout: 10000 }));
+                return
             }
+        }
+
+        await dailyRewardsSchema.findOneAndUpdate(obj, obj, {
+            upsert: true,
         })
+
+        claimedCache.push(id)
+
+        //Give the rewards
+        const randomCoins = randomRewards(1500, 2000)
+        const newCoins = await economy.addCoins(obj.guildId, obj.userId, randomCoins)
+        const newLevel = await level.addXP(obj.guildId, obj.userId, 50)
+
+        const embed = new Discord.MessageEmbed()
+            .setColor(`#b5b5b5`)
+            .setDescription(`Bạn nhận được :yen: ${randomCoins}. Bạn đang sở hữu :yen: ${newCoins}\nBạn nhận được 50 exp. **Level ${newLevel.level}**, để lên level tiếp theo cần :cross: ${getNeededXP(newLevel.level) - newLevel.xp} XP`)
+
+        message.channel.send(embed)
 
     }
 }

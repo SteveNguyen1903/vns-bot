@@ -6,6 +6,7 @@ const mongoPath = `mongodb+srv://violetBot:${process.env.MONGO_PW}@violet-bot.pr
 
 module.exports = async () => {
     await mongoose.connect(mongoPath, {
+        keepAlive: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false

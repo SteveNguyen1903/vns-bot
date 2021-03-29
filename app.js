@@ -58,7 +58,6 @@ client.on('ready', async () => {
 
     // client.channels.get('CHANNEL ID').send('Hello here!');
 
-
 });
 
 // Adding jokes function

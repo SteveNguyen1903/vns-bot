@@ -41,38 +41,34 @@ module.exports = class DailyCommand extends Commando.Command {
             userId: id,
         }
 
-        await mongo().then(async (mongoose) => {
-            try {
-                const results = await dailyRewardsSchema.findOne(obj)
 
-                console.log('RESULTS:', results)
+        const results = await dailyRewardsSchema.findOne(obj)
 
-                if (results) {
-                    const then = new Date(results.updatedAt).getTime()
-                    const now = new Date().getTime()
+        console.log('RESULTS:', results)
 
-                    const diffTime = Math.abs(now - then)
-                    const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24))
+        if (results) {
+            const then = new Date(results.updatedAt).getTime()
+            const now = new Date().getTime()
 
-                    if (diffDays <= 1) {
-                        claimedCache.push(id)
+            const diffTime = Math.abs(now - then)
+            const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24))
 
-                        message.reply(alreadyClaimed)
-                        return
-                    }
-                }
-
-                await dailyRewardsSchema.findOneAndUpdate(obj, obj, {
-                    upsert: true,
-                })
-
+            if (diffDays <= 1) {
                 claimedCache.push(id)
 
-                // TODO: Give the rewards
-                message.reply('You have claimed your daily rewards!')
-            } finally {
-                mongoose.connection.close()
+                message.reply(alreadyClaimed)
+                return
             }
+        }
+
+        await dailyRewardsSchema.findOneAndUpdate(obj, obj, {
+            upsert: true,
         })
+
+        claimedCache.push(id)
+
+        // TODO: Give the rewards
+        message.reply('You have claimed your daily rewards!')
+
     }
 }

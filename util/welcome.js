@@ -28,27 +28,23 @@ module.exports = (client) => {
 
         cache[guild.id] = [channel.id, text]
 
-        await mongo().then(async (mongoose) => {
-            try {
-                // await new welcomeSchema({
-                //     _id: guild.id,
-                //     channelId: channel.id,
-                //     text
-                // }).save()
-                await welcomeSchema.findOneAndUpdate({
-                    _id: guild.id
-                }, {
-                    _id: guild.id,
-                    channelId: channel.id,
-                    text
-                }, {
-                    upsert: true
 
-                })
-            } finally {
-                mongoose.connection.close()
-            }
+        // await new welcomeSchema({
+        //     _id: guild.id,
+        //     channelId: channel.id,
+        //     text
+        // }).save()
+        await welcomeSchema.findOneAndUpdate({
+            _id: guild.id
+        }, {
+            _id: guild.id,
+            channelId: channel.id,
+            text
+        }, {
+            upsert: true
+
         })
+
     })
 
     const onJoin = async (member) => {
@@ -58,14 +54,10 @@ module.exports = (client) => {
 
         if (!data) {
             console.log('fetching from database')
-            await mongo().then(async (mongoose) => {
-                try {
-                    const result = await welcomeSchema.findOne({ _id: guild.id })
-                    cache[guild.id] = data = [result.channelId, result.text]
-                } finally {
-                    mongoose.connection.close()
-                }
-            })
+
+            const result = await welcomeSchema.findOne({ _id: guild.id })
+            cache[guild.id] = data = [result.channelId, result.text]
+
         }
 
         const channelId = data[0]

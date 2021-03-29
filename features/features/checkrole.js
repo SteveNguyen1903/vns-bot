@@ -16,37 +16,33 @@ module.exports = (client) => {
 
         // const results = await woundSchema.find(conditional)
 
-        await mongo().then(async (mongoose) => {
-            try {
-                const results = await woundSchema.find(conditional)
 
-                if (results && results.length) {
-                    console.log('wound role to remove ', results)
-                    for (const result of results) {
+        const results = await woundSchema.find(conditional)
 
-                        const { guildId, userId } = result
+        if (results && results.length) {
+            console.log('wound role to remove ', results)
+            for (const result of results) {
 
-                        const guild = client.guilds.cache.get(guildId)
-                        const member = (await guild.members.fetch()).get(userId)
+                const { guildId, userId } = result
 
-                        const woundRole = guild.roles.cache.find((role) => {
-                            return role.name === 'wound'
-                        })
+                const guild = client.guilds.cache.get(guildId)
+                const member = (await guild.members.fetch()).get(userId)
 
-                        const channel = await client.channels.cache.get('824985062956204032')
-                        channel.send(`<@${userId}> đã hồi phục xong`)
-                        member.roles.remove(woundRole)
-                    }
+                const woundRole = guild.roles.cache.find((role) => {
+                    return role.name === 'wound'
+                })
 
-                    await woundSchema.updateMany(conditional, {
-                        current: false,
-                    })
-                }
-
-            } finally {
-                mongoose.connection.close()
+                const channel = await client.channels.cache.get('824985062956204032')
+                channel.send(`<@${userId}> đã hồi phục xong`)
+                member.roles.remove(woundRole)
             }
-        })
+
+            await woundSchema.updateMany(conditional, {
+                current: false,
+            })
+        }
+
+
 
         setTimeout(checkRoles, 1000 * 60 * 5)
     }
