@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const mongoPath = `${process.env.MONGO}`
+const mongoPath = process.env.MONGO
 
 
 module.exports = async () => {
