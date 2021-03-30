@@ -1,6 +1,6 @@
 const profileSchema = require('@schema/profile-schema')
 
-const maxHP = level => level * 20 + 100
+const maxHPCheck = level => level * 20 + 100
 
 module.exports = (client) => {
 
@@ -23,11 +23,25 @@ module.exports.addHP = async (guildId, userId, hpToAdd, message) => {
     })
 
     let { hp, level } = result
-    const maxHP = maxHP(level)
+    const maxHP = maxHPCheck(level)
 
     //check for max hp level
     if (hp >= maxHP) {
         hp = maxHP
+        const newResult = await profileSchema.findOneAndUpdate({
+            guildId,
+            userId
+        }, {
+            hp,
+        }, {
+            upsert: true,
+            new: true
+        })
+        return newResult
+    }
+
+    if (hp <= 0) {
+        hp = 0
         const newResult = await profileSchema.findOneAndUpdate({
             guildId,
             userId

@@ -12,6 +12,10 @@ const woundSchema = mongoose.Schema({
         type: Date,
         required: true
     },
+    hpRegen: {
+        type: Date,
+        required: true
+    },
     current: {
         type: Boolean,
         required: true
