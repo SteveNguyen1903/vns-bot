@@ -20,7 +20,7 @@ module.exports = {
     commands: ['use'],
     minArgs: 1,
     maxArgs: 1,
-    expectedArgs: "<tên món đồ> <số lượng>",
+    expectedArgs: "<tên món đồ>",
     permissionError: 'Bạn phải là adventure để sử dụng lệnh này',
     description: "Mua đồ trong shop",
     requiredRoles: ['adventure'],
@@ -44,7 +44,6 @@ module.exports = {
 
         if (item.name === 'potion') {
             let result = await hp.addHP(guildId, userId, 40)
-            console.log('result ', result)
         }
 
 

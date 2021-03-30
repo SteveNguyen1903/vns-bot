@@ -1,0 +1,33 @@
+{
+    "story":[
+        {
+            "setting": ["fantasy", "dungeon"],
+            "plot": "...",
+            "weight": 10,
+            "conflict": [
+                {
+                    "action": "... action 1",
+                    "weight": 7,
+                    "resolution": [
+                        {
+                            "plot": "... resolution 1",
+                            "gain": [ 
+                                { "player1": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]},
+                                { "player2": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+
+                        }
+                    ]
+                },
+                {
+                    
+                }
+            ]
+        },
+        {
+
+        }
+    ]
+}
