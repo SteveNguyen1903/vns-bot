@@ -11,6 +11,7 @@
                     "resolution": [
                         {
                             "plot": "... resolution 1",
+                            "weight": 8,
                             "gain": [ 
                                 { "player1": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]},
                                 { "player2": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}

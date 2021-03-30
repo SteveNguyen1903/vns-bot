@@ -25,7 +25,8 @@
     "@util": "./util",
     "@features": "./features/features",
     "@commands": "./commands/commands",
-    "@db": "./database"
+    "@db": "./database",
+    "@core":"./util/core"
   },
   "repository": {
     "type": "git",

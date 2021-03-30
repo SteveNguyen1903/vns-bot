@@ -18,7 +18,12 @@ const sendMessage = (channel, text, duration = 10) => {
     })
 }
 
+const randomGen = (arr) => {
+    return item = arr[Math.floor(Math.random() * arr.length)];
+}
+
 module.exports = {
     changeBotStatus,
-    sendMessage
+    sendMessage,
+    randomGen
 }

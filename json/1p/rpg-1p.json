@@ -1,0 +1,187 @@
+{
+    "story":[
+        {
+            "setting": ["fantasy", "dungeon"],
+            "plot": "... Story 1",
+            "weight": 10,
+            "conflict": [
+                {
+                    "action": "... action 1",
+                    "weight": 4,
+                    "resolution": [
+                        {
+                            "plot": "... resolution 1",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 2",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 3",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": "... action 2",
+                    "weight": 5,
+                    "resolution": [
+                        {
+                            "plot": "... resolution 1",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 2",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 3",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "setting": ["fantasy", "dungeon"],
+            "plot": "... Story 2",
+            "weight": 10,
+            "conflict": [
+                {
+                    "action": "... action 1",
+                    "weight": 4,
+                    "resolution": [
+                        {
+                            "plot": "... resolution 1",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 2",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 3",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": "... action 2",
+                    "weight": 5,
+                    "resolution": [
+                        {
+                            "plot": "... resolution 1",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 2",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 3",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "setting": ["fantasy", "dungeon"],
+            "plot": "... Story 3",
+            "weight": 10,
+            "conflict": [
+                {
+                    "action": "... action 1",
+                    "weight": 4,
+                    "resolution": [
+                        {
+                            "plot": "... resolution 1",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 2",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 3",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "action": "... action 2",
+                    "weight": 5,
+                    "resolution": [
+                        {
+                            "plot": "... resolution 1",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 2",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        },
+                        {
+                            "plot": "... resolution 3",
+                            "weight": 5,
+                            "gain": [ 
+                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
