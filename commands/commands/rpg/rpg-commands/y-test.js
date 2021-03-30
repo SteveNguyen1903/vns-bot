@@ -1,7 +1,7 @@
 const economy = require('@features/economy')
 
 module.exports = {
-    commands: ['dun'],
+    commands: ['test'],
     expectedArgs: "None",
     permissionError: 'You must be an admin to use this command',
     description: "Reaction",

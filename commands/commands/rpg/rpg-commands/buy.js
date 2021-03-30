@@ -28,13 +28,11 @@ module.exports = {
         let item = itemCheck(arguments[0])
         const itemQuantity = arguments[1]
 
-        // console.log('item ', item)
-
         if (!item.name || item.name === String) {
             return message.reply('Nhập đúng item cần mua')
         }
 
-        if (isNaN(itemQuantity) || itemQuantity < 0 || !Number.isInteger(itemQuantity)) {
+        if (isNaN(itemQuantity) || itemQuantity < 0 || !Number.isInteger(parseInt(itemQuantity))) {
             return message.reply('Nhập đúng số lượng cần mua')
         }
 
@@ -58,7 +56,6 @@ module.exports = {
             .setDescription(`Bạn đã mua ${itemQuantity} ${item.name}, tiền còn lại :yen: ${remainingCoins}`)
 
         message.channel.send(embed)
-
 
     }
 }
