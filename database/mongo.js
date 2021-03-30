@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const mongoPath = `mongodb+srv://violetBot:${process.env.MONGO_PW}@violet-bot.prlnm.mongodb.net/violetDB?retryWrites=true&w=majority`
+const mongoPath = process.env.MONGO
 
 
 module.exports = async () => {
