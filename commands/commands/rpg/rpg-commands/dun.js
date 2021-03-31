@@ -65,7 +65,7 @@ module.exports = {
                     const action = collected.first().content
                     const resolution = core.getStory(story.conflict[action - 1].resolution)
                     const resWeight = await core.calWeight(resolution.weight, userLvl)
-                    let endTxt = `Bạn có thêm ${userLvl + 1.5 / userLvl}% cơ hội nhận thưởng.`
+                    let endTxt = `Bạn có thêm ${userLvl + 1.5 / userLvl}% cơ hội thành công.`
                     let result = resolution.gain[0].player1
                     let extraTxt = resolution.gain[0].extra
                     if (!resWeight) {
@@ -83,15 +83,11 @@ module.exports = {
                     text = text.replaceAll(`player1`, `<@${userId}>`)
                     text += `Bạn nhận được :yen: ${coins} tiền, :cross: ${xp} xp, mất :drop_of_blood: ${hp} máu.\n`
 
-                    // const itemDB = {
-                    //     name: 'token',
-                    //     quantity: -1
-                    // }
+
 
                     const promises = [
                         await hpFeature.addHP(guildId, userId, hp),
                         await economy.addCoins(guildId, userId, coins),
-                        // await economy.addItem(guildId, userId, itemDB),
                         await xpFeature.addXP(guildId, userId, xp),
                         await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
                     ]
@@ -102,6 +98,12 @@ module.exports = {
                                 text += `Bạn đã hết máu. Hồi sức trong 20 phút!`
                                 await economy.addWound(guild, guildId, userId, 20)
                             }
+
+                            // const itemDB = {
+                            //     name: 'token',
+                            //     quantity: -1
+                            // }
+                            // await economy.addItem(guildId, userId, itemDB)
 
                             let embedResolution = new Discord.MessageEmbed()
                                 .setDescription(text)
@@ -118,7 +120,7 @@ module.exports = {
                 })
                 .catch(async (err) => {
                     console.log('msg catch err ', err)
-                    message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!')
+                    message.reply('Không thấy câu trả lời của người chơi.')
                     await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
                 });
         })
