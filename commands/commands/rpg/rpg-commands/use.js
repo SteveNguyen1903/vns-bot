@@ -33,13 +33,9 @@ module.exports = {
         const inventory = await economy.showProfile(guildId, userId)
         // console.log('item ', item)
 
-        if (!item.name || item.name === String) {
-            return message.reply('Nhập đúng item cần dùng')
-        }
+        if (!item.name || item.name === String) return message.reply('Nhập đúng item cần dùng')
 
-        if (inventory.items[`${item.name}`] <= 0) {
-            return message.reply(`Thiếu item "token" để thực hiện tương tác.`)
-        }
+        if (inventory.items[`${item.name}`] <= 0) return message.reply(`Thiếu item "token" để thực hiện tương tác.`)
 
         const itemDB = {
             name: item.name,
