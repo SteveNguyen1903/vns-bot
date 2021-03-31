@@ -25,7 +25,7 @@ module.exports = (client) => {
                 })
                 const channel = await client.channels.cache.get('824985062956204032')
                 member.roles.remove(woundRole)
-                await hp.addHP(guildId, userId, 10)
+                await hp.addHP(guildId, userId, 5)
                 channel.send(`<@${userId}> đã hồi phục xong, hp +10`)
             }
             await woundSchema.updateMany(conditional, {

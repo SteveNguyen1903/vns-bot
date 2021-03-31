@@ -43,7 +43,8 @@ module.exports = async (client) => {
         .setThumbnail('https://i.imgur.com/JDWQ8Mp.jpg')
         .setImage('')
         .addFields(
-            { name: 'Lệnh hiện có:', value: `"daily" : Nhận :cross: exp và :yen: tiền mỗi ngày.\n"info" : xem profile của adventure.\n` }
+            { name: 'Lệnh hiện có:', value: `"daily" : Nhận :cross: exp và :yen: tiền mỗi ngày.\n"info" : xem profile của adventure.\n` },
+            { name: 'Cơ chế khác:', value: `+12h hồi 40 máu.\n+Mỗi một lần hồi sức sẽ được hồi 5 máu.` }
         )
         .setFooter(`v4v`, 'https://i.imgur.com/pmDv6Hb.png')
         .setTimestamp()
@@ -53,23 +54,19 @@ module.exports = async (client) => {
 
     // channel.send(embed3)
 
-    channel.messages.fetch('826797090499854406')
-        .then(message => message.edit(''))
-        .catch(console.error);
+    // channel.messages.fetch().then(async (messages) => {
 
-    channel.messages.fetch().then(async (messages) => {
+    //     const msgIdArr = []
+    //     for (const message of messages) {
+    //         msgIdArr.push(message[0])
+    //     }
 
-        const msgIdArr = []
-        for (const message of messages) {
-            msgIdArr.push(message[0])
-        }
+    //     msgIdArr.reverse().forEach(async (item, index) => {
+    //         channel.messages.fetch(item)
+    //             .then(message => message.edit(embedArr[index]))
+    //             .catch(console.error);
+    //     })
 
-        msgIdArr.reverse().forEach(async (item, index) => {
-            channel.messages.fetch(item)
-                .then(message => message.edit(embedArr[index]))
-                .catch(console.error);
-        })
-
-    })
+    // })
 
 }

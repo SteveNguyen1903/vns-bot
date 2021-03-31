@@ -16,7 +16,7 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "player1 chạy một mạch đến trung tâm ngôi mộ mặc cho lửa đạn bay vèo vèo trên đầu. Xời, gêm là dễ, dăm ba cái bẫy có mà bắt gà bắt vịt. Quá tự tin, quá bản lĩnh!"
+                                "extra": "player1 chạy một mạch đến trung tâm ngôi mộ mặc cho lửa đạn có bay vèo vèo trên đầu. Dăm ba cái bẫy có mà bắt gà bắt vịt. Quá tự tin, quá bản lĩnh!"
                             }],
                             "loss": [{
                                 "player1": {
@@ -24,7 +24,7 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Ngu mà liều, mới vào đã đạp ngay ổ vịt. Đây là **ổ vịt** nhé, còn chưa phải là cái bẫy nào ... player1 cong giò chạy ra!"
+                                "extra": "Ngu mà liều, mới vào đã đạp ngay ổ vịt. Đây là **ổ vịt** nhé, còn chưa phải là cái bẫy nào ... player1 cong giò bỏ chạy!"
                             }]
                         },
                         {
@@ -73,7 +73,7 @@
                     "action": "2. Suy tính kĩ càng, vạch ra phương án mới tiếp tục",
                     "end": true,
                     "resolution": [{
-                            "plot": "player1 thủ sẵn mọi thứ trong người, từ sách hướng dẫn đến bản đồ từng ngóc ngách trong hầm mộ, cho wiki của gần như mọi loại bẫy ... ",
+                            "plot": "player1 thủ sẵn mọi thứ trong người, từ sách hướng dẫn đến bản đồ từng ngóc ngách trong hầm mộ, cho đến wiki của gần như mọi loại bẫy ... ",
                             "weight": 5,
                             "gain": [{
                                 "player1": {
@@ -93,7 +93,7 @@
                             }]
                         },
                         {
-                            "plot": "Đi đến một con quái vật trông như nhân sư. player1 phải trả lời một câu hỏi mẹo mới cho qua ...",
+                            "plot": "Đi đến một con quái vật trông như nhân sư. player1 phải trả lời một câu hỏi ... mẹo mới cho qua!",
                             "weight": 2,
                             "gain": [{
                                 "player1": {
@@ -121,7 +121,7 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "player1 bình tĩnh và lựa chọn chính xác cách phá bẫy hiệu quả, ẵm trọn phần thưởng."
+                                "extra": "player1 bình tĩnh và lựa chọn chính xác cách phá bẫy hiệu quả, ẵm trọn phần thưởng. Gã nghênh mặt, chậc lưỡi, tsk, gêm là dễ"
                             }],
                             "loss": [{
                                 "player1": {
