@@ -15,10 +15,7 @@ module.exports = {
 
         const guildId = message.guild.id
         const userId = message.author.id
-
         const inventory = await economy.showProfile(guildId, userId)
-
-        console.log(inventory)
 
         const embed = new Discord.MessageEmbed()
             .setColor(`#b5b5b5`)
@@ -36,6 +33,5 @@ module.exports = {
             .setTimestamp()
             .setFooter('Developed by v4v', 'https://i.imgur.com/pmDv6Hb.png');
         message.channel.send(embed)
-
     }
 }

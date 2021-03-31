@@ -64,12 +64,12 @@ module.exports = {
                     const action = collected.first().content
                     const resolution = core.getStory(story.conflict[action - 1].resolution)
                     const resWeight = core.calWeight(resolution.weight, userLvl)
-                    let endTxt = `Phần thưởng nhiều hơn do bạn đã "thành công"`
+                    let endTxt = `Bạn có thêm ${userLvl + 1.5 / userLvl}% cơ hội nhận thưởng.`
                     let result = resolution.gain[0].player1
 
                     if (!resWeight) {
                         result = resolution.loss[0].player1
-                        endTxt = `Phần thưởng ít hơn do bạn đã "thất bại"`
+                        // endTxt = `Nhận thưởng thêm: "thất bại".`
                     }
 
                     let { coins, xp, hp } = result
@@ -119,7 +119,6 @@ module.exports = {
                     message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!')
                     await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
                 });
-
         })
 
     }
