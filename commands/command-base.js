@@ -114,8 +114,6 @@ module.exports = (client, commandOptions) => {
                         return
                     }
                 }
-                // A command has been ran
-
 
                 // Ensure the user has not ran this command too many times
                 let cooldownString = `${guild.id}-${member.id}-${commands[0]}`

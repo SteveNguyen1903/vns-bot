@@ -49,7 +49,7 @@ module.exports = {
         }
 
         const remainingCoins = await economy.addCoins(guildId, userId, item.price * itemQuantity * -1)
-        const inventory = await economy.addItem(guildId, userId, itemDB)
+        await economy.addItem(guildId, userId, itemDB)
 
         const embed = new Discord.MessageEmbed()
             .setColor(`#b5b5b5`)

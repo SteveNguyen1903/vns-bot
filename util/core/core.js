@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const profileSchema = require('@schema/profile-schema')
 
 //change bot status
@@ -10,6 +11,8 @@ const changeBotStatus = (client, message) => {
         }
     })
 }
+
+const maxMin = (max, min) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 //send and delete message
 const sendMessage = (channel, text, duration = 10) => {
@@ -24,12 +27,15 @@ const sendMessage = (channel, text, duration = 10) => {
 
 //random generator, pick one value in an array
 const randomGen = (arr) => {
-    return item = arr[Math.floor(Math.random() * arr.length)];
+    const item = arr[Math.floor(Math.random() * arr.length)];
+    return item
 }
 
 //self check availability with token
-const checkAvailabilityWithToken = async (message, selfAvailability) => {
-    if (!selfAvailability) {
+const checkAvailabilityWithToken = async (message, userProfile) => {
+    let guildId = userProfile.guildId
+    let userId = userProfile.userId
+    if (!userProfile) {
         await profileSchema.findOneAndUpdate({
             guildId,
             userId
@@ -37,11 +43,11 @@ const checkAvailabilityWithToken = async (message, selfAvailability) => {
             availability: true
         }, { upsert: true, new: true })
     }
-    if (selfAvailability && !selfAvailability.availability) {
+    if (userProfile && !userProfile.availability) {
         message.reply('Bạn đang trong một sự kiện diễn ra, không thể dùng lệnh. Hãy hoàn thành tương tác này để tiếp tục!')
         return false
     }
-    if (selfAvailability.items.token <= 0) {
+    if (userProfile.items.token <= 0) {
         message.reply(`Thiếu item "token" để thực hiện tương tác.`)
         return false
     }
@@ -50,8 +56,41 @@ const checkAvailabilityWithToken = async (message, selfAvailability) => {
 
 const calWeight = (weight, level) => {
     let bonusChance = level + 1.5 / level
-    let success = 100 - (20 + (weight - 1) * 7.5) + bonusChance
-    return success.toFixed(2)
+    let success = ((12.5 + (weight - 1) * 7.5) + bonusChance).toFixed(2)
+    let result = Math.random() * 100
+    result = parseFloat(result).toFixed(2);
+    if (success > result) return true
+    return false
+}
+
+const calWeightMany = (weight = []) => {
+    let total = weight.reduce((a, b) => a + b)
+    let result = Math.random()
+    let tempChance = []
+    weight.forEach(item => {
+        tempChance.push(item / total)
+    })
+    let count = 0
+    for (let i = 0; i < tempChance.length; i++) {
+        count += tempChance[i]
+        if (count >= result) return i
+    }
+}
+
+const getStory = (story) => {
+    let tempArr = []
+    story.forEach(element => {
+        tempArr.push(element.weight)
+    });
+    return story = story[(calWeightMany(tempArr))]
+}
+
+const checkGainArray = (arr) => {
+    if (arr.length > 1) {
+        const [max, min] = arr
+        return maxMin(max, min)
+    }
+    return arr[0]
 }
 
 //export core functions
@@ -60,5 +99,10 @@ module.exports = {
     sendMessage,
     randomGen,
     checkAvailabilityWithToken,
-    calWeight
+    calWeight,
+    calWeightMany,
+    getStory,
+    maxMin,
+    checkGainArray
 }
+

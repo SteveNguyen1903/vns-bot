@@ -1,11 +1,11 @@
-const mongo = require('@db/mongo')
 const profileSchema = require('@schema/profile-schema')
 
 const getNeededXP = level => level * level * 100
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (client) => { }
 
-module.exports.addXP = async (guildId, userId, xpToAdd, message) => {
+module.exports.addXP = async (guildId, userId, xpToAdd) => {
 
     let result = await profileSchema.findOneAndUpdate({
         guildId,

@@ -1,6 +1,4 @@
-const mongo = require('@db/mongo')
 const profileSchema = require('@schema/profile-schema')
-const woundSchema = require('@schema/wound-schema')
 const economy = require('@features/economy')
 const Discord = require('discord.js');
 
@@ -27,7 +25,7 @@ module.exports = {
     description: "Tương tác với người chơi khác",
     requiredRoles: ['adventure'],
     cooldown: 5,
-    callback: async (message, arguments) => {
+    callback: async (message) => {
 
         const { guild, member } = message
         const { id } = member
@@ -250,7 +248,7 @@ module.exports = {
                     }
 
                 })
-                .catch(async collected => {
+                .catch(async () => {
 
                     await profileSchema.findOneAndUpdate({ guildId, userId: targetId }, { availability: true }, { upsert: true })
                     await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })

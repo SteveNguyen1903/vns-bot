@@ -1,6 +1,4 @@
-const mongo = require('@db/mongo')
 const profileSchema = require('@schema/profile-schema')
-const woundSchema = require('@schema/wound-schema')
 const economy = require('@features/economy')
 const Discord = require('discord.js');
 
@@ -12,6 +10,7 @@ const checkTime = (m) => {
     const diffTime = Math.abs(now - createdTime)
     const diffMins = Math.round(diffTime / (1000 * 60))
 
+    //test purpose
     if (diffMins <= 15) {
         return m
     }
@@ -26,7 +25,7 @@ module.exports = {
     description: "Tương tác với người chơi khác",
     requiredRoles: ['adventure'],
     cooldown: 5,
-    callback: async (message, arguments) => {
+    callback: async (message) => {
 
         const { guild, member } = message
         const { id } = member
@@ -35,23 +34,6 @@ module.exports = {
         const userId = id
 
         //check if self exists or is in an interaction
-        // const selfAvailability = await mongo().then(async (mongoose) => {
-        //     try {
-        //         let res = await profileSchema.findOne({ userId: userId })
-        //         if (!res) {
-        //             let res = await profileSchema.findOneAndUpdate({
-        //                 guildId,
-        //                 userId
-        //             }, {
-        //                 availability: true
-        //             }, { upsert: true, new: true })
-        //             res = res
-        //         }
-        //         return res
-        //     } finally {
-        //         mongoose.connection.close()
-        //     }
-        // })
         const selfAvailability = await profileSchema.findOne({ userId: userId })
         if (!selfAvailability) {
             await profileSchema.findOneAndUpdate({
@@ -61,7 +43,6 @@ module.exports = {
                 availability: true
             }, { upsert: true, new: true })
         }
-
 
         if (selfAvailability && !selfAvailability.availability) return message.reply('Bạn đang trong một sự kiện diễn ra, không thể dùng lệnh. Hãy hoàn thành tương tác này để tiếp tục!')
         if (selfAvailability.items.token <= 0) return message.reply(`Thiếu item "token" để thực hiện tương tác.`)
@@ -90,68 +71,50 @@ module.exports = {
         tempParticipants = tempParticipants.filter(e => e !== id && e !== '816862038532948008')
 
 
-        const availParticipants = await mongo().then(async (mongoose) => {
-            try {
-                const results = await profileSchema.find({ userId: { $in: tempParticipants } });
+        const availParticipants = await profileSchema.find({ userId: { $in: tempParticipants } });
 
-                let notExistInDB = []
-                let inDB = []
-                let participantReady = []
+        let notExistInDB = []
+        let inDB = []
+        let participantReady = []
 
-                results.forEach(participant => {
+        availParticipants.forEach(participant => {
+            inDB.push(participant.userId)
+            if (participant.availability) participantReady.push(participant.userId)
 
-                    inDB.push(participant.userId)
-
-                    if (participant.availability) participantReady.push(participant.userId)
-
-                })
-
-                notExistInDB = tempParticipants.filter(function (obj) { return inDB.indexOf(obj) == -1; });
-
-                //insert new profile if not existed
-                let newProfiles = []
-                if (notExistInDB.length) {
-                    notExistInDB.forEach(async user => {
-                        let result = profileSchema.findOneAndUpdate({
-                            guildId,
-                            userId: user
-                        }, {
-                            availability: true
-                        }, { upsert: true, new: true })
-                        newProfiles.push(result)
-                        participantReady.push(user)
-                    })
-                }
-                await Promise.all(newProfiles)
-
-                // console.log('participantReady ', participantReady)
-                return participantReady
-            } finally {
-                mongoose.connection.close()
-            }
         })
+
+        notExistInDB = tempParticipants.filter(function (obj) { return inDB.indexOf(obj) == -1; });
+
+        //insert new profile if not existed
+        let newProfiles = []
+        if (notExistInDB.length) {
+            notExistInDB.forEach(async user => {
+                let result = profileSchema.findOneAndUpdate({
+                    guildId,
+                    userId: user
+                }, {
+                    availability: true
+                }, { upsert: true, new: true })
+                newProfiles.push(result)
+                participantReady.push(user)
+            })
+        }
+        await Promise.all(newProfiles)
 
         //Check if user is wounded
         if (member.roles.cache.some(role => role.name === 'wound')) return message.reply('Bạn đang hồi sức, không sử dụng lệnh được')
 
         //Check if there are any participant
-        if (!availParticipants.length) {
+        if (!participantReady.length) {
             return message.reply('Hiện không có ai')
         }
 
         //Continue MAIN
-        console.log('availParticipants ', availParticipants)
-        const targetId = availParticipants[Math.floor(Math.random() * availParticipants.length)]
-
-        console.log('userId: ', userId, 'targetId: ', targetId)
+        const targetId = participantReady[Math.floor(Math.random() * participantReady.length)]
 
         let plots = [
             {
-                question: `<@${userId}> đang làm nhiệm vụ thì bị một người lạ mặt truy sát. Bị dồn vào đường cùng, <@${userId}> sử dụng token để kêu cứu.
-                <@${targetId}> gần đấy nghe thấy, quyết định: (60s)\n
-                1. Giúp đỡ
-                2. Làm lơ
-                3. Bắt tay cùng kẻ lạ mặt`,
+                question: `<@${userId}> đang làm nhiệm vụ thì bị một người lạ mặt truy sát. Bị dồn vào đường cùng, <@${userId}> sử dụng token để kêu cứu.\n<@${targetId}> gần đấy nghe thấy, quyết định: (60s)\n1. Giúp đỡ\n2. Làm lơ\n3. Bắt tay cùng kẻ lạ mặt`,
                 answers: [1, 2, 3]
             }
         ];
@@ -170,37 +133,23 @@ module.exports = {
 
         message.channel.send(embedPlot).then(async () => {
 
-            await mongo().then(async (mongoose) => {
-                try {
-                    await profileSchema.findOneAndUpdate({ guildId, userId: targetId }, { availability: false }, { upsert: true })
-                    await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: false }, { upsert: true })
-                } finally {
-                    mongoose.connection.close()
-                }
-            })
+            await profileSchema.findOneAndUpdate({ guildId, userId: targetId }, { availability: false }, { upsert: true })
+            await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: false }, { upsert: true })
 
+            //test purposes
             const itemDB = {
                 name: 'token',
                 quantity: -1
             }
-
             await economy.addItem(guildId, userId, itemDB)
 
             message.channel.awaitMessages(filter, { max: 1, time: 1000 * 60, errors: ['time'] })
                 .then(async collected => {
 
-                    await mongo().then(async (mongoose) => {
-                        try {
-                            await profileSchema.findOneAndUpdate({ guildId, userId: targetId }, { availability: true }, { upsert: true })
-                            await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
-                        } finally {
-                            mongoose.connection.close()
-                        }
-                    })
+                    await profileSchema.findOneAndUpdate({ guildId, userId: targetId }, { availability: true }, { upsert: true })
+                    await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
 
                     const action = collected.first().content
-
-                    console.log('collected ', collected)
 
                     if (action == '1') {
 
@@ -209,11 +158,11 @@ module.exports = {
                         //failed
                         if (chance < 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> nổi máu anh hùng, xông lên ứng cứu. Nhưng tiếc rằng kẻ địch quá mạnh, một cân hai không đổ lấy một giọt mồ hôi. <@${targetId}> lẫn <@${userId}> bị cướp mất :yen: ${coins}, cả hai dưỡng thương 20 phút.`)
+                                .setDescription(`<@${targetId}> nổi máu anh hùng, xông lên ứng cứu. Nhưng tiếc rằng kẻ địch quá mạnh, một cân hai không đổ lấy một giọt mồ hôi. <@${targetId}> lẫn <@${userId}> bị cướp mất :yen: ${coins}, cả hai dưỡng thương 1 phút.`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 20)
-                            await economy.addWound(guild, guildId, targetId, 20)
+                            await economy.addWound(guild, guildId, userId, 1)
+                            await economy.addWound(guild, guildId, targetId, 1)
                             await economy.addCoins(guildId, userId, coins * -1)
                             await economy.addCoins(guildId, targetId, coins * -1)
                             return
@@ -222,11 +171,11 @@ module.exports = {
                         //success
                         if (chance > 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> xông pha giúp đỡ. Cả hai phối hợp ăn ý đánh bật tên địch truy sát, giành lấy :yen: ${coins} từ hắn. Cả hai hồi sức trong 20 phút.`)
+                                .setDescription(`<@${targetId}> xông pha giúp đỡ. Cả hai phối hợp ăn ý đánh bật tên địch truy sát, giành lấy :yen: ${coins} từ hắn. Cả hai hồi sức trong 1 phút.`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 20)
-                            await economy.addWound(guild, guildId, targetId, 20)
+                            await economy.addWound(guild, guildId, userId, 1)
+                            await economy.addWound(guild, guildId, targetId, 1)
                             await economy.addCoins(guildId, userId, coins * 1)
                             await economy.addCoins(guildId, targetId, coins * 1)
                             return
@@ -241,11 +190,11 @@ module.exports = {
                         //failed
                         if (chance < 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>, cả hai đều mất :yen: ${coins} và dưỡng thương 20 phút.`)
+                                .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>, cả hai đều mất :yen: ${coins} và dưỡng thương 1 phút.`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 20)
-                            await economy.addWound(guild, guildId, targetId, 20)
+                            await economy.addWound(guild, guildId, userId, 1)
+                            await economy.addWound(guild, guildId, targetId, 1)
                             await economy.addCoins(guildId, userId, coins * -1)
                             await economy.addCoins(guildId, targetId, coins * -1)
                             return
@@ -254,11 +203,11 @@ module.exports = {
                         //success
                         if (chance > 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>. Nhưng mà kẻ địch đã chọn nhầm người rồi. <@${targetId}> kiên cường chống lại, giành lấy :yen: ${coins} từ tay địch. Cả 2 hồi sức trong 20 phút`)
+                                .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>. Nhưng mà kẻ địch đã chọn nhầm người rồi. <@${targetId}> kiên cường chống lại, giành lấy :yen: ${coins} từ tay địch. Cả 2 hồi sức trong 1 phút`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 20)
-                            await economy.addWound(guild, guildId, targetId, 20)
+                            await economy.addWound(guild, guildId, userId, 1)
+                            await economy.addWound(guild, guildId, targetId, 1)
                             await economy.addCoins(guildId, userId, coins * -1)
                             await economy.addCoins(guildId, targetId, coins * 1)
                             return
@@ -273,11 +222,11 @@ module.exports = {
                         //failed
                         if (chance < 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> nổi ý định xấu, cấu kết với kẻ truy sát hội đồng <@${userId}>. Xui thay, trong lúc bị dồn vào đường cùng, bản tính sinh tồn nổi lên, <@${userId}> chống trả quyết liệt cân luôn cả 2 tên. <@${userId}> giành lấy :yen: ${coins} từ <@${targetId}> và hồi sức 20 phút. Này thì bẩn này! <@${targetId}> vừa mất tiền vừa tức tưởi vào nhà thương dưỡng sức 20 phút.`)
+                                .setDescription(`<@${targetId}> nổi ý định xấu, cấu kết với kẻ truy sát hội đồng <@${userId}>. Xui thay, trong lúc bị dồn vào đường cùng, bản tính sinh tồn nổi lên, <@${userId}> chống trả quyết liệt cân luôn cả 2 tên. <@${userId}> giành lấy :yen: ${coins} từ <@${targetId}> và hồi sức 1 phút. Này thì bẩn này! <@${targetId}> vừa mất tiền vừa tức tưởi vào nhà thương dưỡng sức 1 phút.`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 20)
-                            await economy.addWound(guild, guildId, targetId, 20)
+                            await economy.addWound(guild, guildId, userId, 1)
+                            await economy.addWound(guild, guildId, targetId, 1)
                             await economy.addCoins(guildId, userId, coins * 1)
                             await economy.addCoins(guildId, targetId, coins * -1)
                             return
@@ -286,11 +235,11 @@ module.exports = {
                         //success
                         if (chance > 0.5) {
                             const embedPlot = new Discord.MessageEmbed()
-                                .setDescription(`<@${targetId}> nổi ý định xấu, cấu kết với kẻ truy sát hội đồng <@${userId}>. <@${userId}> sức yếu không thể chống trả, bị cướp :yen: ${coins}. Cả 2 hồi sức trong 20 phút`)
+                                .setDescription(`<@${targetId}> nổi ý định xấu, cấu kết với kẻ truy sát hội đồng <@${userId}>. <@${userId}> sức yếu không thể chống trả, bị cướp :yen: ${coins}. Cả 2 hồi sức trong 1 phút`)
                                 .setColor(`#b5b5b5`)
                             message.channel.send(embedPlot)
-                            await economy.addWound(guild, guildId, userId, 20)
-                            await economy.addWound(guild, guildId, targetId, 20)
+                            await economy.addWound(guild, guildId, userId, 1)
+                            await economy.addWound(guild, guildId, targetId, 1)
                             await economy.addCoins(guildId, userId, coins * -1)
                             await economy.addCoins(guildId, targetId, coins * 1)
                             return
@@ -299,29 +248,21 @@ module.exports = {
                     }
 
                 })
-                .catch(async collected => {
+                .catch(async () => {
 
-                    console.log('error CATCH', collected)
-
-                    await mongo().then(async (mongoose) => {
-                        try {
-                            await profileSchema.findOneAndUpdate({ guildId, userId: targetId }, { availability: true }, { upsert: true })
-                            await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
-                        } finally {
-                            mongoose.connection.close()
-                        }
-                    })
+                    await profileSchema.findOneAndUpdate({ guildId, userId: targetId }, { availability: true }, { upsert: true })
+                    await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
 
                     let chance = Math.random()
                     let coins = maxMin(200, 100)
                     //failed
                     if (chance < 0.5) {
                         const embedPlot = new Discord.MessageEmbed()
-                            .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>, cả hai đều mất :yen: ${coins} và dưỡng thương 20 phút.`)
+                            .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>, cả hai đều mất :yen: ${coins} và dưỡng thương 1 phút.`)
                             .setColor(`#b5b5b5`)
                         message.channel.send(embedPlot)
-                        await economy.addWound(guild, guildId, userId, 20)
-                        await economy.addWound(guild, guildId, targetId, 20)
+                        // await economy.addWound(guild, guildId, userId, 1)
+                        // await economy.addWound(guild, guildId, targetId, 1)
                         await economy.addCoins(guildId, userId, coins * -1)
                         await economy.addCoins(guildId, targetId, coins * -1)
                         return
@@ -330,11 +271,11 @@ module.exports = {
                     //success
                     if (chance > 0.5) {
                         const embedPlot = new Discord.MessageEmbed()
-                            .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>. Nhưng mà kẻ địch đã chọn nhầm người rồi. <@${targetId}> kiên cường chống lại, giành lấy :yen: ${coins} từ tay địch. Cả 2 hồi sức trong 20 phút`)
+                            .setDescription(`<@${targetId}> thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong <@${userId}> quay sang đánh luôn <@${targetId}>. Nhưng mà kẻ địch đã chọn nhầm người rồi. <@${targetId}> kiên cường chống lại, giành lấy :yen: ${coins} từ tay địch. Cả 2 hồi sức trong 1 phút`)
                             .setColor(`#b5b5b5`)
                         message.channel.send(embedPlot)
-                        await economy.addWound(guild, guildId, userId, 20)
-                        await economy.addWound(guild, guildId, targetId, 20)
+                        // await economy.addWound(guild, guildId, userId, 1)
+                        // await economy.addWound(guild, guildId, targetId, 1)
                         await economy.addCoins(guildId, userId, coins * -1)
                         await economy.addCoins(guildId, targetId, coins * 1)
                         return

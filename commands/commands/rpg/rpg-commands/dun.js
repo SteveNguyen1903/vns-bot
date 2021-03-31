@@ -1,10 +1,10 @@
-const economy = require('@features/economy')
-const hp = require('@features/hp')
-const defaultItem = require('@root/json/rpg.json')
-const story1p = require('@root/json/1p/rpg-1p.json')
 const Discord = require('discord.js');
+const economy = require('@features/economy')
+const hpFeature = require('@features/hp')
+const xpFeature = require('@features/level')
+const story1p = require('@root/json/1p/rpg-1p.json')
 const core = require('@core/core')
-const profileSchema = require('@schema/profile-schema')
+const profileSchema = require('@schema/profile-schema');
 
 module.exports = {
     commands: ['dun'],
@@ -15,16 +15,115 @@ module.exports = {
     cooldown: 5,
     callback: async (message) => {
 
-        const story = core.randomGen(story1p.story)
-        const guildId = message.guild.id
-        const userId = message.author.id
+        let story = story1p.story;
+        story = core.getStory(story)
+        if (!story) return message.reply('Không tìm thấy story')
+
+        const { guild, member } = message
+        const { id } = member
+        const guildId = guild.id
+        const userId = id
         const userProfile = await profileSchema.findOne({ guildId, userId })
+        const userLvl = userProfile.level
+
+        //Check if user is wounded
+        if (member.roles.cache.some(role => role.name === 'wound')) return message.reply('Bạn đang hồi sức, không sử dụng lệnh được')
 
         //check if self exists or is in an interaction
         const status = await core.checkAvailabilityWithToken(message, userProfile)
         if (!status) return
 
-        console.log(core.calWeight(1, 3))
+        //core
+        const filter = response => {
+            let countL = 0;
+            if (response.author.id === userId) {
+                return story.conflict.map(() => countL += 1).some(answer => answer === parseInt(response.content.replace(/[^0-9]/g, '')));
+            }
+        };
+
+        //story builder
+        let text = `${story.plot}\n`
+        story.conflict.forEach(item => {
+            text += `${item.action}\n`
+        })
+
+        if (text.includes('player1')) text = text.replace('player1', `<@${userId}>`)
+
+        const embedPlot = new Discord.MessageEmbed()
+            .setDescription(text)
+            .setColor(`#b5b5b5`)
+
+        message.channel.send(embedPlot).then(async () => {
+
+            //set player availability to false
+            await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: false }, { upsert: true })
+
+            message.channel.awaitMessages(filter, { max: 1, time: 1000 * 60, errors: ['time'] })
+                .then(async collected => {
+
+                    const action = collected.first().content
+                    const resolution = core.getStory(story.conflict[action - 1].resolution)
+
+                    const resWeight = core.calWeight(resolution.weight, userLvl)
+
+                    let endTxt = `Phần thưởng nhiều hơn do bạn đã "thành công"`
+                    let result = resolution.gain[0].player1
+                    if (!resWeight) {
+                        result = resolution.loss[0].player1
+                        endTxt = `Phần thưởng ít hơn do bạn đã "thất bại"`
+                    }
+
+
+                    let { coins, xp, hp } = result
+                    coins = core.checkGainArray(coins)
+                    xp = core.checkGainArray(xp)
+                    hp = core.checkGainArray(hp)
+
+                    let text = `${resolution.plot}\n`
+                    if (text.includes('player1')) text = text.replace('player1', `<@${userId}>`)
+                    text += `Bạn nhận được :yen: ${coins} tiền, :cross: ${xp} kinh nghiệm, mất :drop_of_blood: ${hp} máu.\n`
+
+                    // const itemDB = {
+                    //     name: 'token',
+                    //     quantity: -1
+                    // }
+
+                    const promises = [
+                        await hpFeature.addHP(guildId, userId, hp),
+                        await economy.addCoins(guildId, userId, coins),
+                        // await economy.addItem(guildId, userId, itemDB),
+                        await xpFeature.addXP(guildId, userId, xp),
+                        await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
+                    ]
+
+                    //revert player availability
+                    Promise.all(promises)
+                        .then(async (results) => {
+                            if (results[0] == 0) {
+                                text += `Bạn đã hết máu. Hồi sức trong 20 phút!`
+                                await economy.addWound(guild, guildId, userId, 20)
+                            }
+
+                            let embedResolution = new Discord.MessageEmbed()
+                                .setDescription(text)
+                                .setColor(`#b5b5b5`)
+                                .setTimestamp()
+                                .setFooter(endTxt, 'https://i.imgur.com/pmDv6Hb.png');
+                            message.channel.send(embedResolution)
+                        })
+                        .catch(async (err) => {
+                            message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!')
+                            console.log('promise err ', err)
+                        });
+                    return
+                })
+                .catch(async (err) => {
+                    console.log('msg catch err ', err)
+                    message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!')
+                    await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
+                });
+
+        })
 
     }
 }

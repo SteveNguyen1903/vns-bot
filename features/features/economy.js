@@ -3,6 +3,7 @@ const woundSchema = require('@schema/wound-schema')
 
 const coinsCache = {}
 
+// eslint-disable-next-line no-unused-vars
 module.exports = (client) => { }
 
 module.exports.addCoins = async (guildId, userId, coins) => {
@@ -111,7 +112,7 @@ module.exports.addWound = async (guild, guildId, userId, minute) => {
         return role.name === roleName
     })
 
-    if (!role) return message.reply(`Err: Không có role wound ${roleName}`)
+    if (!role) return
 
     const member = guild.members.cache.get(userId)
 

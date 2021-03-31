@@ -2,59 +2,77 @@
     "story":[
         {
             "setting": ["fantasy", "dungeon"],
-            "plot": "... Story 1",
-            "weight": 10,
+            "plot": "... Story 1 player1",
+            "weight": 5,
             "conflict": [
                 {
                     "action": "... action 1",
-                    "weight": 4,
+                    "end": true,
                     "resolution": [
                         {
                             "plot": "... resolution 1-1",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 1-2",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 1-3",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         }
                     ]
                 },
                 {
                     "action": "... action 2",
-                    "weight": 5,
+                    "end": true,
                     "resolution": [
                         {
                             "plot": "... resolution 2-1",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 2-2",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 2-3",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         }
                     ]
@@ -63,59 +81,77 @@
         },
         {
             "setting": ["fantasy", "dungeon"],
-            "plot": "... Story 2",
-            "weight": 10,
+            "plot": "... Story 2 player1",
+            "weight": 5,
             "conflict": [
                 {
                     "action": "... action 1",
-                    "weight": 4,
+                    "end": true,
                     "resolution": [
                         {
                             "plot": "... resolution 1-1",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 1-2",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 1-3",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         }
                     ]
                 },
                 {
                     "action": "... action 2",
-                    "weight": 5,
+                    "end": true,
                     "resolution": [
                         {
                             "plot": "... resolution 2-1",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 2-2",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 2-3",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         }
                     ]
@@ -124,59 +160,77 @@
         },
         {
             "setting": ["fantasy", "dungeon"],
-            "plot": "... Story 3",
-            "weight": 10,
+            "plot": "... Story 3 player1",
+            "weight": 5,
             "conflict": [
                 {
                     "action": "... action 1",
-                    "weight": 4,
+                    "end": true,
                     "resolution": [
                         {
                             "plot": "... resolution 1-1",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 1-2",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 1-3",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         }
                     ]
                 },
                 {
                     "action": "... action 2",
-                    "weight": 5,
+                    "end": true,
                     "resolution": [
                         {
                             "plot": "... resolution 2-1",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 2-2",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         },
                         {
                             "plot": "... resolution 2-3",
                             "weight": 5,
                             "gain": [ 
-                                { "player": [{ "coins" : [100,200] }, { "xp" : [40,80] } ]}
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
+                            ],
+                            "loss": [ 
+                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-2,-1] } }
                             ]
                         }
                     ]

@@ -2,11 +2,10 @@ const profileSchema = require('@schema/profile-schema')
 
 const maxHPCheck = level => level * 20 + 100
 
-module.exports = (client) => {
+// eslint-disable-next-line no-unused-vars
+module.exports = (client) => { }
 
-}
-
-module.exports.addHP = async (guildId, userId, hpToAdd, message) => {
+module.exports.addHP = async (guildId, userId, hpToAdd) => {
 
     let result = await profileSchema.findOneAndUpdate({
         guildId,
@@ -37,7 +36,7 @@ module.exports.addHP = async (guildId, userId, hpToAdd, message) => {
             upsert: true,
             new: true
         })
-        return newResult
+        return newResult.hp
     }
 
     if (hp <= 0) {
@@ -51,9 +50,9 @@ module.exports.addHP = async (guildId, userId, hpToAdd, message) => {
             upsert: true,
             new: true
         })
-        return newResult
+        return newResult.hp
     }
 
-    return result
+    return result.hp
 
 }

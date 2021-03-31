@@ -1,6 +1,6 @@
 const woundSchema = require('@schema/wound-schema')
 const hp = require('@features/hp')
-const { Message } = require('discord.js')
+
 
 module.exports = (client) => {
     const checkRoles = async () => {
@@ -25,7 +25,7 @@ module.exports = (client) => {
                 })
                 const channel = await client.channels.cache.get('824985062956204032')
                 member.roles.remove(woundRole)
-                const currentHP = await hp.addHP(guildId, userId, 10)
+                await hp.addHP(guildId, userId, 10)
                 channel.send(`<@${userId}> đã hồi phục xong, hp +10`)
             }
             await woundSchema.updateMany(conditional, {
@@ -49,7 +49,7 @@ module.exports = (client) => {
         if (results && results.length) {
             for (const result of results) {
                 const { guildId, userId } = result
-                const currentHP = await hp.addHP(guildId, userId, 40)
+                await hp.addHP(guildId, userId, 40)
             }
             now.setHours(now.getHours() + 12)
             await woundSchema.updateMany(conditional, {
@@ -73,7 +73,7 @@ module.exports = (client) => {
     client.on('guildMemberAdd', async (member) => {
         const { guild, id } = member
 
-        const currentWound = await muteSchema.findOne({
+        const currentWound = await woundSchema.findOne({
             userId: id,
             guildId: guild.id,
             current: true,

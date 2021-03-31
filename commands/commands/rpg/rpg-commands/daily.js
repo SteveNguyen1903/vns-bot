@@ -39,7 +39,7 @@ module.exports = {
     description: "Reaction",
     requiredRoles: ['adventure'],
     cooldown: 5,
-    callback: async (message, arguments) => {
+    callback: async (message) => {
 
         const { guild, member } = message
         const { id } = member

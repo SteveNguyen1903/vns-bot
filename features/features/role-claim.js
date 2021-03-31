@@ -4,7 +4,7 @@ module.exports = (client) => {
     const channelId = '824984704385810492'
 
 
-    const getEmoji = (emojiName) => client.emojis.cache.get((emoji) => { emoji.name === emojiName })
+    // const getEmoji = (emojiName) => client.emojis.cache.get((emoji) => { emoji.name === emojiName })
 
     const emojis = {
         '⚔️': "adventure",

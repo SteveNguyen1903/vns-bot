@@ -11,7 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "discord.js-commando": "^0.12.2",
     "dotenv": "^8.2.0",
     "module-alias": "^2.2.2",
     "mongodb": "^3.6.5",
@@ -26,7 +25,7 @@
     "@features": "./features/features",
     "@commands": "./commands/commands",
     "@db": "./database",
-    "@core":"./util/core"
+    "@core": "./util/core"
   },
   "repository": {
     "type": "git",
@@ -35,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/SteveNguyen1903/vns-bot/issues"
   },
-  "homepage": "https://github.com/SteveNguyen1903/vns-bot#readme"
+  "homepage": "https://github.com/SteveNguyen1903/vns-bot#readme",
+  "devDependencies": {
+    "eslint": "^7.23.0"
+  }
 }
