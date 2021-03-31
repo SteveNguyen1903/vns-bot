@@ -2,7 +2,7 @@
     "story": [{
             "setting": ["fantasy", "dungeon"],
             "img": "https://i.imgur.com/0piFMAq.png",
-            "plot": "Elfazz - Ngôi mộ của những vị vua cổ xưa. Tọa lạc tại Tây Bắc thành phố Leidenschaftlich. Khi đến gần, ai cũng cảm thấy bầu không khí còn vương vấn đôi chút ma phép nhiệm màu. Những họa tiết điêu khắc tỉ mỉ trên từng cánh cửa phác họa nên thời huy hoàng một trong những nền văn minh sớm nhất nhân loại. Tiếc là giờ đây tất cả chi là đống tro tàn. Nơi đây chứa đầy cạm bẫy, các adventure phải hết sức cẩn thận.\nplayer1 quyết định:",
+            "plot": "Bạn lựa chọn thám hiểm Elfazz - hầm mộ của những vị vua cổ xưa. Nơi đây chứa đầy cạm bẫy, các adventure phải hết sức cẩn thận.\nplayer1 quyết định:",
             "weight": 100,
             "conflict": [{
                     "action": "1. YOLO",
