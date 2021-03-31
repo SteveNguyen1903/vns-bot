@@ -1,7 +1,6 @@
 const economy = require('@features/economy')
 const hp = require('@features/hp')
 const defaultItem = require('@root/json/rpg.json')
-// const woundSchema = require('@schema/wound-schema')
 const Discord = require('discord.js');
 
 //check if item exists
@@ -39,20 +38,24 @@ module.exports = {
         const userId = message.author.id
         const itemDB = {
             name: item.name,
-            quantity: 1
+            quantity: -1
         }
+
+        let text = ``
 
         if (item.name === 'potion') {
             let result = await hp.addHP(guildId, userId, 40)
+            await economy.addItem(guildId, userId, itemDB)
+            text += `Bãn đã sử dụng :test_tube: potion, hồi 40hp. Máu hiện tại :drop_of_blood: ${result}hp`
+        } else {
+            text += `Các item khác chưa được cài đặt, xin vui lòng sử dụng món khác.`
         }
 
+        const embed = new Discord.MessageEmbed()
+            .setColor(`#b5b5b5`)
+            .setDescription(text)
 
-        // const embed = new Discord.MessageEmbed()
-        //     .setColor(`#b5b5b5`)
-        //     .setDescription(`Bạn đã mua ${itemQuantity} ${item.name}, tiền còn lại :yen: ${remainingCoins}`)
-
-        // message.channel.send(embed)
-
+        return message.channel.send(embed)
 
     }
 }
