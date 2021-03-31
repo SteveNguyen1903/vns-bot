@@ -63,16 +63,14 @@ module.exports = {
 
                     const action = collected.first().content
                     const resolution = core.getStory(story.conflict[action - 1].resolution)
-
                     const resWeight = core.calWeight(resolution.weight, userLvl)
-
                     let endTxt = `Phần thưởng nhiều hơn do bạn đã "thành công"`
                     let result = resolution.gain[0].player1
+
                     if (!resWeight) {
                         result = resolution.loss[0].player1
                         endTxt = `Phần thưởng ít hơn do bạn đã "thất bại"`
                     }
-
 
                     let { coins, xp, hp } = result
                     coins = core.checkGainArray(coins)
@@ -96,7 +94,6 @@ module.exports = {
                         await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
                     ]
 
-                    //revert player availability
                     Promise.all(promises)
                         .then(async (results) => {
                             if (results[0] == 0) {
