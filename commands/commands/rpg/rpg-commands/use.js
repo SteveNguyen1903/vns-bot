@@ -24,18 +24,23 @@ module.exports = {
     description: "Mua đồ trong shop",
     requiredRoles: ['adventure'],
     cooldown: 5,
+    // eslint-disable-next-line no-shadow-restricted-names
     callback: async (message, arguments) => {
 
         let item = itemCheck(arguments[0])
-
+        const guildId = message.guild.id
+        const userId = message.author.id
+        const inventory = await economy.showProfile(guildId, userId)
         // console.log('item ', item)
 
         if (!item.name || item.name === String) {
             return message.reply('Nhập đúng item cần dùng')
         }
 
-        const guildId = message.guild.id
-        const userId = message.author.id
+        if (inventory.items[`${item.name}`] <= 0) {
+            return message.reply(`Thiếu item "token" để thực hiện tương tác.`)
+        }
+
         const itemDB = {
             name: item.name,
             quantity: -1
