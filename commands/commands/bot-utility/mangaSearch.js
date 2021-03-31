@@ -6,6 +6,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: null,
     description: 'Manga search',
+    requiredRoles: ['Moderators'],
     callback: async (message, arguments, text) => {
 
         const fetchData = (image) => {

@@ -1,4 +1,4 @@
 {
-    "watch": ["commands/"],
+    "watch": ["commands/","features/"],
     "ext": "js"
 }

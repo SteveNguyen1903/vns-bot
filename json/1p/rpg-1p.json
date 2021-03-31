@@ -1,21 +1,22 @@
 {
     "story": [{
             "setting": ["fantasy", "dungeon"],
-            "plot": "... Story 1 player1",
-            "weight": 5,
+            "img": "https://i.imgur.com/0piFMAq.png",
+            "plot": "Elfazz - Ngôi mộ của những vị vua cổ xưa. Tọa lạc tại Tây Bắc thành phố Leidenschaftlich. Khi đến gần, ai cũng cảm thấy bầu không khí còn vương vấn đôi chút ma phép nhiệm màu. Những họa tiết điêu khắc tỉ mỉ trên từng cánh cửa phác họa nên thời huy hoàng một trong những nền văn minh sớm nhất nhân loại. Tiếc là giờ đây tất cả chi là đống tro tàn. Nơi đây chứa đầy cạm bẫy, các adventure phải hết sức cẩn thận.\nplayer1 quyết định:",
+            "weight": 100,
             "conflict": [{
-                    "action": "... action 1",
+                    "action": "1. YOLO",
                     "end": true,
                     "resolution": [{
-                            "plot": "... resolution 1-1",
-                            "weight": 5,
+                            "plot": "Đời chỉ sống có một lần. player1 quyết định YOLOOO!",
+                            "weight": 2,
                             "gain": [{
                                 "player1": {
                                     "coins": [2, 1],
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thành công 1-1"
+                                "extra": "player1 chạy một mạch đến trung tâm ngôi mộ mặc cho lửa đạn bay vèo vèo trên đầu. Xời, gêm là dễ, dăm ba cái bẫy có mà bắt gà bắt vịt. Quá tự tin, quá bản lĩnh!"
                             }],
                             "loss": [{
                                 "player1": {
@@ -23,11 +24,11 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thất bại 1-1"
+                                "extra": "Ngu mà liều, mới vào đã đạp ngay ổ vịt. Đây là **ổ vịt** nhé, còn chưa phải là cái bẫy nào ... player1 cong giò chạy ra!"
                             }]
                         },
                         {
-                            "plot": "... resolution 1-2",
+                            "plot": "Bẫy ở trước mặt, thấy mà vẫn đâm đầu vào.",
                             "weight": 5,
                             "gain": [{
                                 "player1": {
@@ -35,7 +36,7 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thành công 1-2"
+                                "extra": "player1 né hết 3-4 cái bẫy liên tiếp, giành lấy chiến lợi phẩm. Chẳng biết player1 điệu nghệ hay ăn hên, chỉ thấy cái quần ngả chút vàng vàng"
                             }],
                             "loss": [{
                                 "player1": {
@@ -43,19 +44,19 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thất bại 1-2"
+                                "extra": "Mới bước chân vào cửa đã đạp trúng bẫy. Quá đen, thôi hẹn lần sau!"
                             }]
                         },
                         {
-                            "plot": "... resolution 1-3",
-                            "weight": 5,
+                            "plot": "player1 nổi máu làm liều, đạp cửa xông thẳng vào hầm mộ, mặc kệ hiểm nguy.",
+                            "weight": 3,
                             "gain": [{
                                 "player1": {
                                     "coins": [2, 1],
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thành công 1-3"
+                                "extra": "Có lẽ vị thần may mắn đã mỉm cười với player1 lần này. Sẽ không có lần sau đâu!"
                             }],
                             "loss": [{
                                 "player1": {
@@ -63,16 +64,16 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thất bại 1-3"
+                                "extra": "Vừa chạy vừa nhắm mắt, như đang muốn thử thách sự may mắn của bản thân. Nhưng rất tiếc, số player1 nhọ như cái số gacha của v4v vậy, đụng vào cái gì đó không rõ, bất tỉnh mấy ngày trời."
                             }]
                         }
                     ]
                 },
                 {
-                    "action": "... action 2",
+                    "action": "2. Suy tính kĩ càng, vạch ra phương án mới tiếp tục",
                     "end": true,
                     "resolution": [{
-                            "plot": "... resolution 2-1",
+                            "plot": "player1 thủ sẵn mọi thứ trong người, từ sách hướng dẫn đến bản đồ từng ngóc ngách trong hầm mộ, cho wiki của gần như mọi loại bẫy ... ",
                             "weight": 5,
                             "gain": [{
                                 "player1": {
@@ -80,7 +81,7 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thành công 2-1"
+                                "extra": "Xem ra sự chuẩn bị mới là thứ làm nên một adventure giỏi!! Dù phải chấp nhận bỏ đi những phần thưởng mạo hiểm nhưng miễn là trở về trong một mảnh là được rồi."
                             }],
                             "loss": [{
                                 "player1": {
@@ -88,19 +89,19 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thất bại 2-1"
+                                "extra": "Lý thuyết là một chuyện, thực tế có những thứ sách vở không chỉ ra! player1 sơ ý đụng trúng bẫy không có trong wiki ... "
                             }]
                         },
                         {
-                            "plot": "... resolution 2-2",
-                            "weight": 5,
+                            "plot": "Đi đến một con quái vật trông như nhân sư. player1 phải trả lời một câu hỏi mẹo mới cho qua ...",
+                            "weight": 2,
                             "gain": [{
                                 "player1": {
                                     "coins": [2, 1],
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thành công 2-2"
+                                "extra": "Hên quá, player1 trả lời đúng sau hồi lâu ngẫm nghĩ. Nhân sư méo mặt, quay về ngủ! player1 xuất sắc giành lấy chiến lợi phẩm."
                             }],
                             "loss": [{
                                 "player1": {
@@ -108,19 +109,19 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thất bại 2-2"
+                                "extra": "Có những thứ sách vở không bao giờ chỉ ... player1 suýt bị nhân sư vồ chết, cong giò bỏ chạy"
                             }]
                         },
                         {
-                            "plot": "... resolution 2-3",
-                            "weight": 5,
+                            "plot": "Đi được một đoạn, đến căn phòng bị khóa, trên cánh cửa là một cơ chế nhìn hơi quen quen ...",
+                            "weight": 3,
                             "gain": [{
                                 "player1": {
                                     "coins": [2, 1],
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thành công 2-3"
+                                "extra": "player1 bình tĩnh và lựa chọn chính xác cách phá bẫy hiệu quả, ẵm trọn phần thưởng."
                             }],
                             "loss": [{
                                 "player1": {
@@ -128,7 +129,7 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "Thất bại 2-3"
+                                "extra": "À, đúng rồi! Cắt cái dây này này! player1 nhớ ... lộn bài, kích hoạt cơ chế. Quá xui, thôi hẹn lần sau."
                             }]
                         }
                     ]
@@ -137,8 +138,9 @@
         },
         {
             "setting": ["fantasy", "dungeon"],
+            "img": "",
             "plot": "... Story 2 player1",
-            "weight": 5,
+            "weight": 1,
             "conflict": [{
                     "action": "... action 1",
                     "end": true,
@@ -273,8 +275,9 @@
         },
         {
             "setting": ["fantasy", "dungeon"],
+            "img": "",
             "plot": "... Story 3 player1",
-            "weight": 5,
+            "weight": 1,
             "conflict": [{
                     "action": "... action 1",
                     "end": true,

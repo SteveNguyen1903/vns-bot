@@ -48,8 +48,9 @@ module.exports = {
         })
 
         if (text.includes('player1')) text = text.replace('player1', `<@${userId}>`)
-
+        let img = story.img
         const embedPlot = new Discord.MessageEmbed()
+            .setThumbnail(img)
             .setDescription(text)
             .setColor(`#b5b5b5`)
 
@@ -63,7 +64,7 @@ module.exports = {
 
                     const action = collected.first().content
                     const resolution = core.getStory(story.conflict[action - 1].resolution)
-                    const resWeight = core.calWeight(resolution.weight, userLvl)
+                    const resWeight = await core.calWeight(resolution.weight, userLvl)
                     let endTxt = `Bạn có thêm ${userLvl + 1.5 / userLvl}% cơ hội nhận thưởng.`
                     let result = resolution.gain[0].player1
                     let extraTxt = resolution.gain[0].extra
@@ -78,8 +79,8 @@ module.exports = {
                     xp = core.checkGainArray(xp)
                     hp = core.checkGainArray(hp)
 
-                    let text = `${resolution.plot}\n${extraTxt}\n`
-                    if (text.includes('player1')) text = text.replace('player1', `<@${userId}>`)
+                    let text = `${resolution.plot}\n ${extraTxt}\n`
+                    text = text.replaceAll(`player1`, `<@${userId}>`)
                     text += `Bạn nhận được :yen: ${coins} tiền, :cross: ${xp} xp, mất :drop_of_blood: ${hp} máu.\n`
 
                     // const itemDB = {

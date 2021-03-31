@@ -6,7 +6,7 @@ module.exports = {
     description: 'Set status',
     maxArgs: 1,
     callback: (message, arguments, text) => {
-        const content = message.content.replace('!pstatus ', '')
+        const content = message.content.replace('!!pstatus ', '')
         // client.user.setPresence({
         //     activity: {
         //         name: content,
