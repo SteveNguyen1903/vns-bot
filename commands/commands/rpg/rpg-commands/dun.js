@@ -66,9 +66,10 @@ module.exports = {
                     const resWeight = core.calWeight(resolution.weight, userLvl)
                     let endTxt = `Bạn có thêm ${userLvl + 1.5 / userLvl}% cơ hội nhận thưởng.`
                     let result = resolution.gain[0].player1
-
+                    let extraTxt = resolution.gain[0].extra
                     if (!resWeight) {
                         result = resolution.loss[0].player1
+                        extraTxt = resolution.loss[0].extra
                         // endTxt = `Nhận thưởng thêm: "thất bại".`
                     }
 
@@ -77,9 +78,9 @@ module.exports = {
                     xp = core.checkGainArray(xp)
                     hp = core.checkGainArray(hp)
 
-                    let text = `${resolution.plot}\n`
+                    let text = `${resolution.plot}\n${extraTxt}\n`
                     if (text.includes('player1')) text = text.replace('player1', `<@${userId}>`)
-                    text += `Bạn nhận được :yen: ${coins} tiền, :cross: ${xp} kinh nghiệm, mất :drop_of_blood: ${hp} máu.\n`
+                    text += `Bạn nhận được :yen: ${coins} tiền, :cross: ${xp} xp, mất :drop_of_blood: ${hp} máu.\n`
 
                     // const itemDB = {
                     //     name: 'token',
