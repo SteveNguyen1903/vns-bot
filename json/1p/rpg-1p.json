@@ -1,79 +1,135 @@
 {
-    "story":[
-        {
+    "story": [{
             "setting": ["fantasy", "dungeon"],
             "plot": "... Story 1 player1",
             "weight": 5,
-            "conflict": [
-                {
+            "conflict": [{
                     "action": "... action 1",
                     "end": true,
-                    "resolution": [
-                        {
+                    "resolution": [{
                             "plot": "... resolution 1-1",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-1"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-1"
+                            }]
                         },
                         {
                             "plot": "... resolution 1-2",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-2"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-2"
+                            }]
                         },
                         {
                             "plot": "... resolution 1-3",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-3"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-3"
+                            }]
                         }
                     ]
                 },
                 {
                     "action": "... action 2",
                     "end": true,
-                    "resolution": [
-                        {
+                    "resolution": [{
                             "plot": "... resolution 2-1",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-1"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-1"
+                            }]
                         },
                         {
                             "plot": "... resolution 2-2",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-2"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-2"
+                            }]
                         },
                         {
                             "plot": "... resolution 2-3",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-3"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-3"
+                            }]
                         }
                     ]
                 }
@@ -83,76 +139,133 @@
             "setting": ["fantasy", "dungeon"],
             "plot": "... Story 2 player1",
             "weight": 5,
-            "conflict": [
-                {
+            "conflict": [{
                     "action": "... action 1",
                     "end": true,
-                    "resolution": [
-                        {
+                    "resolution": [{
                             "plot": "... resolution 1-1",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-1"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-1"
+                            }]
                         },
                         {
                             "plot": "... resolution 1-2",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-2"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-2"
+                            }]
                         },
                         {
                             "plot": "... resolution 1-3",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-3"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-3"
+                            }]
                         }
                     ]
                 },
                 {
                     "action": "... action 2",
                     "end": true,
-                    "resolution": [
-                        {
+                    "resolution": [{
                             "plot": "... resolution 2-1",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-1"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-1"
+                            }]
                         },
                         {
                             "plot": "... resolution 2-2",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-2"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-2"
+                            }]
                         },
                         {
                             "plot": "... resolution 2-3",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-3"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-3"
+                            }]
                         }
                     ]
                 }
@@ -162,76 +275,133 @@
             "setting": ["fantasy", "dungeon"],
             "plot": "... Story 3 player1",
             "weight": 5,
-            "conflict": [
-                {
+            "conflict": [{
                     "action": "... action 1",
                     "end": true,
-                    "resolution": [
-                        {
+                    "resolution": [{
                             "plot": "... resolution 1-1",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-1"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-1"
+                            }]
                         },
                         {
                             "plot": "... resolution 1-2",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-2"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-2"
+                            }]
                         },
                         {
                             "plot": "... resolution 1-3",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 1-3"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 1-3"
+                            }]
                         }
                     ]
                 },
                 {
                     "action": "... action 2",
                     "end": true,
-                    "resolution": [
-                        {
+                    "resolution": [{
                             "plot": "... resolution 2-1",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-1"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-1"
+                            }]
                         },
                         {
                             "plot": "... resolution 2-2",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-2"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-2"
+                            }]
                         },
                         {
                             "plot": "... resolution 2-3",
                             "weight": 5,
-                            "gain": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ],
-                            "loss": [ 
-                                { "player1": { "coins" : [2,1],"xp" : [2,1], "hp": [-1,-2] } }
-                            ]
+                            "gain": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thành công 2-3"
+                            }],
+                            "loss": [{
+                                "player1": {
+                                    "coins": [2, 1],
+                                    "xp": [2, 1],
+                                    "hp": [-1, -2]
+                                },
+                                "extra": "Thất bại 2-3"
+                            }]
                         }
                     ]
                 }
