@@ -1,6 +1,7 @@
 const profileSchema = require('@schema/profile-schema')
 const economy = require('@features/economy')
 const Discord = require('discord.js');
+const core = require('@core/core')
 
 const maxMin = (max, min) => Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -11,13 +12,13 @@ const checkTime = (m) => {
     const diffMins = Math.round(diffTime / (1000 * 60))
 
     //test purpose
-    if (diffMins <= 15) {
+    if (diffMins <= 100000) {
         return m
     }
 }
 
 module.exports = {
-    commands: ['react'],
+    commands: ['react', 'rt'],
     minArgs: 0,
     maxArgs: 0,
     expectedArgs: "Không",
@@ -29,23 +30,16 @@ module.exports = {
 
         const { guild, member } = message
         const { id } = member
-
         const guildId = guild.id
         const userId = id
+        const userProfile = await profileSchema.findOne({ guildId, userId })
+
+        //Check if user is wounded
+        if (member.roles.cache.some(role => role.name === 'wound')) return message.reply('Bạn đang hồi sức, không sử dụng lệnh được')
 
         //check if self exists or is in an interaction
-        const selfAvailability = await profileSchema.findOne({ userId: userId })
-        if (!selfAvailability) {
-            await profileSchema.findOneAndUpdate({
-                guildId,
-                userId
-            }, {
-                availability: true
-            }, { upsert: true, new: true })
-        }
-
-        if (selfAvailability && !selfAvailability.availability) return message.reply('Bạn đang trong một sự kiện diễn ra, không thể dùng lệnh. Hãy hoàn thành tương tác này để tiếp tục!')
-        if (selfAvailability.items.token <= 0) return message.reply(`Thiếu item "token" để thực hiện tương tác.`)
+        const status = await core.checkAvailabilityWithToken(message, userProfile)
+        if (!status) return
 
         //get participants and filter time
         let messages = await message.channel.messages.fetch({ limit: 50 });
@@ -100,9 +94,6 @@ module.exports = {
             })
         }
         await Promise.all(newProfiles)
-
-        //Check if user is wounded
-        if (member.roles.cache.some(role => role.name === 'wound')) return message.reply('Bạn đang hồi sức, không sử dụng lệnh được')
 
         //Check if there are any participant
         if (!participantReady.length) {

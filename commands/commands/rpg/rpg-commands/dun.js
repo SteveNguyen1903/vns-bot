@@ -47,12 +47,12 @@ module.exports = {
             text += `${item.action}\n`
         })
 
-        if (text.includes('player1')) text = text.replace('player1', `<@${userId}>`)
+        if (text.includes('player1')) text = text.replace(/player1/g, `<@${userId}>`)
         let img = story.img
         const embedPlot = new Discord.MessageEmbed()
             .setThumbnail(img)
             .setDescription(text)
-            .setColor(`#b5b5b5`)
+            .setColor(`#FFFDC0`)
 
         message.channel.send(embedPlot).then(async () => {
 
@@ -71,7 +71,6 @@ module.exports = {
                     if (!resWeight) {
                         result = resolution.loss[0].player1
                         extraTxt = resolution.loss[0].extra
-                        // endTxt = `Nhận thưởng thêm: "thất bại".`
                     }
 
                     let { coins, xp, hp } = result
@@ -80,7 +79,6 @@ module.exports = {
                     hp = core.checkGainArray(hp)
 
                     let text = `${resolution.plot}\n ${extraTxt}\n`
-                    // text = text.replaceAll(`player1`, `<@${userId}>`)
                     text = text.replace(/player1/g, `<@${userId}>`);
                     text += `Bạn nhận được :yen: ${coins} tiền, :cross: ${xp} xp, mất :drop_of_blood: ${hp} máu.\n`
 
@@ -106,7 +104,7 @@ module.exports = {
 
                             let embedResolution = new Discord.MessageEmbed()
                                 .setDescription(text)
-                                .setColor(`#b5b5b5`)
+                                .setColor(`#FFFDC0`)
                                 .setTimestamp()
                                 .setFooter(endTxt, 'https://i.imgur.com/pmDv6Hb.png');
                             message.channel.send(embedResolution)

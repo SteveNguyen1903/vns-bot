@@ -113,7 +113,7 @@
                             }]
                         },
                         {
-                            "plot": "Đi được một đoạn, đến căn phòng bị khóa, trên cánh cửa là một cơ chế nhìn hơi quen quen ...",
+                            "plot": "Đi được một đoạn, đến căn phòng bị khóa, trên cánh cửa là một loại bẫy nhìn hơi quen quen ...",
                             "weight": 3,
                             "gain": [{
                                 "player1": {
@@ -129,7 +129,7 @@
                                     "xp": [2, 1],
                                     "hp": [-1, -2]
                                 },
-                                "extra": "À, đúng rồi! Cắt cái dây này này! player1 nhớ ... lộn bài, kích hoạt cơ chế. Quá xui, thôi hẹn lần sau."
+                                "extra": "À, đúng rồi! Cắt cái dây này này! player1 nhớ ... lộn bài, kích hoạt cơ chế, bị dính bẫy bất tỉnh. Quá xui, thôi hẹn lần sau."
                             }]
                         }
                     ]

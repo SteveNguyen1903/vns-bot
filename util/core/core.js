@@ -93,6 +93,15 @@ const checkGainArray = (arr) => {
     return arr[0]
 }
 
+const calLvlRes = (userLvl, targetLvl) => {
+    let result = Math.random() * 100
+    result = parseFloat(result).toFixed(2);
+    const diff = (userLvl + 1.5 / userLvl) - (targetLvl + 1.5 / targetLvl)
+    const userResult = 50 + diff
+    if (userResult > result) return true
+    return false
+}
+
 //export core functions
 module.exports = {
     changeBotStatus,
@@ -103,6 +112,7 @@ module.exports = {
     calWeightMany,
     getStory,
     maxMin,
-    checkGainArray
+    checkGainArray,
+    calLvlRes
 }
 
