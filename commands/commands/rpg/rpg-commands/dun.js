@@ -80,10 +80,9 @@ module.exports = {
                     hp = core.checkGainArray(hp)
 
                     let text = `${resolution.plot}\n ${extraTxt}\n`
-                    text = text.replaceAll(`player1`, `<@${userId}>`)
+                    // text = text.replaceAll(`player1`, `<@${userId}>`)
+                    text = text.replace(/player1/g, `<@${userId}>`);
                     text += `Bạn nhận được :yen: ${coins} tiền, :cross: ${xp} xp, mất :drop_of_blood: ${hp} máu.\n`
-
-
 
                     const promises = [
                         await hpFeature.addHP(guildId, userId, hp),
