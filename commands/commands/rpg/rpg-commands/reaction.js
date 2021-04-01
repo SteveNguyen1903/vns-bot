@@ -14,7 +14,7 @@ const checkTime = (m) => {
     const diffMins = Math.round(diffTime / (1000 * 60))
 
     //test purpose
-    if (diffMins <= 100000) {
+    if (diffMins <= 15) {
         return m
     }
 }
@@ -163,7 +163,8 @@ module.exports = {
                                     filter: { userId: userId },
                                     update: {
                                         $inc: {
-                                            coins: core.checkGainArray(player1.coins)
+                                            coins: core.checkGainArray(player1.coins),
+                                            // "items.token": -1
                                         }
                                     },
                                 }

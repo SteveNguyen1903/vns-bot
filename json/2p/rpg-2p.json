@@ -25,7 +25,7 @@
                     "xp": [2, 1],
                     "hp": [-1, -2]
                   },
-                  "extra": "player1 xông pha giúp đỡ. Cả hai phối hợp ăn ý đánh bật tên địch truy sát, giành lấy tiền từ hắn."
+                  "extra": "player2 xông pha giúp đỡ. Cả hai phối hợp ăn ý đánh bật tên địch truy sát, giành lấy tiền từ hắn."
                 }
               ],
               "loss": [
@@ -40,7 +40,7 @@
                     "xp": [2, 1],
                     "hp": [-1, -2]
                   },
-                  "extra": "player1 nổi máu anh hùng, xông lên ứng cứu. Nhưng tiếc rằng kẻ địch quá mạnh, một cân hai không đổ lấy một giọt mồ hôi. player1 lẫn player2 bị cướp mất tiền."
+                  "extra": "player2 nổi máu anh hùng, xông lên ứng cứu. Nhưng tiếc rằng kẻ địch quá mạnh, một cân hai không đổ lấy một giọt mồ hôi. player1 lẫn player2 bị cướp mất tiền."
                 }
               ]
             },
@@ -99,7 +99,7 @@
                     "xp": [2, 1],
                     "hp": [-1, -2]
                   },
-                  "extra": "player1 thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong player2 quay sang đánh luôn player1, cả hai đều mất tiền."
+                  "extra": "player2 thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong player1 quay sang đánh luôn player2, cả hai đều mất tiền."
                 }
               ],
               "loss": [
@@ -114,7 +114,7 @@
                     "xp": [2, 1],
                     "hp": [-1, -2]
                   },
-                  "extra": "player1 thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong player2 quay sang đánh luôn player1. Nhưng mà kẻ địch đã chọn nhầm người rồi. player1 kiên cường chống lại, giành lấy tiền từ tay địch."
+                  "extra": "player2 thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong player1 quay sang đánh luôn player2. Nhưng mà kẻ địch đã chọn nhầm người rồi. player2 kiên cường chống lại, giành lấy tiền từ tay địch."
                 }
               ]
             },
@@ -173,7 +173,7 @@
                     "xp": [2, 1],
                     "hp": [-1, -2]
                   },
-                  "extra": "player1 nổi ý định xấu, cấu kết với kẻ truy sát hội đồng player2. Xui thay, trong lúc bị dồn vào đường cùng, bản tính sinh tồn nổi lên, player2 chống trả quyết liệt cân luôn cả 2 tên. player2 giành lấy tiền từ player1. Này thì bẩn này! player1 vừa mất tiền vừa tức tưởi bỏ chạy."
+                  "extra": "player2 nổi ý định xấu, cấu kết với kẻ truy sát hội đồng player1. Xui thay, trong lúc bị dồn vào đường cùng, bản tính sinh tồn nổi lên, player1 chống trả quyết liệt cân luôn cả 2 tên. player1 giành lấy tiền từ player2. Này thì bẩn này! player2 vừa mất tiền vừa tức tưởi bỏ chạy."
                 }
               ],
               "loss": [
@@ -188,7 +188,7 @@
                     "xp": [2, 1],
                     "hp": [-1, -2]
                   },
-                  "extra": "player1 nổi ý định xấu, cấu kết với kẻ truy sát hội đồng player2. player2 sức yếu không thể chống trả, bị cướp tiền."
+                  "extra": "player2 nổi ý định xấu, cấu kết với kẻ truy sát hội đồng player1. player1 sức yếu không thể chống trả, bị cướp tiền."
                 }
               ]
             },
