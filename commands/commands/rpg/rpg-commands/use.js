@@ -2,7 +2,7 @@ const economy = require('@features/economy')
 const hp = require('@features/hp')
 const defaultItem = require('@root/json/rpg.json')
 const Discord = require('discord.js');
-
+const woundSchema = require('@schema/wound-schema')
 //check if item exists
 const itemCheck = (itemName) => {
     // const result = defaultItem.items.includes(item);
@@ -45,7 +45,14 @@ module.exports = {
         let text = ``
 
         if (item.name === 'potion') {
-            if (inventory.hp == 0) return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
+            if (inventory.hp == 0) {
+                const member = message.guild.roles.cache.get(userId);
+                await woundSchema.updateMany(conditional, {
+                    current: false,
+                })
+                member.roles.remove('wound')
+            }
+            // return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
             let result = await hp.addHP(guildId, userId, 40)
             await economy.addItem(guildId, userId, itemDB)
             text += `Bạn đã sử dụng :test_tube: potion, hồi 40hp. Máu hiện tại :drop_of_blood: ${result}hp`
