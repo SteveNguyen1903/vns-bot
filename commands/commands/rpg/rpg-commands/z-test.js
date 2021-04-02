@@ -15,7 +15,7 @@ module.exports = {
         const guildId = message.guild.id
         const userId = message.author.id
 
-        economy.addWound(guild, guildId, userId, 1, 1)
+        economy.addWound(guild, guildId, userId, 1)
 
     }
 }
