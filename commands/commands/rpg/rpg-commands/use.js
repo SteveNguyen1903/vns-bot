@@ -48,7 +48,7 @@ module.exports = {
             if (inventory.hp == 0) return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
             let result = await hp.addHP(guildId, userId, 40)
             await economy.addItem(guildId, userId, itemDB)
-            text += `Bãn đã sử dụng :test_tube: potion, hồi 40hp. Máu hiện tại :drop_of_blood: ${result}hp`
+            text += `Bạn đã sử dụng :test_tube: potion, hồi 40hp. Máu hiện tại :drop_of_blood: ${result}hp`
         } else {
             text += `Các item khác chưa được cài đặt, xin vui lòng sử dụng món khác.`
         }

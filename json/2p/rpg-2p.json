@@ -16,12 +16,12 @@
               "gain": [
                 {
                   "player1": {
-                    "coins": [50],
+                    "coins": [300],
                     "xp": [20, 10],
                     "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [50],
+                    "coins": [300],
                     "xp": [20, 10],
                     "hp": [-10, -20]
                   },
@@ -110,7 +110,7 @@
                     "hp": [-20, -30]
                   },
                   "player2": {
-                    "coins": [50],
+                    "coins": [200],
                     "xp": [20, 10],
                     "hp": [-10, -20]
                   },
@@ -164,7 +164,7 @@
               "gain": [
                 {
                   "player1": {
-                    "coins": [100],
+                    "coins": [300],
                     "xp": [30, 20],
                     "hp": [-20, -30]
                   },
@@ -184,7 +184,7 @@
                     "hp": [-20, -30]
                   },
                   "player2": {
-                    "coins": [100],
+                    "coins": [200],
                     "xp": [20, 10],
                     "hp": [-10, -20]
                   },
@@ -266,7 +266,7 @@
                     "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [50],
+                    "coins": [100],
                     "xp": [20, 10],
                     "hp": [-10, -20]
                   },
@@ -354,27 +354,27 @@
               "gain": [
                 {
                   "player1": {
-                    "coins": [0],
+                    "coins": [150],
                     "xp": [20, 10],
                     "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [0],
+                    "coins": [-150],
                     "xp": [20, 10],
                     "hp": [-20, -30]
                   },
-                  "extra": "player1 nghênh mặt nhởn nhơ, chậc lưỡi bảo 'mù thì kệ anh', rồi co giò bỏ chạy mặc cho player2 tức tối ôm giò nhảy đạch đạch"
+                  "extra": "player1 nghênh mặt nhởn nhơ, chậc lưỡi bảo 'mù thì kệ anh', rồi co giò bỏ chạy mặc cho player2 tức tối ôm giò nhảy đạch đạch, player1 tiện tay thó ví player2 lấy chút đỉnh đem nhét túi."
                 }
               ],
               "loss": [
                 {
                   "player1": {
-                    "coins": [-50],
+                    "coins": [-100],
                     "xp": [20, 10],
                     "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [50],
+                    "coins": [100],
                     "xp": [20, 10],
                     "hp": [-10, -20]
                   },
@@ -462,12 +462,12 @@
               "gain": [
                 {
                   "player1": {
-                    "coins": [100],
+                    "coins": [300],
                     "xp": [30, 20],
                     "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [-100],
+                    "coins": [-150],
                     "xp": [20, 10],
                     "hp": [-20, -30]
                   },
@@ -477,12 +477,12 @@
               "loss": [
                 {
                   "player1": {
-                    "coins": [-100],
+                    "coins": [-150],
                     "xp": [20, 10],
                     "hp": [-20, -30]
                   },
                   "player2": {
-                    "coins": [100],
+                    "coins": [150],
                     "xp": [30, 20],
                     "hp": [-10, -20]
                   },
