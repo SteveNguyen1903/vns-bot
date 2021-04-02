@@ -26,12 +26,11 @@ module.exports = {
     cooldown: 5,
     // eslint-disable-next-line no-shadow-restricted-names
     callback: async (message, arguments) => {
-        const { guild } = message
         let item = itemCheck(arguments[0])
         const guildId = message.guild.id
         const userId = message.author.id
         const inventory = await economy.showProfile(guildId, userId)
-        // console.log('item ', item)
+        const { guild } = message
 
         if (!item.name || item.name === String) return message.reply('Nhập đúng item cần dùng')
 
@@ -46,13 +45,15 @@ module.exports = {
 
         if (item.name === 'potion') {
             if (inventory.hp == 0) {
-                // const member = guild.members.cache.get(userId)
-                // member.roles.remove('wound')
-                // await woundSchema.findOneAndUpdate({ guildId, userId }, {
-                //     current: false
-                // })
-                // message.reply('Bạn đã hồi sức!')
-                return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
+                let roleName = 'wound'
+                const role = guild.roles.cache.find((role) => {
+                    return role.name === roleName
+                })
+                const member = guild.members.cache.get(userId)
+                member.roles.remove(role)
+                await woundSchema.findOneAndUpdate({ guildId, userId }, { current: false }, { upsert: true })
+                message.reply('Bạn đã hồi sức!')
+                // return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
             }
             // return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
             let result = await hp.addHP(guildId, userId, 40)
