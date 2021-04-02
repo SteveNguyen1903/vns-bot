@@ -35,7 +35,7 @@ module.exports = {
 
         if (!item.name || item.name === String) return message.reply('Nhập đúng item cần dùng')
 
-        if (inventory.items[`${item.name}`] <= 0) return message.reply(`Thiếu item "token" để thực hiện tương tác.`)
+        if (inventory.items[`${item.name}`] <= 0) return message.reply(`Thiếu item ${item.name} để thực hiện tương tác.`)
 
         const itemDB = {
             name: item.name,
