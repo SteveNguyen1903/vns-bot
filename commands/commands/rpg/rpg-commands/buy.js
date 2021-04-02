@@ -32,7 +32,7 @@ module.exports = {
             return message.reply('Nhập đúng item cần mua')
         }
 
-        if (isNaN(itemQuantity) || itemQuantity < 0 || !Number.isInteger(parseInt(itemQuantity))) {
+        if (isNaN(itemQuantity) && itemQuantity < 0 && !Number.isInteger(parseInt(itemQuantity))) {
             return message.reply('Nhập đúng số lượng cần mua')
         }
 
