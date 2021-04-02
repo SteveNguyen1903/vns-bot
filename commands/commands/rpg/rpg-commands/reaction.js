@@ -187,6 +187,12 @@ module.exports = {
 
                             let text = ``
 
+                            text += `${resolution.plot}\n${extra}\n`
+                            text += `Kết quả của player1 : :yen: ${core.checkGainArray(player1.coins)} tiền, :cross: ${core.checkGainArray(player1.xp)} xp, mất :drop_of_blood: ${core.checkGainArray(player1.hp)} máu.\n`
+                            text += `Kết quả của player2 : :yen: ${core.checkGainArray(player2.coins)} tiền, :cross: ${core.checkGainArray(player2.xp)} xp, mất :drop_of_blood: ${core.checkGainArray(player2.hp)} máu.\n`
+                            if (text.includes('player1')) text = text.replace(/player1/g, `<@${userId}>`)
+                            if (text.includes('player2')) text = text.replace(/player2/g, `<@${targetId}>`)
+
                             if (results[0] == 0) {
                                 text += `player1 đã hết máu. Hồi sức trong 20 phút!`
                                 await economy.addWound(guild, guildId, userId, 20)
@@ -196,12 +202,6 @@ module.exports = {
                                 text += `player2 đã hết máu. Hồi sức trong 20 phút!`
                                 await economy.addWound(guild, guildId, targetId, 20)
                             }
-
-                            text += `${resolution.plot}\n${extra}\n`
-                            text += `Kết quả của player1 : :yen: ${core.checkGainArray(player1.coins)} tiền, :cross: ${core.checkGainArray(player1.xp)} xp, mất :drop_of_blood: ${core.checkGainArray(player1.hp)} máu.\n`
-                            text += `Kết quả của player2 : :yen: ${core.checkGainArray(player2.coins)} tiền, :cross: ${core.checkGainArray(player2.xp)} xp, mất :drop_of_blood: ${core.checkGainArray(player2.hp)} máu.\n`
-                            if (text.includes('player1')) text = text.replace(/player1/g, `<@${userId}>`)
-                            if (text.includes('player2')) text = text.replace(/player2/g, `<@${targetId}>`)
 
                             const embedResPlot = new Discord.MessageEmbed()
                                 .setDescription(text)
