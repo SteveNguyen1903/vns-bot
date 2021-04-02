@@ -32,7 +32,7 @@ module.exports = {
             return message.reply('Nhập đúng item cần mua')
         }
 
-        if (isNaN(itemQuantity) && itemQuantity < 0 && !Number.isInteger(parseInt(itemQuantity))) {
+        if (isNaN(itemQuantity) || itemQuantity < 0) {
             return message.reply('Nhập đúng số lượng cần mua')
         }
 
@@ -40,7 +40,7 @@ module.exports = {
         const userId = message.author.id
         const itemDB = {
             name: item.name,
-            quantity: itemQuantity
+            quantity: parseInt(itemQuantity)
         }
 
         const coinsOwned = await economy.getCoins(guildId, userId)
