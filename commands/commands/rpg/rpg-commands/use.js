@@ -49,7 +49,7 @@ module.exports = {
                 const member = guild.members.cache.get(userId)
                 member.roles.remove('wound')
                 await woundSchema.findOneAndUpdate({ guildId, userId }, {
-                    current: false,
+                    current: false
                 })
                 message.reply('Bạn đã hồi sức!')
                 // return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
