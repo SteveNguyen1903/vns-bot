@@ -126,15 +126,15 @@ module.exports = {
         if (text.includes('player1')) text = text.replace(/player1/g, `<@${userId}>`)
         if (text.includes('player2')) text = text.replace(/player2/g, `<@${targetId}>`)
 
-        let img = story.img
-        const embedPlot = new Discord.MessageEmbed()
-            .setThumbnail(img)
-            .setDescription(text)
-            .setColor(`#FFFDC0`)
+        // let img = story.img
+        // const embedPlot = new Discord.MessageEmbed()
+        //     .setThumbnail(img)
+        //     .setDescription(text)
+        //     .setColor(`#FFFDC0`)
 
         // console.log('story ', story)
 
-        message.channel.send(embedPlot).then(async () => {
+        message.channel.send(text).then(async () => {
 
             //set player availability to false
             await profileSchema.updateMany({ guildId, userId: { $in: [userId, targetId] } }, { availability: false })
