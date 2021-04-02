@@ -46,12 +46,13 @@ module.exports = {
 
         if (item.name === 'potion') {
             if (inventory.hp == 0) {
-                const member = message.guild.roles.cache.get(userId);
-                await woundSchema.findOneAndUpdate({ guildId, userId }, {
-                    current: false,
-                })
-                member.roles.remove('wound')
-                message.reply('Bạn đã hồi sức!')
+                // const member = message.guild.roles.cache.get(userId);
+                // await woundSchema.updateOne({ guildId, userId }, {
+                //     current: false,
+                // })
+                // member.roles.remove('wound')
+                // message.reply('Bạn đã hồi sức!')
+                return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
             }
             // return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
             let result = await hp.addHP(guildId, userId, 40)
