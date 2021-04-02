@@ -47,7 +47,7 @@ module.exports = {
         if (item.name === 'potion') {
             if (inventory.hp == 0) {
                 const member = message.guild.roles.cache.get(userId);
-                await woundSchema.updateMany(conditional, {
+                await woundSchema.findOneAndUpdate({ guildId, userId }, {
                     current: false,
                 })
                 member.roles.remove('wound')
