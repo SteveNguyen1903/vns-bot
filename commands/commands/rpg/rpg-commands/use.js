@@ -51,6 +51,7 @@ module.exports = {
                     current: false,
                 })
                 member.roles.remove('wound')
+                message.reply('Bạn đã hồi sức!')
             }
             // return message.reply('Bạn đang hồi sức, không dùng item được. Chú ý sử dụng potion trước khi hết máu nhé!')
             let result = await hp.addHP(guildId, userId, 40)
