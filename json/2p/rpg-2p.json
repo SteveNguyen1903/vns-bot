@@ -4,7 +4,7 @@
       "setting": ["fantasy", "dungeon"],
       "img": "",
       "plot": "player1 đang làm nhiệm vụ bỗng bị một người lạ mặt truy sát. Bị dồn vào đường cùng, player1 sử dụng token để kêu cứu. player2 gần đấy nghe thấy, quyết định: (60s)",
-      "weight": 10000,
+      "weight": 1,
       "conflict": [
         {
           "action": "1. Giúp đỡ",
@@ -12,18 +12,18 @@
           "resolution": [
             {
               "plot": "",
-              "weight": 10000,
+              "weight": 1,
               "gain": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
                   "extra": "player2 xông pha giúp đỡ. Cả hai phối hợp ăn ý đánh bật tên địch truy sát, giành lấy tiền từ hắn."
                 }
@@ -31,22 +31,22 @@
               "loss": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
-                  "extra": "player2 nổi máu anh hùng, xông lên ứng cứu. Nhưng tiếc rằng kẻ địch quá mạnh, một cân hai không đổ lấy một giọt mồ hôi. player1 lẫn player2 bị cướp mất tiền."
+                  "extra": "player2 nổi máu anh hùng, xông lên ứng cứu. Nhưng tiếc rằng kẻ địch quá mạnh, một cân hai không đổ lấy một giọt mồ hôi. player1 lẫn player2 bị cướp mất tiền và bị đánh bầm mắt."
                 }
               ]
             },
             {
               "plot": "",
-              "weight": 1,
+              "weight": 0,
               "gain": [
                 {
                   "player1": {
@@ -86,41 +86,41 @@
           "resolution": [
             {
               "plot": "",
-              "weight": 10000,
+              "weight": 1,
               "gain": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-50],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-50],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
                   },
-                  "extra": "player2 thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong player1 quay sang đánh luôn player2, cả hai đều mất tiền."
+                  "extra": "player2 thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong player1 quay sang đánh luôn player2, cả hai đều mất tiền và bầm dập mình mẩy."
                 }
               ],
               "loss": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-50],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
-                  "extra": "player2 thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong player1 quay sang đánh luôn player2. Nhưng mà kẻ địch đã chọn nhầm người rồi. player2 kiên cường chống lại, giành lấy tiền từ tay địch."
+                  "extra": "player2 thấy chết không cứu, cứ nghĩ chắc nó chừa mình ra. Xui thay, tên địch xử xong player1 quay sang đánh luôn player2. Nhưng mà kẻ địch đã chọn nhầm người rồi. player2 kiên cường chống lại, giành lấy chiến lợi phẩm từ tay địch."
                 }
               ]
             },
             {
               "plot": "... action plot 2-2",
-              "weight": 1,
+              "weight": 0,
               "gain": [
                 {
                   "player1": {
@@ -160,18 +160,18 @@
           "resolution": [
             {
               "plot": "",
-              "weight": 10000,
+              "weight": 1,
               "gain": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [100],
+                    "xp": [30, 20],
+                    "hp": [-20, -30]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-100],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
                   },
                   "extra": "player2 nổi ý định xấu, cấu kết với kẻ truy sát hội đồng player1. Xui thay, trong lúc bị dồn vào đường cùng, bản tính sinh tồn nổi lên, player1 chống trả quyết liệt cân luôn cả 2 tên. player1 giành lấy tiền từ player2. Này thì bẩn này! player2 vừa mất tiền vừa tức tưởi bỏ chạy."
                 }
@@ -179,14 +179,14 @@
               "loss": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-100],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [100],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
                   "extra": "player2 nổi ý định xấu, cấu kết với kẻ truy sát hội đồng player1. player1 sức yếu không thể chống trả, bị cướp tiền."
                 }
@@ -194,7 +194,7 @@
             },
             {
               "plot": "... action plot 3-2",
-              "weight": 1,
+              "weight": 0,
               "gain": [
                 {
                   "player1": {
@@ -233,50 +233,50 @@
     {
       "setting": ["fantasy", "dungeon"],
       "img": "",
-      "plot": "... Story 2 player1",
+      "plot": "Đang dạo bước trên đường, player1 hớn ha hớn hở nên sơ ý đâm sầm vào player2. player2 giật thót tim, sau khi định thần lại, quyết định:",
       "weight": 1,
       "conflict": [
         {
-          "action": "... action 1",
+          "action": "1. Làm lơ",
           "end": true,
           "resolution": [
             {
-              "plot": "... resolution 1-1",
+              "plot": "",
               "weight": 5,
               "gain": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [0, 0],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [0, 0],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
                   },
-                  "extra": "Thành công 1-1"
+                  "extra": "Dù bị xây xẩm mặt mài, player2 quyết định làm lơ. Dù sao chỉ bị xây xác mất tí máu."
                 }
               ],
               "loss": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
-                  "extra": "Thất bại 1-1"
+                  "extra": "player1 mủi lòng, rõ ràng lỗi là của mình, nên chấp nhận bồi thường player2 chút tiền dưỡng thương"
                 }
               ]
             },
             {
-              "plot": "... resolution 1-2",
-              "weight": 5,
+              "plot": "",
+              "weight": 0,
               "gain": [
                 {
                   "player1": {
@@ -310,7 +310,7 @@
             },
             {
               "plot": "... resolution 1-3",
-              "weight": 5,
+              "weight": 0,
               "gain": [
                 {
                   "player1": {
@@ -345,46 +345,46 @@
           ]
         },
         {
-          "action": "... action 2",
+          "action": "2. Bắt xin lỗi!",
           "end": true,
           "resolution": [
             {
-              "plot": "... resolution 2-1",
+              "plot": "",
               "weight": 5,
               "gain": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [0],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [0],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
                   },
-                  "extra": "Thành công 2-1"
+                  "extra": "player1 nghênh mặt nhởn nhơ, chậc lưỡi bảo 'mù thì kệ anh', rồi co giò bỏ chạy mặc cho player2 tức tối ôm giò nhảy đạch đạch"
                 }
               ],
               "loss": [
                 {
                   "player1": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [-50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
                   "player2": {
-                    "coins": [2, 1],
-                    "xp": [2, 1],
-                    "hp": [-1, -2]
+                    "coins": [50],
+                    "xp": [20, 10],
+                    "hp": [-10, -20]
                   },
-                  "extra": "Thất bại 2-1"
+                  "extra": "player1 ngẫm nghĩ, thôi cứ bồi thường cho nó xong, dù gì lỗi cũng về mình."
                 }
               ]
             },
             {
               "plot": "... resolution 2-2",
-              "weight": 5,
+              "weight": 0,
               "gain": [
                 {
                   "player1": {
@@ -418,7 +418,115 @@
             },
             {
               "plot": "... resolution 2-3",
+              "weight": 0,
+              "gain": [
+                {
+                  "player1": {
+                    "coins": [2, 1],
+                    "xp": [2, 1],
+                    "hp": [-1, -2]
+                  },
+                  "player2": {
+                    "coins": [2, 1],
+                    "xp": [2, 1],
+                    "hp": [-1, -2]
+                  },
+                  "extra": "Thành công 2-3"
+                }
+              ],
+              "loss": [
+                {
+                  "player1": {
+                    "coins": [2, 1],
+                    "xp": [2, 1],
+                    "hp": [-1, -2]
+                  },
+                  "player2": {
+                    "coins": [2, 1],
+                    "xp": [2, 1],
+                    "hp": [-1, -2]
+                  },
+                  "extra": "Thất bại 2-3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "action": "3. Á à thằng này láo, phải tẩm nó một trận cho chừa",
+          "end": true,
+          "resolution": [
+            {
+              "plot": "player2 nóng máu nhảy xồm vào player1",
               "weight": 5,
+              "gain": [
+                {
+                  "player1": {
+                    "coins": [100],
+                    "xp": [30, 20],
+                    "hp": [-10, -20]
+                  },
+                  "player2": {
+                    "coins": [-100],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
+                  },
+                  "extra": "Rất tiếc, player2 không biết tự lượng sức, thấy kẻ mạnh hơn mình vẫn nhào vào đòi ăn thua đủ, bị đấm bầm mắt. Yếu mà cứ thích ra gió."
+                }
+              ],
+              "loss": [
+                {
+                  "player1": {
+                    "coins": [-100],
+                    "xp": [20, 10],
+                    "hp": [-20, -30]
+                  },
+                  "player2": {
+                    "coins": [100],
+                    "xp": [30, 20],
+                    "hp": [-10, -20]
+                  },
+                  "extra": "player1 ra sức chống đỡ, nhưng sức yếu, bị player2 tẩm quất một trận ra trò, hắn còn tiện tay trấn tí tiền gọi là 'tiền tẩm bổ', player1 khóc tức tưởi chỉ biết nhìn theo."
+                }
+              ]
+            },
+            {
+              "plot": "... resolution 2-2",
+              "weight": 0,
+              "gain": [
+                {
+                  "player1": {
+                    "coins": [2, 1],
+                    "xp": [2, 1],
+                    "hp": [-1, -2]
+                  },
+                  "player2": {
+                    "coins": [2, 1],
+                    "xp": [2, 1],
+                    "hp": [-1, -2]
+                  },
+                  "extra": "Thành công 2-2"
+                }
+              ],
+              "loss": [
+                {
+                  "player1": {
+                    "coins": [2, 1],
+                    "xp": [2, 1],
+                    "hp": [-1, -2]
+                  },
+                  "player2": {
+                    "coins": [2, 1],
+                    "xp": [2, 1],
+                    "hp": [-1, -2]
+                  },
+                  "extra": "Thất bại 2-2"
+                }
+              ]
+            },
+            {
+              "plot": "... resolution 2-3",
+              "weight": 0,
               "gain": [
                 {
                   "player1": {
@@ -458,7 +566,7 @@
       "setting": ["fantasy", "dungeon"],
       "img": "",
       "plot": "... Story 3 player1",
-      "weight": 1,
+      "weight": 0,
       "conflict": [
         {
           "action": "... action 1",

@@ -2,7 +2,7 @@ const loadCommands = require('@root/commands/load-commands')
 const { prefix } = require('@root/config.json')
 
 module.exports = {
-    commands: ['help', 'h'],
+    commands: ['fewfaefaw', 'faewfeafafe'],
     description: "Describes all of this bot's command",
     callback: (message, arguments, text) => {
         let reply = "Here are my supported commands: \n\n"

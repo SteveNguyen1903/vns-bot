@@ -35,25 +35,11 @@ module.exports = async (client) => {
         .setTimestamp()
         .setColor(`#FFFDC0`)
 
-    // const embed3 = new Discord.MessageEmbed()
-    //     .setTitle('Các lệnh cơ bản khác')
-    //     .setDescription('Bot sẽ có prefix là "!!"')
-    //     .setThumbnail('https://i.imgur.com/JDWQ8Mp.jpg')
-    //     .setImage('')
-    //     .addFields(
-    //         { name: 'Lệnh hiện có:', value: `"daily" : Nhận :cross: exp và :yen: tiền mỗi ngày.\n"info" : xem profile của adventure.\n` }
-    //     )
-    //     .setFooter(`v4v`, 'https://i.imgur.com/pmDv6Hb.png')
-    //     .setTimestamp()
-    //     .setColor(`#FFFDC0`)
 
     // const embedArr = [embed1, embed2]
 
+    //send message first then edit.
     // channel.send(embed2)
-
-    // channel.messages.fetch('826797090499854406')
-    //     .then(message => message.edit(''))
-    //     .catch(console.error);
 
     // channel.messages.fetch().then(async (messages) => {
 

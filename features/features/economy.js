@@ -83,12 +83,6 @@ module.exports.addItem = async (guildId, userId, item) => {
 
 module.exports.addWound = async (guild, guildId, userId, minute) => {
 
-    await profileSchema.find(
-        {
-            guildId,
-            status: true
-        })
-
     const expires = new Date()
     expires.setMinutes(expires.getMinutes() + minute)
 

@@ -30,8 +30,7 @@ module.exports = {
     cooldown: 5,
     callback: async (message) => {
 
-        let story = story2p.story;
-        story = core.getStory(story)
+        let story = core.getStory(story2p.story)
         if (!story) return message.reply('Không tìm thấy story')
 
         const { guild, member } = message
@@ -67,12 +66,13 @@ module.exports = {
         });
 
         //filter participants
-        tempParticipants = tempParticipants.filter(e => e !== id && e !== '816862038532948008')
+        // tempParticipants = tempParticipants.filter(e => )
         tempParticipants = tempParticipants.filter(e => {
             const member = guild.members.cache.get(e)
-            if (member.presence.status === 'online') return e
+            if (member.presence.status === 'online' && e !== userId && e !== '816862038532948008')
+                return e
         })
-        // tempParticipants = [...new Set(tempParticipants)]
+
         const availParticipants = await profileSchema.find({ guildId, userId: { $in: tempParticipants } });
         let notExistInDB = []
         let inDB = []
@@ -105,8 +105,6 @@ module.exports = {
         if (!participantReady.length) {
             return message.reply('Hiện không có ai')
         }
-
-        console.log('participantReady ', participantReady)
 
         //Continue MAIN
         //get targetId
@@ -164,7 +162,7 @@ module.exports = {
                                     update: {
                                         $inc: {
                                             coins: core.checkGainArray(player1.coins),
-                                            // "items.token": -1
+                                            "items.token": -1
                                         }
                                     },
                                 }
@@ -199,8 +197,8 @@ module.exports = {
 
                             let text = ``
                             text += `${resolution.plot}\n${extra}\n`
-                            text += `player1 nhận được :yen: ${core.checkGainArray(player1.coins)} tiền, :cross: ${core.checkGainArray(player1.xp)} xp, mất :drop_of_blood: ${core.checkGainArray(player1.hp)} máu.\n`
-                            text += `player2 nhận được :yen: ${core.checkGainArray(player2.coins)} tiền, :cross: ${core.checkGainArray(player2.xp)} xp, mất :drop_of_blood: ${core.checkGainArray(player2.hp)} máu.\n`
+                            text += `Kết quả của player1 : :yen: ${core.checkGainArray(player1.coins)} tiền, :cross: ${core.checkGainArray(player1.xp)} xp, mất :drop_of_blood: ${core.checkGainArray(player1.hp)} máu.\n`
+                            text += `Kết quả của player2 : :yen: ${core.checkGainArray(player2.coins)} tiền, :cross: ${core.checkGainArray(player2.xp)} xp, mất :drop_of_blood: ${core.checkGainArray(player2.hp)} máu.\n`
                             if (text.includes('player1')) text = text.replace(/player1/g, `<@${userId}>`)
                             if (text.includes('player2')) text = text.replace(/player2/g, `<@${targetId}>`)
 
@@ -210,17 +208,18 @@ module.exports = {
 
                             message.channel.send(embedResPlot)
                         })
-                        .catch(async (err) => {
+                        .catch((err) => {
                             message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!')
                             console.log('promise err ', err)
                         });
                     return
 
-
                 })
                 .catch(async (err) => {
-                    console.log('err ', err)
+                    const itemDB = { name: "token", quantity: 1 }
+                    await economy.addItem(guildId, userId, itemDB)
                     await profileSchema.updateMany({ guildId, userId: { $in: [userId, targetId] } }, { availability: true })
+                    message.reply('Không tìm thấy người trả lời! Bạn được hoàn lại token')
                     return
                 });
         })

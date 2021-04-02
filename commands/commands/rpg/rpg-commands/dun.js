@@ -15,8 +15,7 @@ module.exports = {
     cooldown: 5,
     callback: async (message) => {
 
-        let story = story1p.story;
-        story = core.getStory(story)
+        let story = core.getStory(story1p.story)
         if (!story) return message.reply('Không tìm thấy story')
 
         const { guild, member } = message
@@ -80,7 +79,7 @@ module.exports = {
 
                     let text = `${resolution.plot}\n ${extraTxt}\n`
                     text = text.replace(/player1/g, `<@${userId}>`);
-                    text += `Bạn nhận được :yen: ${coins} tiền, :cross: ${xp} xp, mất :drop_of_blood: ${hp} máu.\n`
+                    text += `Kết quả: :yen: ${coins} tiền, :cross: ${xp} xp, mất :drop_of_blood: ${hp} máu.\n`
 
                     const promises = [
                         await hpFeature.addHP(guildId, userId, hp),
@@ -96,11 +95,11 @@ module.exports = {
                                 await economy.addWound(guild, guildId, userId, 20)
                             }
 
-                            // const itemDB = {
-                            //     name: 'token',
-                            //     quantity: -1
-                            // }
-                            // await economy.addItem(guildId, userId, itemDB)
+                            const itemDB = {
+                                name: 'token',
+                                quantity: -1
+                            }
+                            await economy.addItem(guildId, userId, itemDB)
 
                             let embedResolution = new Discord.MessageEmbed()
                                 .setDescription(text)
@@ -117,7 +116,7 @@ module.exports = {
                 })
                 .catch(async (err) => {
                     console.log('msg catch err ', err)
-                    message.reply('Không thấy câu trả lời của người chơi.')
+                    message.reply('Không thấy câu trả lời của người chơi. Vẫn mất token.')
                     await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
                 });
         })

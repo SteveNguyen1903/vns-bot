@@ -18,7 +18,7 @@ module.exports = {
         const inventory = await economy.showProfile(guildId, userId)
 
         const embed = new Discord.MessageEmbed()
-            .setColor(`#b5b5b5`)
+            .setColor(`#FFFDC0`)
             .setTitle(`Thế giới Leidenschaftlich`)
             // .setURL('https://discord.js.org/')
             // .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')

@@ -52,7 +52,7 @@ module.exports = {
         await economy.addItem(guildId, userId, itemDB)
 
         const embed = new Discord.MessageEmbed()
-            .setColor(`#b5b5b5`)
+            .setColor(`#FFFDC0`)
             .setDescription(`Bạn đã mua ${itemQuantity} ${item.name}, tiền còn lại :yen: ${remainingCoins}`)
 
         message.channel.send(embed)

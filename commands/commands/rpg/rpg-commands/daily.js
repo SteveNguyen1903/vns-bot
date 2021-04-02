@@ -79,12 +79,12 @@ module.exports = {
         claimedCache.push(id)
 
         //Give the rewards
-        const randomCoins = randomRewards(1500, 2000)
+        const randomCoins = randomRewards(800, 1500)
         const newCoins = await economy.addCoins(obj.guildId, obj.userId, randomCoins)
         const newLevel = await level.addXP(obj.guildId, obj.userId, 50)
 
         const embed = new Discord.MessageEmbed()
-            .setColor(`#b5b5b5`)
+            .setColor(`#FFFDC0`)
             .setDescription(`Bạn nhận được :yen: ${randomCoins}. Bạn đang sở hữu :yen: ${newCoins}\nBạn nhận được 50 exp. **Level ${newLevel.level}**, để lên level tiếp theo cần :cross: ${getNeededXP(newLevel.level) - newLevel.xp} XP`)
 
         message.channel.send(embed)
