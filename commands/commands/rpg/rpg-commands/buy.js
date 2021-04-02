@@ -26,7 +26,7 @@ module.exports = {
     callback: async (message, arguments) => {
 
         let item = itemCheck(arguments[0])
-        const itemQuantity = arguments[1]
+        let itemQuantity = parseInt(arguments[1])
 
         if (!item.name || item.name === String) {
             return message.reply('Nhập đúng item cần mua')
