@@ -36,6 +36,8 @@ module.exports = {
             return message.reply('Nhập đúng số lượng cần mua')
         }
 
+        if (!Number.isInteger(itemQuantity)) return message.reply('Nhập đúng số lượng cần mua')
+
         const guildId = message.guild.id
         const userId = message.author.id
         const itemDB = {
