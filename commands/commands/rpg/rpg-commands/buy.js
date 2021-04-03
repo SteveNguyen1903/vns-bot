@@ -45,8 +45,10 @@ module.exports = {
             quantity: parseInt(itemQuantity)
         }
 
+        const price = item.price * itemQuantity
+
         const coinsOwned = await economy.getCoins(guildId, userId)
-        if (coinsOwned < item.price || coinsOwned < item.price * itemQuantity) {
+        if (coinsOwned < item.price || coinsOwned < price) {
             return message.reply(`Không đủ coins để mua, hãy đánh lệnh daily để nhận coins`)
         }
 
