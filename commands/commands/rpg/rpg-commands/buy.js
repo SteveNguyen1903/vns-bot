@@ -50,8 +50,6 @@ module.exports = {
         price = parseInt(price)
         coinsOwned = parseInt(coinsOwned)
 
-        if (userId === '329946437007704074') console.log('price kelly ', price)
-
         if (coinsOwned < item.price || coinsOwned < price) {
             return message.reply(`Không đủ coins để mua, hãy đánh lệnh daily để nhận coins`)
         }

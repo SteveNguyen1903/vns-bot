@@ -17,6 +17,8 @@ module.exports = {
         const userId = message.author.id
         const inventory = await economy.showProfile(guildId, userId)
 
+        if (!inventory) return message.reply('Hãy đánh lệnh daily để tạo profile!')
+
         const embed = new Discord.MessageEmbed()
             .setColor(`#FFFDC0`)
             .setTitle(`Thế giới Leidenschaftlich`)
