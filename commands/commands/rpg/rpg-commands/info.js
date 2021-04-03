@@ -17,6 +17,10 @@ module.exports = {
         const userId = message.author.id
         const inventory = await economy.showProfile(guildId, userId)
 
+        if (!inventory) {
+            return message.reply('bạn chưa đăng kí thông tin hành gia. Hãy dùng lệnh `!!daily` trước!');
+        }
+
         const embed = new Discord.MessageEmbed()
             .setColor(`#b5b5b5`)
             .setTitle(`Thế giới Leidenschaftlich`)
