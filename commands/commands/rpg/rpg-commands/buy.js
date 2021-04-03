@@ -42,12 +42,16 @@ module.exports = {
         const userId = message.author.id
         const itemDB = {
             name: item.name,
-            quantity: parseInt(itemQuantity)
+            quantity: itemQuantity
         }
 
-        const price = item.price * itemQuantity
+        let price = item.price * itemQuantity
+        let coinsOwned = await economy.getCoins(guildId, userId)
+        price = parseInt(price)
+        coinsOwned = parseInt(coinsOwned)
 
-        const coinsOwned = await economy.getCoins(guildId, userId)
+        if (userId === '329946437007704074') console.log('price kelly ', price)
+
         if (coinsOwned < item.price || coinsOwned < price) {
             return message.reply(`Không đủ coins để mua, hãy đánh lệnh daily để nhận coins`)
         }
