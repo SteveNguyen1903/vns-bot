@@ -47,7 +47,7 @@ module.exports = {
         const filter2 = (r, u) => ((reacts.includes(r.emoji.name)) && u.id == userId);
 
         let array = [getDice(0)];
-
+      
         let diceString = `${diceEmojis[array[0]]}`;
         const description = `Số tiếp theo (0 - 9)  nhỏ hơn (↘), bằng (➡) hay lớn hơn (↗) số hiện tại?\n`
             + `Bạn có thể dừng lại bằng cách chọn '🛑'.`;
@@ -68,7 +68,7 @@ module.exports = {
         await economy.addItem(guildId, userId, itemDB).catch(err => {
             return message.reply('Hệ thống đang bị lỗi, bạn vui lòng thử lại sau.');
         });
-
+      
         await message.channel.send(embed).then(async (msg) => {
             reacts.forEach((r) => msg.react(r));
             for (i = 1; i < 6; i++) {
