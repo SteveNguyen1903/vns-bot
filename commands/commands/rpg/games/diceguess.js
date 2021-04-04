@@ -15,7 +15,16 @@ const diceEmojis = [
     '<:d7:827209442079932446>',
     '<:d8:827209441233207306>',
     '<:d9:827209441425752094>',
-]
+];
+const reacts = ['↘', '➡', '↗', '🛑'];
+
+function getDice(coef) {
+    coef++;
+    let sum = 0;
+    for (let i = 0; i < coef; i++)
+        sum += Math.floor(Math.random() * 10);
+    return Math.floor(sum / (coef));
+}
 
 module.exports = {
     commands: ['diceguess', 'dg'],
@@ -34,25 +43,23 @@ module.exports = {
         const status = await core.checkAvailabilityWithToken(message, userProfile)
         if (!status) return;
         
-        const idle = 120000;
-        const filter = m => m.author == message.author && (m.content == '<' || m.content == '=' || m.content == '>' || m.content == 'quit');
+        const idle = 10000;
+        const filter2 = (r, u) => ((reacts.includes(r.emoji.name)) && u.id == userId);
 
-        var array = [];
-        for (let i = 0; i < 6; i++)
-            array.push(Math.floor(Math.random() * 10));
-        console.log(array);
-
-        var diceString = `${diceEmojis[array[0]]}`;
-        const description = `Số tiếp theo (0 - 9)  nhỏ hơn (\`<\`), lớn hơn (\`>\`) hay bằng (\`=\`) số hiện tại?\nBạn có thể dừng lại bằng cách gõ \`quit\``;
-        var embed = new Discord.MessageEmbed();
+        let array = [getDice(0)];
+      
+        let diceString = `${diceEmojis[array[0]]}`;
+        const description = `Số tiếp theo (0 - 9)  nhỏ hơn (↘), bằng (➡) hay lớn hơn (↗) số hiện tại?\n`
+            + `Bạn có thể dừng lại bằng cách chọn '🛑'.`;
+        let embed = new Discord.MessageEmbed();
         embed.setAuthor(message.member.nickname ? message.member.nickname : message.author.username, message.author.avatarURL())
             .setColor(message.member.displayHexColor)
             .setTitle("Dự đoán xúc xắc")
             .setDescription(description)
             .addField("\u200b", diceString);
 
-        var breakCheck = false;
-        var money = 0;
+        let breakCheck = false;
+        let money = 0;
 
         const itemDB = {
             name: 'token',
@@ -60,45 +67,65 @@ module.exports = {
         }
         await economy.addItem(guildId, userId, itemDB).catch(err => {
             return message.reply('Hệ thống đang bị lỗi, bạn vui lòng thử lại sau.');
-        })
-        for (i = 1; i < 6; i++) {
-            await message.channel.send(embed).then(async () => {
+        });
+      
+        await message.channel.send(embed).then(async (msg) => {
+            reacts.forEach((r) => msg.react(r));
+            for (i = 1; i < 6; i++) {
                 await profileSchema.updateMany({ guildId, userId: { $in: [userId] } }, { availability: false });
+                array.push(getDice(i));
 
-                await message.channel.awaitMessages(filter, {idle : idle, dispose : true, max : 1, error : ['time']}).then(collected => {
-                    const content = collected.first().content;
-                    if (content == 'quit') {
-                        embed.setDescription(`Bạn đã chọn dừng cuộc chơi.\n\nSố tiền bạn nhận được là :yen:\`${money}\`.`);
-                        breakCheck = true;
-                        return message.channel.send(embed);
+                await msg.awaitReactions(filter2, {max : 1, time : idle}).then(async (c) => {
+                    let r = c.first();
+                    let answer = r.emoji.name;
+                    let answerCheck = false;
+                    r.users.remove(r.users.cache.filter(u => u === message.author).first());
+                    switch (answer) {
+                        case '🛑':
+                            embed.setDescription(`Bạn đã chọn dừng cuộc chơi.\n\nSố tiền bạn nhận được là :yen:\`${money}\`.`);
+                            breakCheck = true;
+                            return msg.edit(embed);
+                        case '↘':
+                            answerCheck = (array[i] < array[i-1]);
+                            break;
+                        case '➡':
+                            answerCheck = (array[i] == array[i-1]);
+                            break;
+                        case '↗':
+                            answerCheck = (array[i] > array[i-1]);
+                            break;
                     };
-                    
-                    if ((array[i] < array[i-1] && content == '<') || (array[i] == array[i-1] && content == '=') || (array[i] > array[i-1] && content == '>')) {
+
+                    diceString = `${diceString} ${diceEmojis[array[i]]}`;
+                    embed.fields.find(e => e.name == '\u200b').value = diceString;
+                    if (answerCheck) {
                         money += (i == 5 ? 100 : 50);
-                        diceString = `${diceString}${diceEmojis[array[i]]}`;
                         embed.setDescription(
-                            `**Chính xác!** ${i == 5 ? 'Trò chơi kết thúc, bạn nhận được' : 'Tiền thưởng của bạn là'} :yen:\`${money}\`!${i != 5 ? '\n\n' + description : ''}`);
-                        embed.fields.find(e => e.name == '\u200b').value = diceString;
-                        if (i == 5)
-                            message.channel.send(embed);
+                            `**Chính xác!** ${i == 5 ? 'Trò chơi kết thúc, bạn nhận được' : 'Tiền thưởng của bạn là'} :yen:\`${money}\`!`
+                            + `${i != 5 ? '\n\n' + description : ''}`
+                        );
                     } else {
                         money = Math.floor(money / 2);
-                        diceString += diceEmojis[array[i]];
                         embed.setDescription(`**Sai!** Trò chơi kết thúc, bạn nhận được :yen:\`${money}\`.`);
                         breakCheck = true;
-                        return message.channel.send(embed);
                     };
-                }).catch(err => {
+                    return msg.edit(embed);
+                }).catch(async err => {
+                    console.log(err);
+                    breakCheck = true;
                     money = Math.floor(money / 2);
                     embed.setDescription(`**Hết giờ!** Trò chơi kết thúc, bạn nhận được :yen:\`${money}\`.`);
-                    breakCheck = true;
-                    return message.channel.send(embed);
+                    msg.edit(embed);
+                    
                 });
-            });
-            
-            if (breakCheck)
-                break;
-        };
+
+                if (breakCheck || i == 5)
+                    msg.reactions.removeAll();
+
+                if (breakCheck)
+                    break;
+            };
+        });
 
         const promises = [
             await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true }),
