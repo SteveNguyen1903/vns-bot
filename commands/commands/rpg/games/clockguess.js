@@ -68,24 +68,27 @@ module.exports = {
                         .setImage(null);
                 } else {
                     let distance = 6 - Math.abs(6 - Math.abs(answer - correct));
-                    money = 300 - 50 * distance;
+                    money = 500 - 50 * distance;
                     embed.setDescription(`Chúc mừng, bạn đã nhận được :yen:\`${money}\`!\n\n**Đáp án:**`)
                         .setImage(clockEmojisUrl[correct % 12])
                         .setThumbnail(clockEmojisUrl[answer % 12]);
                 };
                 message.channel.send(embed);
+                m.delete();
+            }).catch(async err => {
+                console.log(err);
+                embed.setDescription(`**Hết giờ!** Bạn không có câu trả lời.`);
+                m.edit(embed);
             });
-            m.delete();
-        })
-        
 
-        const promises = [
-            await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true }),
-            await economy.addCoins(guildId, userId, money)
-        ];
-        Promise.all(promises).catch(err => {
-            message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!');
-            console.log('promise err ', err);
+            const promises = [
+                await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true }),
+                await economy.addCoins(guildId, userId, money)
+            ];
+            Promise.all(promises).catch(err => {
+                message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!');
+                console.log('promise err ', err);
+            });
         });
 
     }
