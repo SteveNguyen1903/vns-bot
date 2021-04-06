@@ -2,7 +2,7 @@ module.exports = {
     commands: 'giverole',
     minArgs: 2,
     expectedArgs: "<Target user's @> <The role name>",
-    requiredChannel: 'bot-test',
+    permissions: 'ADMINISTRATOR',
     callback: (message, arguments) => {
         const targetUser = message.mentions.users.first()
         if (!targetUser) {
