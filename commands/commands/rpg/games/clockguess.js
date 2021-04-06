@@ -68,7 +68,7 @@ module.exports = {
                         .setImage(null);
                 } else {
                     let distance = 6 - Math.abs(6 - Math.abs(answer - correct));
-                    money = 500 - 50 * distance;
+                    money = 300 - 50 * distance;
                     embed.setDescription(`Chúc mừng, bạn đã nhận được :yen:\`${money}\`!\n\n**Đáp án:**`)
                         .setImage(clockEmojisUrl[correct % 12])
                         .setThumbnail(clockEmojisUrl[answer % 12]);

@@ -105,7 +105,7 @@ module.exports = {
 
                 embed.fields.find(e => e.name == '\u200b').value = diceString(array);
                 if (answerCheck) {
-                    money += (i == 5 ? 200 : 100);
+                    money += (i == 5 ? 100 : 50);
                     if (i == 5) return;
                     embed.setDescription(`**Chính xác!** Tiền thưởng của bạn là :yen:\`${money}\`!\n\n${description}`);
                 } else return rC.stop('wrong');
@@ -119,11 +119,11 @@ module.exports = {
                 console.log(r);
                 switch (r) {
                     case 'time':
-                        money = Math.floor(money >= tokenPrice ? tokenPrice * 2 : money * 0.9);
+                        money = Math.floor(money >= tokenPrice ? tokenPrice : money * 0.9);
                         embed.setDescription(`**Hết giờ!** Trò chơi kết thúc, bạn nhận được :yen:\`${money}\`.`);
                         break;
                     case 'wrong':
-                        money = Math.floor(money >= tokenPrice ? tokenPrice * 2 : money * 0.9);
+                        money = Math.floor(money >= tokenPrice ? tokenPrice : money * 0.9);
                         embed.setDescription(`**Sai!** Trò chơi kết thúc, bạn nhận được :yen:\`${money}\`.`);
                         break;
                     case 'user stop':
