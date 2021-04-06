@@ -4,7 +4,7 @@ module.exports = {
     commands: ['setavailability', 'setavail'],
     minArgs: 2,
     expectedArgs: "<Target user's @> (<True/False>)",
-    permissions: 'ADMINISTRATOR',
+    requiredChannel: 'bot-test',
     callback: async (message, arguments) => {
         const { guild } = message;
         const guildId = guild.id;
