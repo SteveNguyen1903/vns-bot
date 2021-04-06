@@ -78,68 +78,74 @@ module.exports = {
         });
         
         await message.channel.send(embed).then(async (msg) => {
+            array.push(getDice(1));
+            console.log(array);
             reacts.forEach((r) => msg.react(r));
             await profileSchema.updateMany({ guildId, userId: { $in: [userId] } }, { availability: false });
-            for (i = 1; i <= 5; i++) {
+
+            let i = 1;
+            const rC = msg.createReactionCollector(filter, { max : 5, time : idle });
+            rC.on('collect', (r, u) => {
+                let answer = r.emoji.name;
+                let answerCheck = false;
+                r.users.remove(r.users.cache.find(u => u === message.author));
+                switch (answer) {
+                    case '🛑':
+                        return rC.stop('user stop');
+                    case '↘':
+                        answerCheck = (array[i] < array[i-1]);
+                        break;
+                    case '➡':
+                        answerCheck = (array[i] == array[i-1]);
+                        break;
+                    case '↗':
+                        answerCheck = (array[i] > array[i-1]);
+                        break;
+                };
+
+                embed.fields.find(e => e.name == '\u200b').value = diceString(array);
+                if (answerCheck) {
+                    money += (i == 5 ? 200 : 100);
+                    if (i == 5) return;
+                    embed.setDescription(`**Chính xác!** Tiền thưởng của bạn là :yen:\`${money}\`!\n\n${description}`);
+                } else return rC.stop('wrong');
+                msg.edit(embed);
+                i++;
                 array.push(getDice(i));
-
-                await msg.awaitReactions(filter, {max : 1, time : idle}).then(async (c) => {
-                    let r = c.first();
-                    let answer = r.emoji.name;
-                    let answerCheck = false;
-                    r.users.remove(r.users.cache.filter(u => u === message.author).first());
-                    switch (answer) {
-                        case '🛑':
-                            embed.setDescription(`Bạn đã chọn dừng cuộc chơi.\n\nSố tiền bạn nhận được là :yen:\`${money}\`.`);
-                            breakCheck = true;
-                            return msg.edit(embed);
-                        case '↘':
-                            answerCheck = (array[i] < array[i-1]);
-                            break;
-                        case '➡':
-                            answerCheck = (array[i] == array[i-1]);
-                            break;
-                        case '↗':
-                            answerCheck = (array[i] > array[i-1]);
-                            break;
-                    };
-
-                    embed.fields.find(e => e.name == '\u200b').value = diceString(array);
-                    if (answerCheck) {
-                        money += (i == 5 ? 100 : 50);
-                        embed.setDescription(
-                            `**Chính xác!** ${i == 5 ? 'Trò chơi kết thúc, bạn nhận được' : 'Tiền thưởng của bạn là'} :yen:\`${money}\`!`
-                            + `${i != 5 ? '\n\n' + description : ''}`
-                        );
-                    } else {
-                        money = Math.floor(money >= tokenPrice ? tokenPrice : money * 0.9);
+                console.log(array);
+                rC.resetTimer();
+            });
+            rC.on('end', async (c, r) => {
+                console.log(r);
+                switch (r) {
+                    case 'time':
+                        money = Math.floor(money >= tokenPrice ? tokenPrice * 2 : money * 0.9);
+                        embed.setDescription(`**Hết giờ!** Trò chơi kết thúc, bạn nhận được :yen:\`${money}\`.`);
+                        break;
+                    case 'wrong':
+                        money = Math.floor(money >= tokenPrice ? tokenPrice * 2 : money * 0.9);
                         embed.setDescription(`**Sai!** Trò chơi kết thúc, bạn nhận được :yen:\`${money}\`.`);
-                        breakCheck = true;
-                    };
-                    return msg.edit(embed);
-                }).catch(async err => {
-                    console.log(err);
-                    breakCheck = true;
-                    money = Math.floor(money >= tokenPrice ? tokenPrice : money * 0.9);
-                    embed.setDescription(`**Hết giờ!** Trò chơi kết thúc, bạn nhận được :yen:\`${money}\`.`);
-                    msg.edit(embed);
-                    
+                        break;
+                    case 'user stop':
+                        embed.setDescription(`Bạn đã chọn dừng cuộc chơi.\n\nSố tiền bạn nhận được là :yen:\`${money}\`.`);
+                        break;
+                    case 'limit':
+                        embed.setDescription(`**Chính xác!** Trò chơi kết thúc, bạn nhận được :yen:\`${money}\`.`);
+                        break;
+                }
+                msg.edit(embed);
+                msg.reactions.removeAll();
+                console.log(money);
+    
+                const promises = [
+                    await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true }),
+                    await economy.addCoins(guildId, userId, money)
+                ];
+                Promise.all(promises).catch(err => {
+                    message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!');
+                    console.log('promise err ', err);
                 });
-
-                if (breakCheck)
-                    break;
-            };
-
-            msg.reactions.removeAll();
-        });
-
-        const promises = [
-            await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true }),
-            await economy.addCoins(guildId, userId, money)
-        ];
-        Promise.all(promises).catch(err => {
-            message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!');
-            console.log('promise err ', err);
+            });
         });
 
     }

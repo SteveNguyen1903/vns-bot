@@ -14,12 +14,13 @@ module.exports = {
             return;
         }
         const userId = targetUser.id;
-        const userProfile = await profileSchema.findOne({ guildId, userId });
 
         const rawValue = arguments[1].toLowerCase();
         const value = rawValue == 'true' ? true : false;
         const promise = await profileSchema.findOneAndUpdate({ guildId, userId }, { availability: value }, { upsert: true });
-        Promise.resolve(promise).catch(err => {
+        Promise.resolve(promise).then(() =>{
+            message.reply(`đã đặt lại trạng thái sẵn sàng của <@${userId}> thành \`${value}\`.`);
+        }).catch(err => {
             message.reply('Bị lỗi, Violet chưa biết xử lý làm sao hết!');
             console.log('promise err ', err);
         });
