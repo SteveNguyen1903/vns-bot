@@ -40,6 +40,7 @@ const selfslap = [
     'https://media.giphy.com/media/EQ85WxyAAwEaQ/giphy.gif'
 ];
 const cry = 'https://media.giphy.com/media/OwFMSDDOOxmbvwVbvn/giphy.gif';
+const kill = 'https://i.imgur.com/ZRVSAOT.gif'
 
 function getName(member) {
     return member.nickname ? member.nickname : member.user.username;
@@ -59,14 +60,14 @@ module.exports = {
             branch = 2; //self slapping
         else if (target.id == message.client.user.id)
             branch = 3; //slap the bot
-        
+
         const embed = new Discord.MessageEmbed();
         embed.setColor(message.member.displayHexColor);
         embed.setImage(
             branch == 2
                 ? selfslap[Math.floor(Math.random() * selfslap.length)]
                 : branch == 3
-                    ? cry
+                    ? kill
                     : images[Math.floor(Math.random() * images.length)]
         );
         embed.setTitle(`${branch == 1 ? getName(message.guild.me) : getName(user)} tát ${branch == 1 ? getName(user) : getName(target)}!`);
@@ -82,7 +83,7 @@ module.exports = {
                 messageText = `<@${user.id}>`;
                 break;
             case 3:
-                messageText = `Mọi người ơi ra mà xem <@${user.id}> hành hung Violet nè!`;
+                messageText = `Dám tát bà này, giết <@${user.id}> `;
                 break;
         }
         message.channel.send(messageText, embed);
