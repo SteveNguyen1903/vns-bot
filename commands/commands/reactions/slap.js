@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
 const images = [
     'https://media.giphy.com/media/xUO4t2gkWBxDi/giphy.gif',
     'https://media.giphy.com/media/Gf3AUz3eBNbTW/giphy.gif',
@@ -39,7 +38,7 @@ const selfslap = [
     'https://media.giphy.com/media/j1zuL4htGTFQY/giphy.gif',
     'https://media.giphy.com/media/EQ85WxyAAwEaQ/giphy.gif'
 ];
-const cry = 'https://media.giphy.com/media/OwFMSDDOOxmbvwVbvn/giphy.gif';
+//const cry = 'https://media.giphy.com/media/OwFMSDDOOxmbvwVbvn/giphy.gif';
 const kill = 'https://i.imgur.com/ZRVSAOT.gif'
 const dance = 'https://i.imgur.com/881etLt.gif'
 
@@ -61,8 +60,8 @@ module.exports = {
             branch = 2; //self slapping
         else if (target.id == message.client.user.id)
             branch = 3; //slap the bot
-        if (target.id == '361133453217103875')
-            branch = 4
+        if (target.id == '361133453217103875' || target.id == '508281938017255425')
+            branch = 4;
 
         const embed = new Discord.MessageEmbed();
         embed.setColor(message.member.displayHexColor);
@@ -70,10 +69,12 @@ module.exports = {
             branch == 2
                 ? selfslap[Math.floor(Math.random() * selfslap.length)]
                 : branch == 3
-                    ? kill : branch == 4 ? dance
+                    ? kill
+                    : branch == 4
+                        ? dance
                         : images[Math.floor(Math.random() * images.length)]
         );
-        embed.setTitle(`${branch == 1 ? getName(message.guild.me) : getName(user)} tát ${branch == 1 ? getName(user) : getName(target)}!`);
+        embed.setTitle(`${branch == 1 ? getName(message.guild.me) : getName(user)} tát ${branch == 4 ? 'hụt' : ''}${branch == 1 ? getName(user) : getName(target)}!`);
         let messageText = '';
         switch (branch) {
             case 0:
@@ -86,10 +87,11 @@ module.exports = {
                 messageText = `<@${user.id}>`;
                 break;
             case 3:
-                messageText = `Dám tát bà này, giết <@${user.id}> `;
+                messageText = `Dám tát bà này, giết <@${user.id}>!!!!`;
                 break;
             case 4:
-                messageText = `Violet không tát được <@361133453217103875>!!!!!!!!!!!!!!!!`;
+                messageText = `Violet không tát được ${target.id == '508281938017255425' ? '<@361133453217103875>' : 'con ếch'}!!!!!!!!!!!!!!!!`;
+                //le Ếch: có phải Violet tát đâu, cái title của embed ghi là user.id tát target.id mà 🤡
                 break;
         }
         message.channel.send(messageText, embed);
