@@ -186,7 +186,7 @@ module.exports = {
 			})
 			partner.on('end', async (c, r) => {
 				try {
-					await partnerSchema.updateOne({ userId, guildId, 'partners.name': name }, { availability: true, currentMarry: currentMarry, marryRegen: marryRegen, 'partners.$.copies': character.copies, 'partners.$.affectionLvl': character.affectionLvl, 'partners.$.xp': character.xp, 'partners.$.ascension': character.ascension }, { upsert: true })
+					await partnerSchema.updateOne({ userId, guildId, 'partners.name': name }, { availability: true, currentMarry: currentMarry, marryRegen: marryRegen, pokeTimes: pokeTimes, 'partners.$.copies': character.copies, 'partners.$.affectionLvl': character.affectionLvl, 'partners.$.xp': character.xp, 'partners.$.ascension': character.ascension }, { upsert: true })
 					await profileSchema.updateOne({ guildId, userId }, { 'items.gift': gift })
 				} catch (err) {
 					console.log(err)
