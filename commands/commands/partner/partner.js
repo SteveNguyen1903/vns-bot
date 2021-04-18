@@ -57,7 +57,7 @@ module.exports = {
 			.addFields(
 				{
 					name: 'Điểm thân mật',
-					value: `100/${character.neededXp}, **level ${character.affectionLvl}**`,
+					value: `${character.xp}/${character.neededXp}, **level ${character.affectionLvl}**`,
 					inline: true,
 				},
 				{

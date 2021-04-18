@@ -25,7 +25,7 @@ const partnerSchema = mongoose.Schema(
 		//     },
 		//     copies: {
 		//         type: Number,
-		//         default: 1
+		//         default: 0
 		//     },
 		//     ascension: {
 		//         type: Number,
