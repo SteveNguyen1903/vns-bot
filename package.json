@@ -37,7 +37,6 @@
 	},
 	"homepage": "https://github.com/SteveNguyen1903/vns-bot#readme",
 	"devDependencies": {
-		"alias-quokka-plugin": "github:davestewart/alias-quokka-plugin#master",
 		"eslint": "^7.23.0"
 	}
 }
