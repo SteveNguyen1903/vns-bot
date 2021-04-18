@@ -1,68 +1,70 @@
 const economy = require('@features/economy')
 const defaultItem = require('@root/json/rpg.json')
-const Discord = require('discord.js');
+const Discord = require('discord.js')
+const partnerSchema = require('@schema/partner-schema')
 
 //check if item exists
 const itemCheck = (itemName) => {
-    // const result = defaultItem.items.includes(item);
-    let result = {}
-    defaultItem.items.forEach(item => {
-        if (item.name === itemName) {
-            result = item
-        }
-    })
-    return result
+	// const result = defaultItem.items.includes(item);
+	let result = {}
+	defaultItem.items.forEach((item) => {
+		if (item.name === itemName) {
+			result = item
+		}
+	})
+	return result
 }
 
 module.exports = {
-    commands: ['buy'],
-    minArgs: 2,
-    maxArgs: 2,
-    expectedArgs: "<tên món đồ> <số lượng>",
-    permissionError: 'Bạn phải là adventure để sử dụng lệnh này',
-    description: "Mua đồ trong shop",
-    requiredRoles: ['adventure'],
-    cooldown: 5,
-    callback: async (message, arguments) => {
+	commands: ['buy'],
+	minArgs: 2,
+	maxArgs: 2,
+	expectedArgs: '<tên món đồ> <số lượng>',
+	permissionError: 'Bạn phải là adventure để sử dụng lệnh này',
+	description: 'Mua đồ trong shop',
+	requiredRoles: ['adventure'],
+	cooldown: 5,
+	callback: async (message, arguments) => {
+		const { guild, member } = message
+		const guildId = guild.id
+		const userId = member.id
+		let item = itemCheck(arguments[0])
+		let itemQuantity = parseInt(arguments[1])
+		let partnerStatus = await partnerSchema.findOne({ guildId, userId })
 
-        let item = itemCheck(arguments[0])
-        let itemQuantity = parseInt(arguments[1])
+		if (!partnerStatus.availability) return message.reply('Bạn đang tương tác với partner, hãy hoàn thành xong để dùng lệnh!')
 
-        if (!item.name || item.name === String) {
-            return message.reply('Nhập đúng item cần mua')
-        }
+		if (!item.name || item.name === String) {
+			return message.reply('Nhập đúng item cần mua')
+		}
 
-        if (isNaN(itemQuantity) || itemQuantity <= 0) {
-            return message.reply('Nhập đúng số lượng cần mua')
-        }2
+		if (isNaN(itemQuantity) || itemQuantity <= 0) {
+			return message.reply('Nhập đúng số lượng cần mua')
+		}
+		2
 
-        if (!Number.isInteger(parseInt(itemQuantity))) return message.reply('Nhập đúng số lượng cần mua')
+		if (!Number.isInteger(+itemQuantity)) return message.reply('Nhập đúng số lượng cần mua')
 
-        const guildId = message.guild.id
-        const userId = message.author.id
-        const itemDB = {
-            name: item.name,
-            quantity: itemQuantity
-        }
+		const itemDB = {
+			name: item.name,
+			quantity: itemQuantity,
+		}
 
-        let itemPrice = parseInt(item.price)
-        let price = itemPrice * itemQuantity
-        let coinsOwned = await economy.getCoins(guildId, userId)
-        price = parseInt(price)
-        coinsOwned = parseInt(coinsOwned)
+		let itemPrice = parseInt(item.price)
+		let price = itemPrice * itemQuantity
+		let coinsOwned = await economy.getCoins(guildId, userId)
+		price = parseInt(price)
+		coinsOwned = parseInt(coinsOwned)
 
-        if (coinsOwned < itemPrice || coinsOwned < price) {
-            return message.reply(`Không đủ coins để mua, hãy đánh lệnh daily để nhận coins`)
-        }
+		if (coinsOwned < itemPrice || coinsOwned < price) {
+			return message.reply(`Không đủ coins để mua, hãy đánh lệnh daily để nhận coins`)
+		}
 
-        const remainingCoins = await economy.addCoins(guildId, userId, itemPrice * itemQuantity * -1)
-        await economy.addItem(guildId, userId, itemDB)
+		const remainingCoins = await economy.addCoins(guildId, userId, itemPrice * itemQuantity * -1)
+		await economy.addItem(guildId, userId, itemDB)
 
-        const embed = new Discord.MessageEmbed()
-            .setColor(`#FFFDC0`)
-            .setDescription(`Bạn đã mua ${itemQuantity} ${item.name}, tiền còn lại :yen: ${remainingCoins}`)
+		const embed = new Discord.MessageEmbed().setColor(`#FFFDC0`).setDescription(`Bạn đã mua ${itemQuantity} ${item.name}, tiền còn lại :yen: ${remainingCoins}`)
 
-        message.channel.send(embed)
-
-    }
+		message.channel.send(embed)
+	},
 }

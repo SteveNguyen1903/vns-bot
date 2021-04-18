@@ -1,19 +1,24 @@
 {
-    "items": [
-        {
-            "name": "token",
-            "price": 150,
-            "img": ":coin:"
-        },
-        {
-            "name": "letter",
-            "price": 200,
-            "img": ":envelope:"
-        },
-        {
-            "name": "potion",
-            "price": 100,
-            "img": ":test_tube:"
-        }
-    ]
+	"items": [
+		{
+			"name": "token",
+			"price": 150,
+			"img": ":coin:"
+		},
+		{
+			"name": "letter",
+			"price": 200,
+			"img": ":envelope:"
+		},
+		{
+			"name": "potion",
+			"price": 100,
+			"img": ":test_tube:"
+		},
+		{
+			"name": "gift",
+			"price": 200,
+			"img": ":gift:"
+		}
+	]
 }

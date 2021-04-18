@@ -1,0 +1,66 @@
+[
+	{
+		"name": ["Zero Two", "02"],
+		"anime": "Darling in the Franxx",
+		"stars": 5,
+		"description": "Zero Two là một cô gái nhân tạo với tha thiết làm người. Tuy bề ngoài lạnh nhạt nhưng cô lại rất chung tình và dịu dàng với người cô đã chọn làm partner.",
+		"img": ["https://i.imgur.com/hbxfhBJ.png", "https://i.imgur.com/kBGiTw4.png", "https://i.imgur.com/bS4Hw0w.png", "https://i.imgur.com/suIEVzo.png"],
+		"type": "tsundere"
+	},
+	{
+		"name": ["Mashu Kyrielight", "Mash"],
+		"anime": "Fate/GO",
+		"stars": 5,
+		"description": "Bản chất cô là một con người ấm áp, đầy lòng trắc ẩn và vì bị giam lỏng ở nơi thí nghiệm nên cô rất thích thú với việc khám phá thế giới bên ngoài. Đối với partner của mình, cô sẽ là một kouhai tuyệt vời, luôn sát cách và ủng hộ partner cùng vượt qua khó khăn, sẵn sàng che chở và thậm chí hy sinh bản thân vì partner.",
+		"img": ["https://i.imgur.com/pA27cS9.png", "https://i.imgur.com/BgpdXwm.png", "https://i.imgur.com/tu29Q7s.png", "https://i.imgur.com/PJZu1y8.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Kanade Tachibana", "Kanade"],
+		"anime": "Angel Beats!",
+		"stars": 5,
+		"description": "Gương mặt cô không bao giờ thể hiện cảm xúc nhưng chỉ cần partner trao cho cô trái tim của mình, cô sẽ giúp partner với tất cả những gì cô có bằng cả tấm lòng của mình.",
+		"img": ["https://i.imgur.com/MUnpdL7.png", "https://i.imgur.com/NY02uPe.png", "https://i.imgur.com/JUIUglR.png", "https://i.imgur.com/0uD6Z2R.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Violet Evergarden", "Violet"],
+		"anime": "Violet Evergarden",
+		"stars": 5,
+		"description": "Dù bạn ở bất cứ nơi nào, Violet sẽ giúp bạn gửi nỗi lòng đến người bạn yêu thương. Một partner đồng hành hết sức tuyệt vời! Thế nhưng, Violet vẫn đang thiết tha tìm kiếm điều gì đó. Liệu bạn có thể giúp nàng tìm ra?",
+		"img": ["https://i.imgur.com/bXEPfZc.png", "https://i.imgur.com/LhXNwDW.png", "https://i.imgur.com/5BU9ldC.png", "https://i.imgur.com/UusOINX.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Eru Chitanda", "Eru"],
+		"anime": "Hyouka",
+		"stars": 5,
+		"description": "Tò mò và năng động, Eru sẽ mang đến nhiều điều thú vị lẫn phiền phức nếu bạn vào tầm ngắm của nàng.",
+		"img": ["https://i.imgur.com/nCRNpXp.png", "https://i.imgur.com/RExYxOY.png", "https://i.imgur.com/FJ9ciKm.png", "https://i.imgur.com/y1wZQWk.png", "https://i.imgur.com/ovFImbV.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Oshino Shinobu", "Shinobu"],
+		"anime": "Monotagari Series",
+		"stars": 5,
+		"description": "Ma cà rồng huyền thoại Kiss-Shot Acerola Orion Heart-Under-Blade , thực thể quái dị mạnh nhất từng tồn tại. Nay đã bị tước đi sức mạnh và mang ngoại hình của một đứa trẻ 8 tuổi qua khế ước chủ-tớ bắt buộc từ partner. Cùng với partner phù hợp tạo nên mối liên kết mạnh mẽ qua sự tin tưởng,  liệu cô có thể lấy lại thứ sức mạnh vốn có mà thay đổi được bản tính khát máu trước đây của mình?",
+		"img": ["https://i.imgur.com/CNODVC4.jpg", "https://i.imgur.com/fWaHIGM.jpg", "https://i.imgur.com/zsAjJiX.jpg", "https://i.imgur.com/bEnbCw0.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Yukino Yukinoshita", "Yukino"],
+		"anime": "Oregairu",
+		"stars": 5,
+		"description": "Tài năng nhưng lại thực dụng, Yukino cho rằng phận sự cao cả của những kẻ thiên bẩm như cô là cứu vớt những kẻ thấp kém. Bất kể bạn bè hay người lạ gì cũng không thoát khỏi thái độ lạnh lùng của Yukino; đối với cô, thấy sai là phải nói, nể cả chỉ tổ phiền phức. Vì thế mà ít người dám bắt chuyện với cô, và lại càng ít người dám làm bạn với cô, đến nỗi người ta gán cho cô biệt danh 'Công chúa Băng giá'. Nhưng những ai gần gũi với cô đều nói rằng Yukino là một con người tốt bụng và dễ mềm lòng.",
+		"img": ["https://i.imgur.com/9EYZ9E8.jpg", "https://i.imgur.com/FomYNkz.jpg", "https://i.imgur.com/Dh3mn3Z.png", "https://i.imgur.com/Gs8NLLA.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Tanya von Degurechaff", "Tanya"],
+		"anime": "Youjo Senki",
+		"stars": 5,
+		"description": " 'Tanya là một con quỷ đội lốt người', bất kể ai từng thấy cô trên chiến trường đều sẽ thốt lên như vậy. Đúng! Với Tanya, những thứ như lòng dũng cảm hay vị tha không có ý nghĩa gì trong chiến tranh cả; cô giết tất. Thế nên họ mới tưởng cô là quỷ - một con quỷ sống chỉ để giết. Nhưng sự thực thì cô chỉ muốn một cuộc sống an nhàn hơn ai hết, và để đạt được điều đó, cô sẵn sàng dùng sinh mạng của đồng đội mình để trả giá. Kể cả partner của cô, cách duy nhất để được Tanya coi trọng là phải ngang tài ngang sức với cô. Đừng tưởng đỡ một viên đạn cho Tanya là có happy ending với cô nhé!",
+		"img": ["https://i.imgur.com/qHKEeu6.jpg", "https://i.imgur.com/J88Jdz3.jpg", "https://i.imgur.com/PJAscSm.jpg", "https://i.imgur.com/0OKvoS3.jpg"],
+		"type": "kuudere"
+	}
+]

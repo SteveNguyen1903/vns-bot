@@ -1,0 +1,14 @@
+[
+	{
+		"type": "kuudere",
+		"poke": ["<partner> thu mình ngồi một góc, tình cờ nhìn thấy <user> và thầm nghĩ: 'hôm nay cậu ta có vẻ năng động nhỉ'"],
+		"gift": ["<partner> lí nhí cảm ơn, mặt ửng đỏ."],
+		"ascension": ["<partner> thẹn thùng nói nhỏ vào tai <user>: 'Cảm ơn cậu đã tin tưởng, tôi nhất quyết sẽ không phụ lòng cậu đâu!'"]
+	},
+	{
+		"type": "tsundere",
+		"poke": ["<user> đang dạo bước, bỗng thấy <partner> đâm sầm vào sau. 'Hả? Không phải là tôi cố ý đâm trúng cậu đâu nhé!'"],
+		"gift": ["<partner> cầm món quà, tức tốc bỏ đi và nói to: 'không phải là tôi thích được tặng quà đâu nhé!' "],
+		"ascension": ["Nếu có chuyện gì phiền phức thì cậu cứ tìm đến tôi! Hả? Không phải là tôi lo lắng cho cậu đâu nhé!"]
+	}
+]

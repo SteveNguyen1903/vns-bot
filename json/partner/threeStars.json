@@ -1,0 +1,81 @@
+[
+	{
+		"name": ["Onoe Serika", "Onoe"],
+		"anime": "Chaos;Child",
+		"stars": 3,
+		"description": "Một cô gái năng động nhưng ngu ngơ. Master đi đâu làm trò gì cô cũng vòi đi theo, nhưng tới lúc đến thì master phải làm hết.",
+		"img": ["https://i.imgur.com/bYD5se8.png", "https://i.imgur.com/5aAzhG5.jpg", "https://i.imgur.com/8lvUMYY.png", "https://i.imgur.com/5riSNbW.jpg"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Pico", "Pi"],
+		"anime": "Boku no Pico",
+		"stars": 3,
+		"description": "Gae",
+		"img": ["https://i.imgur.com/pnbiCmf.jpg"]
+	},
+	{
+		"name": ["Claris"],
+		"anime": "Meteor World Actor (VN)",
+		"stars": 3,
+		"description": "Elf nổi tiếng dễ thương và tốt bụng, và Claris cũng sẽ đối xử với master như vậy cho tới khi master hết tiền. Tiền bạc đối với cô không phải là thứ có thể qua loa cho xong chuyện, nên dù có gắn bó với master bao nhiêu nhưng không sòng phẳng trong chuyện tài chính thì thôi đừng hòng nhìn mặt nhau",
+		"img": ["https://i.imgur.com/TXtV4If.png", "https://i.imgur.com/Q8Vcno0.png", "https://i.imgur.com/WIJKEsI.png", "https://i.imgur.com/8eyvTZF.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Ryoka Narusawa", "Ryoka"],
+		"anime": "Occultic;Nine",
+		"stars": 3,
+		"description": "Master cẩn thận, Ryo-tas có súng điện đó. Lâu lâu tự dưng thấy Ryoka ôm master thì ngay sau đó kiểu gì master cũng bị giật lòi mắt. Xong rồi thì Ryo-tas sẽ tạo dáng ta-da~!, rồi thong thả ra chỗ khác chơi mà quên mất master.",
+		"img": ["https://i.imgur.com/cvtF14I.png", "https://i.imgur.com/IA700SE.jpg", "https://i.imgur.com/YJMQwiG.png", "https://i.imgur.com/23PaNnY.jpg"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Miko Sakura", "Miko"],
+		"anime": "XX",
+		"stars": 3,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Marine Houshou", "Marine"],
+		"anime": "XX",
+		"stars": 3,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Okayu Nekomata", "Okayu"],
+		"anime": "XX",
+		"stars": 3,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Fubuki Shirakami", "Fubuki"],
+		"anime": "XX",
+		"stars": 3,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Rushia Uruha", "Rushia"],
+		"anime": "XX",
+		"stars": 3,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Ayame Nakiri", "Ayame"],
+		"anime": "XX",
+		"stars": 3,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	}
+]

@@ -1,0 +1,13 @@
+{
+  "babel": false,
+  "plugins": ["alias-quokka-plugin"],
+  "alias": {
+    "@root": ".",
+    "@schema": "./schema",
+    "@util": "./util",
+    "@features": "./features/features",
+    "@commands": "./commands/commands",
+    "@db": "./database",
+    "@core": "./util/core"
+  }
+}

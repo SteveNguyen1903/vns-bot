@@ -1,44 +1,43 @@
 {
-  "name": "vns-bot",
-  "version": "1.0.0",
-  "description": "npm init -y\r npm i dotenv discord.js",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "discord.js": "^12.5.3",
-    "dotenv": "^8.2.0",
-    "module-alias": "^2.2.2",
-    "mongodb": "^3.6.5",
-    "mongoose": "^5.12.1",
-    "node-fetch": "^2.6.1",
-    "sagiri": "^3.1.1"
-  },
-  "_moduleAliases": {
-    "@root": ".",
-    "@schema": "./schema",
-    "@util": "./util",
-    "@features": "./features/features",
-    "@commands": "./commands/commands",
-    "@db": "./database",
-    "@core": "./util/core"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SteveNguyen1903/vns-bot.git"
-  },
-  "bugs": {
-    "url": "https://github.com/SteveNguyen1903/vns-bot/issues"
-  },
-  "homepage": "https://github.com/SteveNguyen1903/vns-bot#readme",
-  "devDependencies": {
-    "eslint": "^7.23.0",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^2.2.1"
-  }
+	"name": "vns-bot",
+	"version": "1.0.0",
+	"description": "npm init -y\r npm i dotenv discord.js",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"discord.js": "^12.5.3",
+		"dotenv": "^8.2.0",
+		"install-peerdeps": "^3.0.3",
+		"module-alias": "^2.2.2",
+		"mongodb": "^3.6.5",
+		"mongoose": "^5.12.1",
+		"node-fetch": "^2.6.1",
+		"sagiri": "^3.1.1"
+	},
+	"_moduleAliases": {
+		"@root": ".",
+		"@schema": "./schema",
+		"@util": "./util",
+		"@features": "./features/features",
+		"@commands": "./commands/commands",
+		"@db": "./database",
+		"@core": "./util/core"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/SteveNguyen1903/vns-bot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/SteveNguyen1903/vns-bot/issues"
+	},
+	"homepage": "https://github.com/SteveNguyen1903/vns-bot#readme",
+	"devDependencies": {
+		"alias-quokka-plugin": "github:davestewart/alias-quokka-plugin#master",
+		"eslint": "^7.23.0"
+	}
 }

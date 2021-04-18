@@ -1,0 +1,138 @@
+[
+	{
+		"name": ["Ichigo", "Ichi"],
+		"anime": "Darling in the Franxx",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "tsundere"
+	},
+	{
+		"name": ["Chika Fujiwara", "Chika"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Kaguya Shinomiya", "Kaguya"],
+		"anime": "XX ",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Ai Hayasaka", "Hayasaka"],
+		"anime": "Kaguya-sama Love is war ",
+		"stars": 4,
+		"description": " Trong mắt bạn bè và thầy cô, Ai Hayasaka là một con bé cực kì dễ thương, ngây ngô và hoạt bát. Nhưng khi không có ai xung quanh, cô lại trở thành một con người lạnh lùng, ít nói với đôi mắt sắc bén đến mức những gã đàn ông lớn hơn cô vài con giáp cũng phải né cô ra. Những người từng vô tình thấy cả hai tính cách của Hayasaka, một số thì sợ, số khác lại khinh cô ra mặt vì nghĩ cô là hạng giả tạo. Nhưng họ không biết, chỉ có partner và những ai cô yêu quý nhất mới biết được con người thật của cô...",
+		"img": ["https://i.imgur.com/iXrT7Hi.jpg", "https://i.imgur.com/mLZ7s9F.jpg", "https://i.imgur.com/pxeUa9p.jpg", "https://i.imgur.com/Ntxl8oS.png"],
+		"type": "tsundere"
+	},
+	{
+		"name": ["Chino Kafuu", "Chino"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Kokoa Hoto", "Kokoa"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Asuka Langley Souryuu", "Asuka"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "tsundere"
+	},
+	{
+		"name": ["Saber", "Saber"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Rei Ayanami", "Rei"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Rin Toosaka", "Rin"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Phosphophyllite", "Phos"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "XX",
+		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Ishtar"],
+		"anime": "XX",
+		"stars": 4,
+		"description": "Nữ thần sắc đẹp, chiến tranh, và mùa vụ của nền văn minh Lưỡng Hà. Trong mắt cô, master chỉ là thứ để nghịch cho đỡ chán, nhưng dần dà con người ấy lại khiến cô tự nhủ với mình rằng cô phải bảo vệ họ. Trong ấm ngoài lạnh, chuẩn mực của tsundere",
+		"img": ["https://i.imgur.com/7HMEunY.jpg", "https://i.imgur.com/kqc2KjZ.jpg", "https://i.imgur.com/vshuTyD.png", "https://i.imgur.com/q53MCz7.png"],
+		"type": "tsundere"
+	},
+	{
+		"name": ["Nishimiya Shouko", "Shouko"],
+		"anime": "Koe no Katachi ",
+		"stars": 4,
+		"description": "Nhút nhát và bị câm từ nhỏ, nhưng cô nàng rất dễ thương và dịu dàng nếu bạn để ý. Một trái tim giàu tình cảm nếu bạn vượt qua được rào cản giao tiếp.",
+		"img": ["https://i.imgur.com/vWALKye.png", "https://i.imgur.com/Eqi0KQZ.png", "https://i.imgur.com/50zXpiq.png", "https://i.imgur.com/asBj7yI.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Sitonai"],
+		"anime": "Fate/GO",
+		"stars": 4,
+		"description": " Sitonai, một homunculus nhà Einzbern được hợp thành từ ba nhân cách khác nhau - một nữ nhi diệt rồng dũng cảm, một nữ thần nhân từ với cả quân thù, một phù thủy giết người không gớm tay. Nhưng master đừng sợ, bình thường Sitonai chỉ là một cô bé hết lòng yêu thương và bảo vệ những người thân xung quanh cô bằng mọi giá, dù có phải để lộ một bộ mặt đen tối khác của cô",
+		"img": ["https://i.imgur.com/n5rUzFR.jpg", "https://i.imgur.com/u0TPuNT.jpg", "https://i.imgur.com/GnuZTBi.jpg", "https://i.imgur.com/bg9g4ZY.jpg"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Chloe von Einzbern", "Chloe"],
+		"anime": "Fate/Kaleid liner",
+		"stars": 4,
+		"description": " Trái nghịch với đứa em sinh đôi nhút nhát, Chloe luôn đối xử phóng khoáng với tất cả mọi người, từ tính tình cho tới cách ăn mặc. Vì thế nên đi chơi với partner, lời ăn tiếng nói của cô đối lúc có vẻ như vô tâm, nhưng cái vô tâm ấy chỉ là sự vô tư của một đứa trẻ, dù cho Chloe có cố ra vẻ rằng mình trướng thành hơn Illya.",
+		"img": ["https://i.imgur.com/d4qBUVv.jpg", "https://i.imgur.com/9VLu1yt.png", "https://i.imgur.com/ZfTO16f.jpg", "https://i.imgur.com/fJVpOPN.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Nao Tomori", "Nao"],
+		"anime": "Charlotte",
+		"stars": 4,
+		"description": "Cứng đầu và đôi lúc kiêu căng, Nao luôn khiến người khác nổi điên một phần vì thái độ của cô, phần khác vì cái thái độ đấy lại đi cùng với thực lực chứ không chỉ nói suông. Cách hay nhất để dỗ con thú trong Tomori là dắt cô đi ăn hàng - bắp nướng với BBQ là hiệu quả nhất!",
+		"img": ["https://i.imgur.com/Vgvq2XS.png", "https://i.imgur.com/LiFGMKM.png", "https://i.imgur.com/rfNZsFD.png", "https://i.imgur.com/SA8SJ7j.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Megumin", "Megumi"],
+		"anime": "Konosuba!",
+		"stars": 4,
+		"description": "Sinh ra trong một bộ tộc có khả năng sử dụng phép thuật mạnh nhất, nhưng rất tiếc em ấy lại nguyện cống hiến bao nhiêu sức lực của mình vào phép thuật Bùng Nổ của mình. Kết quả là skill phép Bùng Nổ của em có sát thương và diện rộng rất lớn nhưng em chỉ có thể sử dụng nó đúng 1 lần 1 ngày và sau khi dùng xong thì nằm luôn và thành gánh nặng. Ẻm như một người em gái với partner luôn luôn cống hiến hết khả năng của mình!",
+		"img": ["https://i.imgur.com/RxS1rGQ.png", "https://i.imgur.com/IgxYGlS.png", "https://i.imgur.com/SJAG6CA.png", "https://i.imgur.com/DKho3jN.png"],
+		"type": "kuudere"
+	}
+]

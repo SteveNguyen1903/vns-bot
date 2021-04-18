@@ -1,4 +1,4 @@
 {
-    "mongoPath":"mongodb://localhost:27017/discordBot",
-    "prefix": "!!"
+	"mongoPath": "mongodb://localhost:27017/discordBot",
+	"prefix": "!@"
 }
