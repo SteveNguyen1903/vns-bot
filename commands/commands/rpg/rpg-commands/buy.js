@@ -32,7 +32,9 @@ module.exports = {
 		let itemQuantity = parseInt(arguments[1])
 		let partnerStatus = await partnerSchema.findOne({ guildId, userId })
 
-		if (!partnerStatus.availability) return message.reply('Bạn đang tương tác với partner, hãy hoàn thành xong để dùng lệnh!')
+		let availability
+		if (partnerStatus === null) availability = true
+		if (partnerStatus !== null && !partnerStatus.availability) availability = false
 
 		if (!item.name || item.name === String) {
 			return message.reply('Nhập đúng item cần mua')
