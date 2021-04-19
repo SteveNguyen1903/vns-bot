@@ -24,8 +24,6 @@ module.exports = {
 		const userCharsDb = await partnerSchema.findOne({ userId, guildId })
 		const inventory = await economy.showProfile(guildId, userId)
 
-		if (userCharsDb === null) return message.reply('Hãy gacha và set partner để thực hiện lệnh này!')
-
 		if (!userCharsDb || !userCharsDb.currentPartner) return message.reply('Hãy chọn partner trước khi tương tác bằng cú pháp "!!pn set <tên partner>"')
 
 		if (!userCharsDb.availability) return message.reply('Bạn đang tương tác với partner, hãy hoàn thành xong để dùng lệnh!')

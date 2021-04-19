@@ -29,15 +29,16 @@ module.exports = {
 		}
 
 		let availability
-		if (userCharsDb === null) {
+		if (!userCharsDb) {
 			availability = true
 			await partnerSchema.findOneAndUpdate({ guildId, userId }, { availability: true }, { upsert: true })
 		}
 
-		if (userCharsDb !== null) availability = userCharsDb.availability
+		if (userCharsDb) availability = userCharsDb.availability
+
+		if (!availability) return message.reply('Bạn đang tương tác với partner, hãy hoàn thành xong để dùng lệnh!')
 
 		if (!inventory) return message.reply('Hãy đánh lệnh daily để tạo profile!')
-		if (!availability) return message.reply('Bạn đang tương tác với partner, hãy hoàn thành xong để dùng lệnh!')
 
 		const pnCommands = ['gacha', 'set', 'info']
 		if (!pnCommands.includes(pnCommand)) return message.reply('Hãy đánh đúng lệnh hiện có!')
