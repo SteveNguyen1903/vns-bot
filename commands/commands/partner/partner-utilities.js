@@ -196,6 +196,10 @@ module.exports = {
 			let txt4 = ``
 			let txt5 = ``
 
+			console.log('3', threeStars)
+			console.log('3', fourStars)
+			console.log('3', fiveStars)
+
 			threeStars.forEach((char) => (txt3 += `${char.name[0]}\n`))
 			fourStars.forEach((char) => (txt4 += `${char.name[0]}\n`))
 			fiveStars.forEach((char) => (txt5 += `${char.name[0]}\n`))
