@@ -2,13 +2,19 @@ var fs = require('fs')
 const path = require('path')
 const partnerSchema = require('@schema/partner-schema')
 
-const test = async () => {
-	// const userCharsDb = await partnerSchema.findOne({ userId: '367117809920114688', guildId: '361134901283520515' })
-	// return userCharsDb
-}
+const arr1 = [
+	{ name: 'des1', type: 'test1' },
+	{ name: 'des2', type: 'test1' },
+	{ name: 'des3', type: 'test1' },
+	{ name: 'des4', type: 'test1' },
+	{ name: 'des5', type: 'test1' },
+]
 
-test()
+const arr2 = [{ name: 'des1' }, { name: 'des2' }]
 
-const t = null
+const test = arr2.map((character) => {
+	const testres = arr1.filter((item) => item.name === character.name)
+	return testres
+})
 
-if (!t) console.log('aaa')
+console.log(test)
