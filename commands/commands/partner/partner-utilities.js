@@ -18,7 +18,7 @@ module.exports = {
 		const userId = member.id
 		const pnCommand = arguments[0]
 		const listCharacters = await pn.getListCharacters()
-		const userCharsDb = await partnerSchema.findOne({ userId, guildId })
+		let userCharsDb = await partnerSchema.findOne({ userId, guildId })
 		const inventory = await economy.showProfile(guildId, userId)
 		arguments.shift()
 		let secondArg = arguments.join(' ')
@@ -181,7 +181,7 @@ module.exports = {
 		}
 
 		if (pnCommand === 'own') {
-			if (!userCharsDb.partners) return message.reply('Bạn chưa có partner nào, hãy gacha!')
+			if (userCharsDb === null || !userCharsDb.partners) return message.reply('Bạn chưa có partner nào, hãy gacha!')
 
 			let ownCharacters = userCharsDb.partners.map((character) => {
 				const res = listCharacters.filter((item) => item.name[0] === character.name)
@@ -209,6 +209,10 @@ module.exports = {
 			threeStars.forEach((char) => (txt3 += `${char[0].name[0]}\n`))
 			fourStars.forEach((char) => (txt4 += `${char[0].name[0]}\n`))
 			fiveStars.forEach((char) => (txt5 += `${char[0].name[0]}\n`))
+
+			txt3 = txt3 ? txt3 : 'Chưa có'
+			txt4 = txt4 ? txt4 : 'Chưa có'
+			txt5 = txt5 ? txt5 : 'Chưa có'
 
 			const embed = new Discord.MessageEmbed()
 				.setColor(`#FFFDC0`)
