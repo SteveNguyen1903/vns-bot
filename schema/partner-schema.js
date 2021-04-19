@@ -43,7 +43,7 @@ const partnerSchema = mongoose.Schema(
 		},
 		pokeTimes: {
 			type: Number,
-			default: 1,
+			default: 3,
 		},
 		availability: {
 			type: Boolean,

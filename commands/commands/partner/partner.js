@@ -42,11 +42,11 @@ module.exports = {
 		const character = new Character(name, xp, affectionLvl, copies, ascension, anime, stars, description, img)
 		const emojs = ['🤏', '🎁', '⏫', '💍']
 		let currentMarry = userCharsDb.currentMarry ? userCharsDb.currentMarry : null
-		let pokeTimes = userCharsDb.pokeTimes ? userCharsDb.pokeTimes : 3
 		let gift = inventory.items.gift
 		let dialogue = partnerDialogue.filter((voiceLine) => voiceLine.type === type)
 		let now = new Date()
 		let marryRegen = userCharsDb.marryRegen ? userCharsDb.marryRegen : now
+		let pokeTimes = userCharsDb.pokeTimes
 
 		const embed = new Discord.MessageEmbed()
 			.setColor(`#FFFDC0`)
@@ -186,6 +186,7 @@ module.exports = {
 			})
 			partner.on('end', async (c, r) => {
 				try {
+					console.log('poketimes ', pokeTimes)
 					await partnerSchema.updateOne({ userId, guildId, 'partners.name': name }, { availability: true, currentMarry: currentMarry, marryRegen: marryRegen, pokeTimes: pokeTimes, 'partners.$.copies': character.copies, 'partners.$.affectionLvl': character.affectionLvl, 'partners.$.xp': character.xp, 'partners.$.ascension': character.ascension }, { upsert: true })
 					await profileSchema.updateOne({ guildId, userId }, { 'items.gift': gift })
 				} catch (err) {
