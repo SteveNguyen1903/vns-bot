@@ -94,7 +94,8 @@ module.exports = {
 
 			if (!userCharsDb) {
 				addToDbChars.forEach((character) => {
-					const res = partnerSchema.updateOne({ userId, guildId }, { $push: { partners: character } }, { upsert: true })
+					let obj = { name: character.name, copies: character.copies - 1 }
+					const res = partnerSchema.updateOne({ userId, guildId }, { $push: { partners: obj } }, { upsert: true })
 					promises.push(res)
 					return
 				})
@@ -109,7 +110,8 @@ module.exports = {
 
 				if (charsNew.length > 0) {
 					charsNew.forEach((character) => {
-						const res = partnerSchema.updateOne({ userId, guildId }, { $push: { partners: character } }, { upsert: true })
+						let obj = { name: character.name, copies: character.copies - 1 }
+						const res = partnerSchema.updateOne({ userId, guildId }, { $push: { partners: obj } }, { upsert: true })
 						promises.push(res)
 						return
 					})
@@ -117,7 +119,7 @@ module.exports = {
 
 				if (existingChars.length > 0) {
 					existingChars.forEach((character) => {
-						const res = partnerSchema.updateOne({ userId, guildId, 'partners.name': character.name }, { $inc: { 'partners.$.copies': 1 } })
+						const res = partnerSchema.updateOne({ userId, guildId, 'partners.name': character.name }, { $inc: { 'partners.$.copies': character.copies } })
 						promises.push(res)
 						return
 					})
