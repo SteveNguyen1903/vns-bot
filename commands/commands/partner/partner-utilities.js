@@ -40,7 +40,7 @@ module.exports = {
 
 		if (!inventory) return message.reply('Hãy đánh lệnh daily để tạo profile!')
 
-		const pnCommands = ['gacha', 'set', 'info']
+		const pnCommands = ['gacha', 'set', 'info', 'own']
 		if (!pnCommands.includes(pnCommand)) return message.reply('Hãy đánh đúng lệnh hiện có!')
 
 		if (pnCommand === 'gacha') {
@@ -167,6 +167,30 @@ module.exports = {
 			let threeStars = listCharacters.filter((character) => character.stars === 3)
 			let fourStars = listCharacters.filter((character) => character.stars === 4)
 			let fiveStars = listCharacters.filter((character) => character.stars === 5)
+
+			let txt3 = ``
+			let txt4 = ``
+			let txt5 = ``
+
+			threeStars.forEach((char) => (txt3 += `${char.name[0]}\n`))
+			fourStars.forEach((char) => (txt4 += `${char.name[0]}\n`))
+			fiveStars.forEach((char) => (txt5 += `${char.name[0]}\n`))
+
+			const embed = new Discord.MessageEmbed().setColor(`#FFFDC0`).addFields({ name: '✭✭✭', value: `${txt3}`, inline: true }, { name: '✭✭✭✭', value: `${txt4}`, inline: true }, { name: '✭✭✭✭✭', value: `${txt5}`, inline: true })
+			message.channel.send(embed)
+		}
+
+		if (pnCommand === 'own') {
+			if (!userCharsDb.partners) return message.reply('Bạn chưa có partner nào, hãy gacha!')
+
+			const ownCharacters = userCharsDb.partners.map((character) => {
+				const res = listCharacters.filter((item) => item.name[0] === character.name)
+				return res
+			})
+
+			let threeStars = ownCharacters.filter((character) => character.stars === 3)
+			let fourStars = ownCharacters.filter((character) => character.stars === 4)
+			let fiveStars = ownCharacters.filter((character) => character.stars === 5)
 
 			let txt3 = ``
 			let txt4 = ``

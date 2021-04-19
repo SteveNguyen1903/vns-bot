@@ -1,6 +1,6 @@
 [
 	{
-		"name": ["Ichigo", "Ichi"],
+		"name": ["Ichigo"],
 		"anime": "Darling in the Franxx",
 		"stars": 4,
 		"description": "XX",
@@ -133,6 +133,14 @@
 		"stars": 4,
 		"description": "Sinh ra trong một bộ tộc có khả năng sử dụng phép thuật mạnh nhất, nhưng rất tiếc em ấy lại nguyện cống hiến bao nhiêu sức lực của mình vào phép thuật Bùng Nổ của mình. Kết quả là skill phép Bùng Nổ của em có sát thương và diện rộng rất lớn nhưng em chỉ có thể sử dụng nó đúng 1 lần 1 ngày và sau khi dùng xong thì nằm luôn và thành gánh nặng. Ẻm như một người em gái với partner luôn luôn cống hiến hết khả năng của mình!",
 		"img": ["https://i.imgur.com/RxS1rGQ.png", "https://i.imgur.com/IgxYGlS.png", "https://i.imgur.com/SJAG6CA.png", "https://i.imgur.com/DKho3jN.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Aoi Mukou"],
+		"anime": "You and Me and Her (Totono)",
+		"stars": 4,
+		"description": "Hỏi Aoi một đằng thì Aoi lại trả lời một nẻo. Tâm trí cô cứ như người trên trời, khiến cho ai nói chuyện nghĩ cô bị tự kỉ. Aoi luôn khao khát tình bạn, nhưng đồng thời chính Aoi lại không cho phép chính cô tiếp xúc với ai; Aoi xem bản thân như một nhân vật phụ của chính cuộc đời cô - nhơ bẩn và thấp kém. Partner, bạn hãy cố giúp Aoi thoát khỏi chính mình nhé!",
+		"img": ["https://i.imgur.com/8SgOuLx.png", "https://i.imgur.com/HTMLqsW.jpg", "https://i.imgur.com/QSljQqo.jpg", "https://i.imgur.com/C0DBEfN.jpg"],
 		"type": "kuudere"
 	}
 ]

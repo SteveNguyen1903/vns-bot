@@ -35,7 +35,7 @@ module.exports.getList = () => {
 		.setThumbnail('https://i.imgur.com/5TxI2ys.jpg')
 		.setImage('')
 		.addFields(
-			{ name: 'Lệnh tổng quan, kèm prefix và bắt đầu bằng "pn":', value: `"gacha <số từ 1-10>" : gacha nhân vật.\n"set <tên partner>" : lựa chọn partner, lưu ý tên có phân biệt chữ hoa.\n"info" : show info các partner, hiện đang lười nên chưa làm.` },
+			{ name: 'Lệnh tổng quan, kèm prefix và bắt đầu bằng "pn":', value: `"gacha <số từ 1-10>" : gacha nhân vật.\n"set <tên partner>" : lựa chọn partner, lưu ý tên có phân biệt chữ hoa.\n"info" : show info các partner.\n"own" : Hiển thị thông tin các partner bạn sở hữu.` },
 			{ name: 'Lệnh tương tác:', value: `"partner" : hiện bảng tương tác với partner` },
 			{ name: 'Cơ chế khác:', value: `+ Chỉ đính hôn được khi đã đạt mức thân mật 10.\n+ Một lượt 'tương tác' hồi mỗi 8h.\n+ Đa thê là không tốt` },
 		)
