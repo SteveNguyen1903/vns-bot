@@ -8,7 +8,7 @@ const checkPartner = async (guildId, userId) => {
 	return result
 }
 
-const gachaGame = (weight = [5, 15, 80]) => {
+const gachaGame = (weight = [3, 10, 87]) => {
 	let total = weight.reduce((a, b) => a + b)
 	let result = Math.random()
 	let tempChance = []

@@ -60,7 +60,7 @@ module.exports = {
 			const embed = new Discord.MessageEmbed()
 				.setColor(`#FFFDC0`)
 				.setAuthor(`Kết quả gacha của ${message.author.username}`, `${message.author.displayAvatarURL()}`)
-				.setDescription(`Tỉ lệ 5 sao: 5% | Tỉ lệ 4 sao: 15% | Tỉ lệ 3 sao: 80%`)
+				.setDescription(`Tỉ lệ 5 sao: 3% | Tỉ lệ 4 sao: 10% | Tỉ lệ 3 sao: 87%`)
 				.setImage(`${arrRes.some((character) => character.stars === 5) ? 'https://i.imgur.com/tEuhLiO.jpg' : arrRes.some((character) => character.stars === 4) ? 'https://i.imgur.com/L0vVENc.jpg' : 'https://i.imgur.com/sRj9E7z.jpg'}`)
 
 			arrRes.forEach((character) => {
