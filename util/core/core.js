@@ -58,9 +58,10 @@ const checkAvailabilityWithToken = async (message, userProfile) => {
 	return true
 }
 
-const calWeight = (weight, level) => {
+const calWeight = (weight, level, pBonus) => {
 	let bonusChance = level + 1.5 / level
 	let success = (12.5 + (weight - 1) * 7.5 + bonusChance).toFixed(2)
+	success = parseFloat(success) + pBonus
 	let result = Math.random() * 100
 	result = parseFloat(result).toFixed(2)
 	if (success > result) return true

@@ -5,6 +5,9 @@ const xpFeature = require('@features/level')
 const story1p = require('@root/json/1p/rpg-1p.json')
 const core = require('@core/core')
 const profileSchema = require('@schema/profile-schema')
+const partnerSchema = require('@schema/partner-schema')
+const pn = require('@util/partner/partner-features')
+const { Character, lowRarity } = require('@util/rpg/characters/character')
 
 module.exports = {
 	commands: ['dun'],
@@ -22,7 +25,26 @@ module.exports = {
 		const guildId = guild.id
 		const userId = id
 		const userProfile = await profileSchema.findOne({ guildId, userId })
+		const userCharsDb = await partnerSchema.findOne({ userId, guildId })
+		const listCharacters = await pn.getListCharacters()
 		const userLvl = userProfile.level
+
+		let getPartnerBonus = (userCharsDb) => {
+			let partnerInfo = listCharacters.filter((character) => character.name.includes(userCharsDb?.currentPartner))
+			let res = userCharsDb?.partners.filter((char) => char.name === userCharsDb.currentPartner)
+			let stars = partnerInfo.length > 0 ? partnerInfo[0]?.stars : null
+			let lvl = res ? res[0]?.affectionLvl : 0
+			if (stars === null) return
+			if (!lvl) lvl = 1
+			let character = new Character(userCharsDb?.currentPartner, '', lvl, '', '', '', stars)
+			let bonusPChance = character.bonusChance * 100
+			bonusPChance = bonusPChance.toFixed(2)
+			return bonusPChance
+		}
+
+		let partnerBonus = getPartnerBonus(userCharsDb)
+
+		if (!partnerBonus) partnerBonus = 0
 
 		//Check if user is wounded
 		if (member.roles.cache.some((role) => role.name === 'wound')) return message.reply('Bạn đang hồi sức, không sử dụng lệnh được')
@@ -58,8 +80,8 @@ module.exports = {
 				.then(async (collected) => {
 					const action = collected.first().content
 					const resolution = core.getStory(story.conflict[action - 1].resolution)
-					const resWeight = await core.calWeight(resolution.weight, userLvl)
-					let endTxt = `Bạn có thêm ${userLvl + 1.5 / userLvl}% cơ hội thành công.`
+					const resWeight = await core.calWeight(resolution.weight, userLvl, parseFloat(partnerBonus))
+					let endTxt = `Thêm ${userLvl + 1.5 / userLvl}% (từ bạn) + ${partnerBonus}% (từ partner) cơ hội thành công.`
 					let result = resolution.gain[0].player1
 					let extraTxt = resolution.gain[0].extra
 					if (!resWeight) {
@@ -80,7 +102,7 @@ module.exports = {
 
 					Promise.all(promises)
 						.then(async (results) => {
-							if (results[0] == 0) {
+							if (results[0] === 0) {
 								text += `Bạn đã hết máu. Hồi sức trong 20 phút!`
 								await economy.addWound(guild, guildId, userId, 20)
 							}

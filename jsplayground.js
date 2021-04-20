@@ -1,6 +1,7 @@
 var fs = require('fs')
 const path = require('path')
 const partnerSchema = require('@schema/partner-schema')
+const { Console } = require('console')
 
 const arr1 = [
 	{ name: 'des1', type: 'test1' },
@@ -152,7 +153,7 @@ let filterArr = arr3
 		if (item.length > 0) return item
 	})
 	.filter((item) => {
-		console.log(item)
+		// console.log(item)
 
 		let res = item[0].name[0]
 		return res
@@ -160,4 +161,12 @@ let filterArr = arr3
 		// item[0].stars === 3
 	})
 
-console.log(filterArr)
+// console.log(filterArr)
+
+let ab = null
+
+if (!ab) console.log('not exist')
+
+if (!ab?.avail) console.log('not true')
+
+if (ab.avail) console.log('true')
