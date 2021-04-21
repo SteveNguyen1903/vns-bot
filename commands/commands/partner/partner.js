@@ -120,7 +120,7 @@ module.exports = {
 						}
 						gift--
 
-						character.addXp(150)
+						character.addXp(300)
 						text = `${dialogue[0].gift[Math.floor(Math.random() * dialogue[0].poke.length)]}`
 						if (text.includes('<user>')) text = text.replace(/<user>/g, `<@${userId}>`)
 						if (text.includes('<partner>')) text = text.replace(/<partner>/g, `${name}`)
