@@ -118,6 +118,13 @@ module.exports = {
 							msg.edit(embed)
 							break
 						}
+
+						if (affectionLvl >= 10) {
+							embed.fields[4] = { name: 'Tương tác', value: 'Mức thân thiết đã đạt tối đa, không thể tặng quà thêm!' }
+							msg.edit(embed)
+							break
+						}
+
 						gift--
 
 						character.addXp(300)
