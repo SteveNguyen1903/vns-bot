@@ -96,6 +96,12 @@ const hasDupes = (userChars, listChars) => {
 	return res
 }
 
+const testFc = () => {
+	console.log('====================================')
+	console.log()
+	console.log('====================================')
+}
+
 module.exports = {
 	checkPartner,
 	gachaGame,
@@ -104,4 +110,5 @@ module.exports = {
 	getExistingChars,
 	ifExistInList,
 	hasDupes,
+	testFc,
 }
