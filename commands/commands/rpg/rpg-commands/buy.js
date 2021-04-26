@@ -30,15 +30,12 @@ module.exports = {
 		const userId = member.id
 		let item = itemCheck(arguments[0])
 		let itemQuantity = parseInt(arguments[1])
-		let partnerStatus = await partnerSchema.findOne({ guildId, userId })
+		let userPartnerDb = await partnerSchema.findOne({ guildId, userId })
+		let availability = userPartnerDb?.availability
 
-		let availability
-		if (partnerStatus === null) availability = true
-		if (partnerStatus !== null && !partnerStatus.availability) availability = false
+		if (availability === undefined) availability = true
 
-		if (!availability) return message.reply('Hãy hoàn thành xong tương tác với partner để sử dụng lệnh mua!')
-
-		console.log('availability ', availability)
+		if (availability === false) return message.reply('Hãy hoàn thành xong tương tác với partner trước khi dùng lệnh này!')
 
 		if (!item.name || item.name === String) {
 			return message.reply('Nhập đúng item cần mua')
