@@ -36,6 +36,10 @@ module.exports = {
 		if (partnerStatus === null) availability = true
 		if (partnerStatus !== null && !partnerStatus.availability) availability = false
 
+		if (!availability) return message.reply('Hãy hoàn thành xong tương tác với partner để sử dụng lệnh mua!')
+
+		console.log('availability ', availability)
+
 		if (!item.name || item.name === String) {
 			return message.reply('Nhập đúng item cần mua')
 		}
