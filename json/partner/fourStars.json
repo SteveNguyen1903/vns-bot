@@ -142,5 +142,29 @@
 		"description": "Hỏi Aoi một đằng thì Aoi lại trả lời một nẻo. Tâm trí cô cứ như người trên trời, khiến cho ai nói chuyện nghĩ cô bị tự kỉ. Aoi luôn khao khát tình bạn, nhưng đồng thời chính Aoi lại không cho phép chính cô tiếp xúc với ai; Aoi xem bản thân như một nhân vật phụ của chính cuộc đời cô - nhơ bẩn và thấp kém. Partner, bạn hãy cố giúp Aoi thoát khỏi chính mình nhé!",
 		"img": ["https://i.imgur.com/8SgOuLx.png", "https://i.imgur.com/HTMLqsW.jpg", "https://i.imgur.com/QSljQqo.jpg", "https://i.imgur.com/C0DBEfN.jpg"],
 		"type": "kuudere"
+	},
+	{
+		"name": ["Amano Touko"],
+		"anime": "Bungaku Shoujo",
+		"stars": 4,
+		"description": "Touko sẽ vòi partner viết cho cô một mẩu truyện ngắn, để rồi sau đó cô đút tọt vào mồm làm bữa ăn trưa. Đối với cô, truyện cổ tích mang vị kẹo chanh, truyện tình cảm thì như khoanh bánh ngọt phủ kem, còn truyện kinh dị thì lại nếm như... cá ươn. Ấy vậy mà dù partner có viết dở đến đâu, Touko sẽ vẫn cố chén cho hết trong nước mắt, rồi yếu ớt mỉm cười chắp tay cảm ơn vì bữa ăn.",
+		"img": ["https://i.imgur.com/0WUTsFJ.jpg", "https://i.imgur.com/L6pi2k8.jpg", "https://i.imgur.com/oBVU2pO.jpg", "https://i.imgur.com/yzv6ahO.jpg"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Oda Nobunaga"],
+		"anime": "Fate/Grand Order",
+		"stars": 4,
+		"description": "Tuy thời niên thiếu hay bị gọi là 'Đứa ngốc vùng Owari', nhưng rồi cô đã vang danh khắp thiên hạ sau chiến tích đánh hạ Imagawa Yoshimoto ở trận Okehazawa.Sau đó, cô còn loại bỏ được nhiều kẻ thù ghê gớm khác và mộng thống nhất thiên hạ đã ở ngay trước mắt, nhưng cuối cùng lại lâm chung ở Honno-ji do Akechi Mitsuhide tạo phản.",
+		"img": ["https://i.imgur.com/D1VP8yS.png", "https://i.imgur.com/7nOuecV.png", "https://i.imgur.com/Rm8Xg2u.jpg", "https://i.imgur.com/SLtvNFI.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Noel Cerquetti"],
+		"anime": "Higyaku no Noel",
+		"stars": 4,
+		"description": "Là một nghệ sĩ đàn Piano cực tài năng nhưng kiêu ngạo, hợm hĩnh, chính vì sự kiêu ngạo đã bị lừa vào một vụ hợp đồng máu với quỷ dẫn tới việc mất tay chân và suýt nữa chết đuối. Nhưng kể từ đó thì tính cách cô thay đổi hoàn toàn: mạnh mẽ, chín chắn, từ tốn và quyết đoán hơn. Chính vì thế mà partner sẽ xiêu lòng mà chọn cô thôi.",
+		"img": ["https://i.imgur.com/gcec7vf.jpg", "https://i.imgur.com/9Y5bdgW.jpg", "https://i.imgur.com/UDnJWaM.jpg", "https://i.imgur.com/qDVrFe7.jpg"],
+		"type": "kuudere"
 	}
 ]

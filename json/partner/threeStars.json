@@ -42,7 +42,7 @@
 		"name": ["Marine Houshou", "Marine"],
 		"anime": "XX",
 		"stars": 3,
-		"description": "XX",
+		"description": "ahoy",
 		"img": ["https://i.imgur.com/ftdS5hO.png"],
 		"type": "kuudere"
 	},
@@ -76,6 +76,22 @@
 		"stars": 3,
 		"description": "XX",
 		"img": ["https://i.imgur.com/ftdS5hO.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Ai Hayasaka"],
+		"anime": "Kaguya-sama Love is war",
+		"stars": 3,
+		"description": "Trong mắt bạn bè và thầy cô, Ai Hayasaka là một con bé cực kì dễ thương, ngây ngô và hoạt bát. Nhưng khi không có ai xung quanh, cô lại trở thành một con người lạnh lùng, ít nói với đôi mắt sắc bén đến mức những gã đàn ông lớn hơn cô vài con giáp cũng phải né cô ra. Những người từng vô tình thấy cả hai tính cách của Hayasaka, một số thì sợ, số khác lại khinh cô ra mặt vì nghĩ cô là hạng giả tạo. Nhưng họ không biết, chỉ có partner và những ai cô yêu quý nhất mới biết được con người thật của cô...",
+		"img": ["https://i.imgur.com/tcIh99I.jpg", "https://i.imgur.com/Z6nAo0G.jpg", "https://i.imgur.com/yAT51Nd.jpg", "https://i.imgur.com/tUzFGtE.jpg", "https://i.imgur.com/3Fi91u5.png"],
+		"type": "kuudere"
+	},
+	{
+		"name": ["Tatsumaki"],
+		"anime": "One Punch Man",
+		"stars": 3,
+		"description": "Đứng ở cấp S hạng 2, là một trong những siêu anh hùng mạnh nhất của hiệp hội. Với vóc dáng nhỏ con nên cô thường hay bị nhầm lẫn là trẻ con nhưng cô có sức mạnh tâm linh vượt trội nên cô rất hay kiêu căng và ngạo mạn, không sợ bất cứ một kẻ thù nào và không thích hợp tác đi cùng với những người yếu hơn.",
+		"img": ["https://i.imgur.com/J56NKVk.png", "https://i.imgur.com/zkUNC4P.jpg", "https://i.imgur.com/nV43kVT.jpg", "https://i.imgur.com/zt8m7re.png"],
 		"type": "kuudere"
 	}
 ]
